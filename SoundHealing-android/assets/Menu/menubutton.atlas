@@ -1,0 +1,19 @@
+
+menubutton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu_button
+  rotate: false
+  xy: 1, 1
+  size: 400, 86
+  orig: 400, 86
+  offset: 0, 0
+  index: -1
+menu_button_dark
+  rotate: false
+  xy: 403, 1
+  size: 400, 86
+  orig: 400, 86
+  offset: 0, 0
+  index: -1
