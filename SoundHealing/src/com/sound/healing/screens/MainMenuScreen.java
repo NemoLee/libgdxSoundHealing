@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
-import com.sound.healing.buttons.MenuButton;
+import com.sound.healing.custom.MenuButton;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
@@ -110,7 +110,6 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		sprite_Menu_Title = null;
 		sprite_Menu_Author = null;
 		sprite_Menu_Title_Background = null;
-		ScreenManager.getInstance().dispose(Screen.MAIN_MENU);
 
 	}
 

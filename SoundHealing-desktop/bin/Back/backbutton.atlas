@@ -1,0 +1,19 @@
+
+backbutton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+backbutton
+  rotate: false
+  xy: 1, 1
+  size: 400, 80
+  orig: 400, 80
+  offset: 0, 0
+  index: -1
+backbutton_dark
+  rotate: false
+  xy: 403, 1
+  size: 400, 80
+  orig: 400, 80
+  offset: 0, 0
+  index: -1

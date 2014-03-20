@@ -14,13 +14,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 public class AssetLoader {
 	
 	
-	public Texture texture_Menu_Button;
-	private TextureAtlas atlas_Menu_Button;
-	private Skin skin_Menu_Button;
+	public Texture texture_Menu_Button, texture_Back_Button;
+	private TextureAtlas atlas_Menu_Button, atlas_Back_Button;
+	private Skin skin_Menu_Button, skin_Back_Button;
 	public TextButtonStyle style_menu_startbutton;
+	public ButtonStyle style_Back_Button;
 	public Texture texture_Menu_Title_Background;
 	public Texture texture_Menu_Title;
 	public Texture texture_Menu_Author;
+	public Texture texture_SpreadSelect_Title;
+	public FreeTypeFontGenerator generator;
+	public FreeTypeFontParameter font;
 	private BitmapFont appFont;
 	private static final AssetLoader INSTANCE = new AssetLoader();
 
@@ -28,6 +32,11 @@ public class AssetLoader {
 	public static AssetLoader getInstance() {
 		
 		return INSTANCE;
+	}
+	
+	public void loadFont(){
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("Font/slab.ttf"));
+		font = new FreeTypeFontParameter();
 	}
 	
 	public void loadMainMenu() {
@@ -44,10 +53,8 @@ public class AssetLoader {
 		style_menu_startbutton = new TextButtonStyle();
 		style_menu_startbutton.up = skin_Menu_Button.getDrawable("menu_button");
 		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Font/slab.ttf"));
-		FreeTypeFontParameter f = new FreeTypeFontParameter();
-		f.size = 50;
-		appFont = generator.generateFont(f);
+		font.size = 50;
+		appFont = generator.generateFont(font);
 		style_menu_startbutton.font = appFont;
 	}
 	//Gdx.net.openURI("https://play.google.com/store/apps/details?id=com.shagunstudios.racinggame");
@@ -74,13 +81,21 @@ public class AssetLoader {
 		style_menu_startbutton = new TextButtonStyle();
 		style_menu_startbutton.up = skin_Menu_Button.getDrawable("menu_button");
 		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Font/slab.ttf"));
-		FreeTypeFontParameter f = new FreeTypeFontParameter();
-		f.size = 35;
-		appFont = generator.generateFont(f);
+		font.size = 35;
+		appFont = generator.generateFont(font);
 		style_menu_startbutton.font = appFont;
 		
 		
+		
+		atlas_Back_Button = new TextureAtlas(Gdx.files.internal("Back/backbutton.atlas"));
+		skin_Back_Button = new Skin();
+		skin_Back_Button.addRegions(atlas_Back_Button);
+		style_Back_Button = new ButtonStyle();
+		style_Back_Button.up = skin_Back_Button.getDrawable("backbutton");
+		style_Back_Button.down = skin_Back_Button.getDrawable("backbutton_dark");
+	
+		
+		texture_SpreadSelect_Title = new Texture(Gdx.files.internal("Menu/menu_title_background.png"));
 		
 	}
 	
