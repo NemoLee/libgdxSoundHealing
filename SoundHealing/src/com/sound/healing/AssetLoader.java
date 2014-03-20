@@ -46,19 +46,46 @@ public class AssetLoader {
 		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Font/slab.ttf"));
 		FreeTypeFontParameter f = new FreeTypeFontParameter();
-		f.size = 35;
+		f.size = 50;
 		appFont = generator.generateFont(f);
 		style_menu_startbutton.font = appFont;
 	}
+	//Gdx.net.openURI("https://play.google.com/store/apps/details?id=com.shagunstudios.racinggame");
+
 	
-	
-	public void unLoadMainMenu() {
+	public void unloadMainMenu() {
 		texture_Menu_Title_Background.dispose();
 		texture_Menu_Title.dispose();
 		texture_Menu_Author.dispose();
+		atlas_Menu_Button.dispose();
+		skin_Menu_Button.dispose();
 		texture_Menu_Title_Background = null;
 		texture_Menu_Title = null;
 		texture_Menu_Author = null;
+		atlas_Menu_Button = null;
+		skin_Menu_Button = null;
+		style_menu_startbutton = null;
+	}
+	
+	public void loadSpreadSelect(){
+		atlas_Menu_Button = new TextureAtlas(Gdx.files.internal("Menu/menubutton.atlas"));
+		skin_Menu_Button = new Skin();
+		skin_Menu_Button.addRegions(atlas_Menu_Button);
+		style_menu_startbutton = new TextButtonStyle();
+		style_menu_startbutton.up = skin_Menu_Button.getDrawable("menu_button");
+		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Font/slab.ttf"));
+		FreeTypeFontParameter f = new FreeTypeFontParameter();
+		f.size = 35;
+		appFont = generator.generateFont(f);
+		style_menu_startbutton.font = appFont;
+		
+		
+		
+	}
+	
+	public void unloadSpreadSelect(){
+		
 	}
 	
 

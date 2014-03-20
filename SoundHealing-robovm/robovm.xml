@@ -21,6 +21,7 @@
     <pattern>com.badlogic.gdx.scenes.scene2d.ui.*</pattern>
   </forceLinkClasses>  
   <libs>
+    <lib>libs/ios/libgdx-freetype.a</lib>
     <lib>libs/ios/libgdx.a</lib>
     <lib>libs/ios/libObjectAL.a</lib>
   </libs>

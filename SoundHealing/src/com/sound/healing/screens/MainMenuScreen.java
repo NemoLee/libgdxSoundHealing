@@ -10,10 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
+import com.sound.healing.buttons.MenuButton;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
-	private TextButton startButton, browseButton, loadButton, moreinfoButton;
+	private MenuButton startButton, browseButton, loadButton, moreinfoButton;
 	private Sprite sprite_Menu_Title, sprite_Menu_Author, sprite_Menu_Title_Background;
 	private Stage stage;
 	
@@ -25,9 +26,9 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		stage.act();
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		batch.draw(sprite_Menu_Title_Background, 0,0, WIDTH, HEIGHT/3+HEIGHT/10);
-		batch.draw(sprite_Menu_Title,WIDTH/4,HEIGHT/16,WIDTH/2,HEIGHT/6);
-		batch.draw(sprite_Menu_Author,WIDTH/3,HEIGHT/4+HEIGHT/24,WIDTH/3,HEIGHT/18);
+			batch.draw(sprite_Menu_Title_Background, 0,0, WIDTH, HEIGHT/3+HEIGHT/10);
+			batch.draw(sprite_Menu_Title,WIDTH/4,HEIGHT/16,WIDTH/2,HEIGHT/6);
+			batch.draw(sprite_Menu_Author,WIDTH/3,HEIGHT/4+HEIGHT/24,WIDTH/3,HEIGHT/18);
 		batch.end();
 		batch.begin();
 			stage.draw();
@@ -61,77 +62,21 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
     sprite_Menu_Author.flip(false, true);
     
     //Start button
-    startButton = new TextButton("Start",AssetLoader.getInstance().style_menu_startbutton);
-    startButton.setPosition(0, 3*(HEIGHT/7));
-    startButton.setSize(WIDTH, HEIGHT/7);
-    startButton.addListener(new InputListener(){
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-			
-			return true;
-	 	}
-
-		public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-	        ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
-			dispose();
-				
-	 	}
-    });
+    startButton = new MenuButton("Start",AssetLoader.getInstance().style_menu_startbutton,0,3*(HEIGHT/7),WIDTH, HEIGHT/7,this,com.sound.healing.Screen.SPREAD_SELECT);
     stage.addActor(startButton);
     
     //Browse Button  
-    browseButton = new TextButton("Browse",AssetLoader.getInstance().style_menu_startbutton);
-    browseButton.setPosition(0, 2*(HEIGHT/7));
-    browseButton.setSize(WIDTH, HEIGHT/7);
-    browseButton.addListener(new InputListener(){
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-			
-			return true;
-	 	}
-
-		public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-	        ScreenManager.getInstance().show(com.sound.healing.Screen.BROWSE);
-			dispose();
-				
-	 	}
-    });
+    browseButton = new MenuButton("Browse",AssetLoader.getInstance().style_menu_startbutton,0,2*(HEIGHT/7), WIDTH, HEIGHT/7, this, com.sound.healing.Screen.BROWSE);
     stage.addActor(browseButton);
     
     
     //Load Button
-    loadButton = new TextButton("Load",AssetLoader.getInstance().style_menu_startbutton);
-    loadButton.setPosition(0, 1*(HEIGHT/7));
-    loadButton.setSize(WIDTH, HEIGHT/7);
-    loadButton.addListener(new InputListener(){
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-			
-			return true;
-	 	}
-
-		public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-	        ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD);
-			dispose();
-				
-	 	}
-    });
+    loadButton = new MenuButton("Load",AssetLoader.getInstance().style_menu_startbutton,0,(HEIGHT/7), WIDTH, HEIGHT/7, this, com.sound.healing.Screen.LOAD );
     stage.addActor(loadButton);
     
     
     //MoreInfo Button
-    moreinfoButton = new TextButton("More Info",AssetLoader.getInstance().style_menu_startbutton);
-    moreinfoButton.setPosition(0, 0);
-    moreinfoButton.setSize(WIDTH, HEIGHT/7);
-    moreinfoButton.addListener(new InputListener(){
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-			
-			return true;
-	 	}
-
-		public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-	        ScreenManager.getInstance().show(com.sound.healing.Screen.MORE_INFO);
-			dispose();
-				
-	 	}
-    });
+    moreinfoButton = new MenuButton("More Info",AssetLoader.getInstance().style_menu_startbutton,0,0,WIDTH,HEIGHT/7,this,com.sound.healing.Screen.MORE_INFO);
     stage.addActor(moreinfoButton);
 	}
 
@@ -155,6 +100,16 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 
 	@Override
 	public void dispose() {
+		batch.dispose();
+		stage.dispose();
+		AssetLoader.getInstance().unloadMainMenu();
+		startButton = null;
+		browseButton = null;
+		loadButton = null;
+		moreinfoButton = null;	
+		sprite_Menu_Title = null;
+		sprite_Menu_Author = null;
+		sprite_Menu_Title_Background = null;
 		ScreenManager.getInstance().dispose(Screen.MAIN_MENU);
 
 	}
