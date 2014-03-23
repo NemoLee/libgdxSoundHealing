@@ -6,78 +6,79 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Scaling;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
+import com.sound.healing.actors.CreateSpreadSelect;
 import com.sound.healing.custom.MenuButton;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
-	private MenuButton startButton, browseButton, loadButton, moreinfoButton;
-	private Sprite sprite_Menu_Title, sprite_Menu_Author, sprite_Menu_Title_Background;
-	private Stage stage;
-	
+
+	public MainMenuScreen(ScreenSpec screenSpec) {
+		super(screenSpec);
+
+	}
+
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
+		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-			batch.draw(sprite_Menu_Title_Background, 0,0, WIDTH, HEIGHT/3+HEIGHT/10);
-			batch.draw(sprite_Menu_Title,WIDTH/4,HEIGHT/16,WIDTH/2,HEIGHT/6);
-			batch.draw(sprite_Menu_Author,WIDTH/3,HEIGHT/4+HEIGHT/24,WIDTH/3,HEIGHT/18);
-		batch.end();
+		batch.setProjectionMatrix(camera.combined);	
 		batch.begin();
 			stage.draw();
+			transitionStage.draw();
 		batch.end();
-
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		
+		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
 
 	}
 
 	@Override
 	public void show() {
-	AssetLoader.getInstance().loadMainMenu();
-	stage = new Stage(WIDTH,HEIGHT);
+	AssetLoader.getInstance().loadSpreadSelect();
 	stage.clear();
-    Gdx.input.setInputProcessor(stage);
+	stage = screenSpec.createStage();
+	Gdx.input.setInputProcessor(stage);
+	
+	ClickListener click = new ClickListener(){
+		 @Override
+         public void clicked(InputEvent event, float x, float y) {
+			 
+			 			transitionStage = new CreateSpreadSelect().getSpec().createStage();
+			 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
+				 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
+
+							@Override
+							public void run() {
+								ScreenManager.getInstance().show(Screen.SPREAD_SELECT); 
+								
+							}
+				 			
+				 		})));
+				 		
+										 	
+			
+         }
+	};
+	
+	stage.getActors().get(3).addListener(click);
+	stage.getActors().get(4).addListener(click);
+	stage.getActors().get(5).addListener(click);
+	stage.getActors().get(6).addListener(click);
     
-    //background
-    sprite_Menu_Title_Background = new Sprite(AssetLoader.getInstance().texture_Menu_Title_Background);
-    sprite_Menu_Title_Background.flip(false, true);
-    
-    //title
-    sprite_Menu_Title = new Sprite(AssetLoader.getInstance().texture_Menu_Title);
-    sprite_Menu_Title.flip(false, true);
-    
-    //author
-    sprite_Menu_Author = new Sprite(AssetLoader.getInstance().texture_Menu_Author);
-    sprite_Menu_Author.flip(false, true);
-    
-    //Start button
-    startButton = new MenuButton("Start",AssetLoader.getInstance().style_menu_startbutton,0,3*(HEIGHT/7),WIDTH, HEIGHT/7,this,com.sound.healing.Screen.SPREAD_SELECT);
-    stage.addActor(startButton);
-    
-    //Browse Button  
-    browseButton = new MenuButton("Browse",AssetLoader.getInstance().style_menu_startbutton,0,2*(HEIGHT/7), WIDTH, HEIGHT/7, this, com.sound.healing.Screen.BROWSE);
-    stage.addActor(browseButton);
-    
-    
-    //Load Button
-    loadButton = new MenuButton("Load",AssetLoader.getInstance().style_menu_startbutton,0,(HEIGHT/7), WIDTH, HEIGHT/7, this, com.sound.healing.Screen.LOAD );
-    stage.addActor(loadButton);
-    
-    
-    //MoreInfo Button
-    moreinfoButton = new MenuButton("More Info",AssetLoader.getInstance().style_menu_startbutton,0,0,WIDTH,HEIGHT/7,this,com.sound.healing.Screen.MORE_INFO);
-    stage.addActor(moreinfoButton);
+   
 	}
 
 	@Override
@@ -100,16 +101,11 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 
 	@Override
 	public void dispose() {
+		
 		batch.dispose();
 		stage.dispose();
 		AssetLoader.getInstance().unloadMainMenu();
-		startButton = null;
-		browseButton = null;
-		loadButton = null;
-		moreinfoButton = null;	
-		sprite_Menu_Title = null;
-		sprite_Menu_Author = null;
-		sprite_Menu_Title_Background = null;
+		
 
 	}
 

@@ -1,19 +1,30 @@
 package com.sound.healing;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.sound.healing.custom.MenuButton;
+import com.sound.healing.custom.TopImage;
 
 public class AssetLoader {
 	
-	
+	public static AssetManager manager = new AssetManager();
 	public Texture texture_Menu_Button, texture_Back_Button;
 	private TextureAtlas atlas_Menu_Button, atlas_Back_Button;
 	private Skin skin_Menu_Button, skin_Back_Button;
@@ -25,7 +36,12 @@ public class AssetLoader {
 	public Texture texture_SpreadSelect_Title;
 	public FreeTypeFontGenerator generator;
 	public FreeTypeFontParameter font;
-	private BitmapFont appFont;
+	public BitmapFont appFont;
+	public TopImage topImage;
+	public float WIDTH, HEIGHT;
+	public MenuButton startButton, browseButton, loadButton, moreinfoButton;
+	public Image image_Menu_Title_Background, image_Menu_Author, image_Menu_Title;
+	
 	private static final AssetLoader INSTANCE = new AssetLoader();
 
 
@@ -40,24 +56,16 @@ public class AssetLoader {
 	}
 	
 	public void loadMainMenu() {
-		texture_Menu_Title_Background = new Texture(Gdx.files.internal("Menu/menu_title_background.png"));
-		texture_Menu_Title = new Texture(Gdx.files.internal("Menu/menu_title.png"));
-		texture_Menu_Author = new Texture(Gdx.files.internal("Menu/menu_author.png"));
-		texture_Menu_Title_Background.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		texture_Menu_Title.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		texture_Menu_Author.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		//menu textures
 		
-		atlas_Menu_Button = new TextureAtlas(Gdx.files.internal("Menu/menubutton.atlas"));
-		skin_Menu_Button = new Skin();
-		skin_Menu_Button.addRegions(atlas_Menu_Button);
-		style_menu_startbutton = new TextButtonStyle();
-		style_menu_startbutton.up = skin_Menu_Button.getDrawable("menu_button");
-		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
-		font.size = 50;
-		appFont = generator.generateFont(font);
-		style_menu_startbutton.font = appFont;
+		manager.load("Menu/menu_title_background.png", Texture.class);
+		manager.load("Menu/menu_title.png", Texture.class); 
+		manager.load("Menu/menu_author.png", Texture.class);
+		manager.load("Menu/menubutton.atlas", TextureAtlas.class);
+		manager.finishLoading();
+
 	}
-	//Gdx.net.openURI("https://play.google.com/store/apps/details?id=com.shagunstudios.racinggame");
+	
 
 	
 	public void unloadMainMenu() {
@@ -75,29 +83,13 @@ public class AssetLoader {
 	}
 	
 	public void loadSpreadSelect(){
-		atlas_Menu_Button = new TextureAtlas(Gdx.files.internal("Menu/menubutton.atlas"));
-		skin_Menu_Button = new Skin();
-		skin_Menu_Button.addRegions(atlas_Menu_Button);
-		style_menu_startbutton = new TextButtonStyle();
-		style_menu_startbutton.up = skin_Menu_Button.getDrawable("menu_button");
-		style_menu_startbutton.down = skin_Menu_Button.getDrawable("menu_button_dark");
-		font.size = 35;
-		appFont = generator.generateFont(font);
-		style_menu_startbutton.font = appFont;
-		
-		
-		
-		atlas_Back_Button = new TextureAtlas(Gdx.files.internal("Back/backbutton.atlas"));
-		skin_Back_Button = new Skin();
-		skin_Back_Button.addRegions(atlas_Back_Button);
-		style_Back_Button = new ButtonStyle();
-		style_Back_Button.up = skin_Back_Button.getDrawable("backbutton");
-		style_Back_Button.down = skin_Back_Button.getDrawable("backbutton_dark");
-	
-		
-		texture_SpreadSelect_Title = new Texture(Gdx.files.internal("Menu/menu_title_background.png"));
-		
+		manager.load("Back/backbutton.atlas", TextureAtlas.class);
+		manager.load("Top/top_header.png", Texture.class);
+		manager.load("Select/select_soundadvice.png", Texture.class);
+		manager.load("Select/select_symphony.png", Texture.class);
+		manager.finishLoading();
 	}
+	
 	
 	public void unloadSpreadSelect(){
 		

@@ -5,21 +5,32 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.custom.TopImage;
 
 public class SpreadSelectScreen extends BaseScreen implements Screen {
-	private Stage stage;
+
+	public SpreadSelectScreen(ScreenSpec screenSpec) {
+		super(screenSpec);
+		// TODO Auto-generated constructor stub
+	}
+
 	private Table table;
 	private ScrollPane scroll;
 	private Table container;
@@ -27,7 +38,7 @@ public class SpreadSelectScreen extends BaseScreen implements Screen {
 	private LabelStyle labelstyle;
 	private Skin skin;
 	private FreeTypeFontParameter font;
-	private TopImage topImage;
+
 	
 	@Override
 	public void render(float delta) {
@@ -38,7 +49,7 @@ public class SpreadSelectScreen extends BaseScreen implements Screen {
 		batch.setProjectionMatrix(camera.combined);
 		
 	    batch.begin();
-    		topImage.draw(batch, 1);
+    		stage.draw();
     	batch.end();
 
 	}
@@ -51,22 +62,18 @@ public class SpreadSelectScreen extends BaseScreen implements Screen {
 
 	@Override
 	public void show() {
-		AssetLoader.getInstance().loadSpreadSelect();
-		stage = new Stage(WIDTH,HEIGHT);
 		stage.clear();
-	    Gdx.input.setInputProcessor(stage);
+		stage = screenSpec.createStage();
+		Gdx.input.setInputProcessor(stage);
 
+	    //stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(), 0),Actions.moveTo(0, 0,0.3f)));
 	    
-	    buildTopImage();
 	   // buildScrollPane();
 	    
 	    
 	    
 	}
 
-	private void buildTopImage() {
-		topImage = new TopImage("CHOOSE YOUR SPREAD", null, AssetLoader.getInstance().texture_SpreadSelect_Title, 60);
-	}
 
 	private void buildScrollPane() {
 		table = new Table();

@@ -1,5 +1,7 @@
 package com.sound.healing;
 
+import com.sound.healing.actors.CreateMainMenu;
+import com.sound.healing.actors.CreateSpreadSelect;
 import com.sound.healing.screens.BrowseScreen;
 import com.sound.healing.screens.CardBackScreen;
 import com.sound.healing.screens.CardScreen;
@@ -18,7 +20,7 @@ public enum Screen {
     MAIN_MENU {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new MainMenuScreen();
+             return new MainMenuScreen(new CreateMainMenu().getSpec());
         }
     },
  
@@ -46,7 +48,7 @@ public enum Screen {
     SPREAD_SELECT {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new SpreadSelectScreen();
+             return new SpreadSelectScreen(new CreateSpreadSelect().getSpec());
         }
     },
     

@@ -31,7 +31,12 @@ public final class ScreenManager {
         if (!screens.containsKey(screen.ordinal())) {
             screens.put(screen.ordinal(), screen.getScreenInstance());
         }
+    
         game.setScreen(screens.get(screen.ordinal()));
+    }
+    
+    public com.badlogic.gdx.Screen getScreen(){
+    	return game.getScreen();
     }
  
     public void dispose(Screen screen) {
