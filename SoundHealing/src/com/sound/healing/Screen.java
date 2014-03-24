@@ -2,6 +2,7 @@ package com.sound.healing;
 
 import com.sound.healing.actors.CreateMainMenu;
 import com.sound.healing.actors.CreateSpreadSelect;
+import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.screens.BrowseScreen;
 import com.sound.healing.screens.CardBackScreen;
 import com.sound.healing.screens.CardScreen;
@@ -20,7 +21,7 @@ public enum Screen {
     MAIN_MENU {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new MainMenuScreen(new CreateMainMenu().getSpec());
+             return new MainMenuScreen(SceneHandler.getInstance().getCreateMainMenu().getSpec());
         }
     },
  
@@ -48,14 +49,14 @@ public enum Screen {
     SPREAD_SELECT {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new SpreadSelectScreen(new CreateSpreadSelect().getSpec());
+             return new SpreadSelectScreen(SceneHandler.getInstance().getCreateSpreadSelect().getSpec());
         }
     },
     
     INFO {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new InfoScreen();
+             return new InfoScreen(SceneHandler.getInstance().getCreateInfo().getSpec());
         }
     },
     

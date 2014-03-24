@@ -52,13 +52,13 @@ public class CreateMainMenu extends CreateScene{
 		image_Menu_Author =new Image( AssetLoader.manager.get("Menu/menu_author.png", Texture.class));
 	    image_Menu_Author.setSize(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/18);
 	    image_Menu_Author.setPosition(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()-(image_Menu_Author.getHeight()+Gdx.graphics.getHeight()/4+Gdx.graphics.getHeight()/24));
-	 /*   image_Menu_Author.addListener(new ClickListener(){
+	    image_Menu_Author.addListener(new ClickListener(){
 			 @Override
 	            public void clicked(InputEvent event, float x, float y) {
 				 Gdx.net.openURI("http://shirlieroden.com");
 	            }
 	    });
-	    */
+	    
 	    image_Menu_Author.setUserObject(2);
 	    scene.put((Integer) image_Menu_Author.getUserObject(), image_Menu_Author);
 	}

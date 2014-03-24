@@ -2,20 +2,14 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Scaling;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateSpreadSelect;
-import com.sound.healing.custom.MenuButton;
+import com.sound.healing.actors.SceneHandler;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
@@ -30,12 +24,12 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
-		transitionStage.act();
 		stage.act();
+		transitionStage.act();
 		batch.setProjectionMatrix(camera.combined);	
 		batch.begin();
-			stage.draw();
 			transitionStage.draw();
+			stage.draw();
 		batch.end();
 	}
 
@@ -49,6 +43,7 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 	public void show() {
 	AssetLoader.getInstance().loadSpreadSelect();
 	stage.clear();
+	transitionStage.clear();
 	stage = screenSpec.createStage();
 	Gdx.input.setInputProcessor(stage);
 	
@@ -56,14 +51,13 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		 @Override
          public void clicked(InputEvent event, float x, float y) {
 			 
-			 			transitionStage = new CreateSpreadSelect().getSpec().createStage();
+			 			transitionStage = SceneHandler.getInstance().getCreateSpreadSelect().getSpec().createStage();
 			 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
 				 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
 
 							@Override
 							public void run() {
 								ScreenManager.getInstance().show(Screen.SPREAD_SELECT); 
-								
 							}
 				 			
 				 		})));
@@ -104,7 +98,7 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		
 		batch.dispose();
 		stage.dispose();
-		AssetLoader.getInstance().unloadMainMenu();
+		//AssetLoader.getInstance().unloadMainMenu();
 		
 
 	}
