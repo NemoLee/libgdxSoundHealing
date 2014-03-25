@@ -33,6 +33,16 @@ public class SceneHandler {
 		return createSpreadSelect;
 	}
 	
+	public CreateScene getCreateInfo() {
+		if(createInfo == null){
+			createInfo = new CreateInfo();
+		}
+		else{
+			createInfo.reset();
+		}
+		return createInfo;
+	}
+	
 	public void setSpread(Spread spread) {
 		this.spread = spread;
 	}
@@ -42,12 +52,6 @@ public class SceneHandler {
 	}
 
 
-	public CreateScene getCreateInfo() {
-		if(createInfo == null){
-			createInfo = new CreateInfo();
-		}
-		return createInfo;
-	}
 	
 	
 

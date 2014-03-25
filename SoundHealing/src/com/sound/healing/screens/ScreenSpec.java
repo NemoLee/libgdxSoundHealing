@@ -29,7 +29,6 @@ public class ScreenSpec {
 	
 	public Stage createStage(){
 		if(stage.getActors().size == 0){
-			System.out.print("you");
 			for(int i = 0; i < actors.size(); i++){
 				stage.addActor(actors.get(i));
 			}

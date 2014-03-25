@@ -8,27 +8,85 @@ public enum Spread {
 	@Override
 	public String toString() {
 		switch(this){
+			case SOUND_ADVICE:
+				return "SOUND ADVICE";
+			case SYMPHONY_OF_LIFE:
+				return "SYMPHONY OF LIFE";
+			case DUET:
+				return "DUET";
+			case HEARTSONG:
+				return "HEARTSONG";
+			case RETUNING:
+				return "RETUNING";
+			case SINGING_EARTH:
+				return "SINGING EARTH";
+			case ANGELS_OF_SOUND:
+				return "ANGELS OF SOUND";
+			case INDIVIDUAL:
+				return "INDIVIDUAL CHAKRA READING";
+			case MULTI:
+				return "MULTI CHAKRA READING";
+			default:
+				return "";
+		}
+	}
+	
+	public String getInfocard(){
+		switch(this){
+			case SOUND_ADVICE:
+				return "Info/infocard1.png";
+			case SYMPHONY_OF_LIFE:
+				return "Info/infocard2.png";
+			case DUET:
+				return "Info/infocard3.png";
+			case HEARTSONG:
+				return "Info/infocard4.png";
+			case RETUNING:
+				return "Info/infocard5.png";
+			case SINGING_EARTH:
+				return "Info/infocard6.png";
+			case ANGELS_OF_SOUND:
+				return "Info/infocard7.png";
+			case INDIVIDUAL:
+				return "Info/infocard8.png";
+			case MULTI:
+				return "Info/infocard9.png";
+			default:
+				return "";
+		}
+	}
+	
+	public String getInfoDescription(){
+		switch(this){
 		case SOUND_ADVICE:
-			return "SOUND ADVICE";
+			return "CARD 1 The life lesson/challenge you have just learned/moved through\nCARD 2 Where you currently are/what you need to address right now\nCARD 3 The outcome/what you will attract into your life/need to deal with in the future";
 		case SYMPHONY_OF_LIFE:
-			return "SYMPHONY OF LIFE";
+			return "CARD 1 What you most need to know\nCARD 2 What you most need to work on\nCARD 3 Your biggest current block\nCARD 4 What your vibration is attracting to you\nCARD 5 What is helping you on your path\nCARD 6 Tap an Angel of Sound card to guide you";
 		case DUET:
-			return "DUET";
+			return "CARD 1 Your energy in the current situation\nCARD 2 The other person’s energy in the current situation\nCARD 3 The energy you are creating together\nCARD 4 What you personally most need to address/work with/let go of\nCARD 5 Your highest potential together";
 		case HEARTSONG:
-			return "HEARTSONG";
+			return "CARD 1 Your greatest gift you brought with you into this life\nCARD 2 Your greatest current challenge/block\nCARD 3 Why you are here this incarnation\nCARD 4 What you need to address to manifest your dreams\nCARD 5 What Life is trying to tell you right now";
 		case RETUNING:
-			return "RETUNING";
+			return "CARD 1 Where is your energy blocked?\nCARD 2 What do you need to address to release blocks/increase your current vitality?\nCARD 3 What would really help you to be healthier and happier?\nCARD 4 How can you tune yourself up into being ‘sound’ in body and mind?\nCARD 5 A message from your body to you";
 		case SINGING_EARTH:
-			return "SINGING EARTH";
+			return  "CARD 1 What does the Earth really need?\nCARD 2 What can you personally do to help?\nCARD 3 What sound should you/we focus on the planet to heal it?\nCARD 4 How can you/we help mankind to resonate more in harmony with the Earth?\nCARD 5 What can you/we give back to the Earth to show gratitude?";
 		case ANGELS_OF_SOUND:
-			return "ANGELS OF SOUND";
+			return "The four Angels cards are removed from the main pack to guide your reading. Now choose four cards to line up beneath the randomly-placed Angel cards:\n\nCARD 1 The main life lesson you chose in your Divine Plan before coming here.\n\tTap the Angel card to see which Angel is assisting you in this.\nCARD 2 The major current challenges you need to address.\n\tTap the Angel card to see which Angel is assisting you in this.\nCARD 3 A gift from the Angels of Sound to you.\n\tTap the Angel card to see which Angel is assisting you in this.\nCARD 4 How the Angels of Sound will work and sing with you.\n\tTap the Angel card to see which Angel is assisting you in this.";
 		case INDIVIDUAL:
-			return "INDIVIDUAL CHAKRA READING";
+			return "Choose one of the eight chakra suits displayed. Then, asking what you most need to know in this moment, choose one closed chakra card, one open chakra card, a heaven or earth card and one angel card. \nChoose a chakra suit"
+					+"Choose a closed chakra card, "
+					+"Choose an open chakra card, "
+					+"Choose a heaven or earth card, "
+					+"Choose an Angel of Sound card, "
+					+"\n1.	Closed chakra card: use the sound on the card to vibrate the chakra and release blocks."
+					+"\n2.	Open chakra card: use the sound to fill the chakra with positive energy, place hands on chakra and send in healing sound to the place where the block has been released."
+					+"\n3.	Heaven card: use high sound to connect to Source and visualise a sacred spiral of sound and colour pouring in through the crown to the chakra. Earth card: use low sound and visualise connecting the chakra down through the body deep into the earth."
+					+"\n4.	Angel of Sound: find a sound to connect with this angel and as you tone, visualise pink gold light pouring in through the crown and filling the chakra.";
 		case MULTI:
-			return "MULTI CHAKRA READING";
+			return "Choose a Root Chakra card.\nNow choose a Sacral Chakra card.\nNow choose a Solar Plexus Chakra card.\nNow choose a Heart Chakra card.\nNow choose a Throat Chakra card.\nNow choose a Third Eye Chakra card.\nNow choose a Crown Chakra card.\nNow choose a Whole Body card.\nNow choose an Angel for guidance.\n\nBeginning with the Root chakra, work with the cards and sounds in sequence, right up to the Crown, the Whole Body and finishing with the Angel of Sound.";
 		default:
 			return "";
-		}
+	}
 	}
 
 }

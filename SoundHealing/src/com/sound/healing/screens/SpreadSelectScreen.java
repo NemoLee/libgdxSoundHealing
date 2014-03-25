@@ -2,10 +2,14 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateMainMenu;
@@ -42,6 +46,7 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 
 	@Override
 	public void show() {
+		AssetLoader.getInstance().loadInfo();
 		stage.clear();
 		transitionStage.clear();
 		stage = screenSpec.createStage();
@@ -63,8 +68,6 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 					 			
 					 		})));
 					 		
-											 	
-				
 	         }
 		};
 		
@@ -72,32 +75,33 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 		//check to see if switch if null to handle android vs desktop and make sure to check ios
-							switch((Integer)(event.getTarget().getParent().getUserObject())){
-							case 2:
+			
+							switch((Integer)(((Actor) event.getTarget()).getUserObject())){
+							case 3:
 								SceneHandler.getInstance().setSpread(Spread.SOUND_ADVICE);
 								break;
-							case 3:
+							case 4:
 								SceneHandler.getInstance().setSpread(Spread.SYMPHONY_OF_LIFE);							
 								break;
-							case 4:
+							case 5:
 								SceneHandler.getInstance().setSpread(Spread.DUET);
 								break;
-							case 5:
+							case 6:
 								SceneHandler.getInstance().setSpread(Spread.HEARTSONG);
 								break;
-							case 6:
+							case 7:
 								SceneHandler.getInstance().setSpread(Spread.RETUNING);
 								break;
-							case 7:
+							case 8:
 								SceneHandler.getInstance().setSpread(Spread.SINGING_EARTH);
 								break;
-							case 8:
+							case 9:
 								SceneHandler.getInstance().setSpread(Spread.ANGELS_OF_SOUND);
 								break;
-							case 9:
+							case 10:
 								SceneHandler.getInstance().setSpread(Spread.INDIVIDUAL);
 								break;
-							case 10:
+							case 11:
 								SceneHandler.getInstance().setSpread(Spread.MULTI);
 								break;
 							}
@@ -120,6 +124,7 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 		};
 		
 		stage.getActors().get(2).addListener(back);
+		
 		Table t = (Table) stage.getActors().get(1);
 		for(int i = 0; i<t.getChildren().size; i++){
 			t.getChildren().get(i).addListener(Info);

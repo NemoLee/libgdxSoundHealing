@@ -25,22 +25,10 @@ import com.sound.healing.custom.TopImage;
 public class AssetLoader {
 	
 	public static AssetManager manager = new AssetManager();
-	public Texture texture_Menu_Button, texture_Back_Button;
-	private TextureAtlas atlas_Menu_Button, atlas_Back_Button;
-	private Skin skin_Menu_Button, skin_Back_Button;
-	public TextButtonStyle style_menu_startbutton;
-	public ButtonStyle style_Back_Button;
-	public Texture texture_Menu_Title_Background;
-	public Texture texture_Menu_Title;
-	public Texture texture_Menu_Author;
-	public Texture texture_SpreadSelect_Title;
+
 	public FreeTypeFontGenerator generator;
 	public FreeTypeFontParameter font;
-	public BitmapFont appFont;
-	public TopImage topImage;
-	public float WIDTH, HEIGHT;
-	public MenuButton startButton, browseButton, loadButton, moreinfoButton;
-	public Image image_Menu_Title_Background, image_Menu_Author, image_Menu_Title;
+
 	
 	private static final AssetLoader INSTANCE = new AssetLoader();
 
@@ -69,17 +57,7 @@ public class AssetLoader {
 
 	
 	public void unloadMainMenu() {
-		texture_Menu_Title_Background.dispose();
-		texture_Menu_Title.dispose();
-		texture_Menu_Author.dispose();
-		atlas_Menu_Button.dispose();
-		skin_Menu_Button.dispose();
-		texture_Menu_Title_Background = null;
-		texture_Menu_Title = null;
-		texture_Menu_Author = null;
-		atlas_Menu_Button = null;
-		skin_Menu_Button = null;
-		style_menu_startbutton = null;
+
 	}
 	
 	public void loadSpreadSelect(){
@@ -101,6 +79,27 @@ public class AssetLoader {
 	
 	
 	public void unloadSpreadSelect(){
+		
+	}
+	
+	
+	public void loadInfo(){
+		if(!manager.isLoaded("Back/backbuttonsmall.atlas")){
+		manager.load("Info/startbutton.atlas", TextureAtlas.class);
+		manager.load("Back/backbuttonsmall.atlas", TextureAtlas.class);
+		manager.load("Info/infocard1.png", Texture.class);
+		manager.load("Info/infocard2.png", Texture.class);
+		manager.load("Info/infocard3.png", Texture.class);
+		manager.load("Info/infocard4.png", Texture.class);
+		manager.load("Info/infocard5.png", Texture.class);
+		manager.load("Info/infocard6.png", Texture.class);
+		manager.load("Info/infocard7.png", Texture.class);
+		manager.load("Info/infocard8.png", Texture.class);
+		manager.load("Info/infocard9.png", Texture.class);
+		manager.load("Style/darkpurp.png", Texture.class);
+		manager.load("Style/lightpurp.png", Texture.class);		
+		manager.finishLoading();
+		}
 		
 	}
 	

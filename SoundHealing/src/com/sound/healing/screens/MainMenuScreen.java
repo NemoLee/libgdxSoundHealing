@@ -96,8 +96,8 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 	@Override
 	public void dispose() {
 		
-		batch.dispose();
-		stage.dispose();
+		//batch.dispose();
+		//stage.dispose();
 		//AssetLoader.getInstance().unloadMainMenu();
 		
 
