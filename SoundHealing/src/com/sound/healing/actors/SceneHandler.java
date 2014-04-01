@@ -56,18 +56,12 @@ public class SceneHandler {
 		return createChoose;
 	}
 	
-	public void setSpread(Spread spread) {
-		this.spread = spread;
-	}
-	
-	public Spread getSpread() {
-		return spread;
-	}
-
-
 	public CreateScene getCreateReveal() {
 		if(createReveal == null){
 			createReveal = new CreateReveal();
+		}
+		else{
+			createReveal.reset();
 		}
 		return createReveal;
 	}
@@ -79,6 +73,15 @@ public class SceneHandler {
 		}
 		return createCard;
 	}
+	
+	public void setSpread(Spread spread) {
+		this.spread = spread;
+	}
+	
+	public Spread getSpread() {
+		return spread;
+	}
+
 
 
 
