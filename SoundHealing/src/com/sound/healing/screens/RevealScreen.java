@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.cards.AllCards;
+import com.sound.healing.cards.Card;
 
 public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen {
 	private ClickListener back, flip;
@@ -35,12 +37,12 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 		flip = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 
+				AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 				event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.3f)));
 				stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.visible(true)));
 				transitionStage = SceneHandler.getInstance().getCreateCard().getSpec().createStage();
-				transitionStage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.fadeIn(0.4f)));
-		 		stage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.fadeOut(0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
+	 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0),Actions.delay(0.6f), Actions.moveTo(0, 0, 0.4f)));
+		 		stage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.8f),Actions.run(new Runnable(){
 
 					@Override
 					public void run() {
@@ -49,6 +51,7 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 					}
 		 			
 		 		})));
+		
 	         }
 		};
 	}

@@ -39,6 +39,7 @@ public class CardScreen extends BaseScreen implements Screen {
 		transitionStage.clear();
 		stage = screenSpec.createStage();
 		Gdx.input.setInputProcessor(stage);
+		
 
 	}
 

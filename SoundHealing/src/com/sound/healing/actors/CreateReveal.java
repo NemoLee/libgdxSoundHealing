@@ -31,12 +31,14 @@ public class CreateReveal extends CreateScene{
 		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
+		//locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
 		setupReveal();
 		spec = new ScreenSpec(scene);
 	}
 
 	private void setupCards() {
+		cards = null;
 		cards = new Array<Card>();
 		int x = 0;
 		for(int i = 0; i < SceneHandler.getInstance().getSpread().getNumberOfCards(); i++){
@@ -67,12 +69,14 @@ public class CreateReveal extends CreateScene{
 			frontCards[i].setSize(cardWidth, cardHeight);
 			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
 			frontCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
+			frontCards[i].setName(cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+"");
+			backCards[i].setName(cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+"");
 			backCards[i].setUserObject(x+1);
 			frontCards[i].setUserObject(x);
 			frontCards[i].setVisible(false);
+			scene.put(x, frontCards[i]);
+			scene.put(x+1, backCards[i]);
 			x+=2;
-			scene.put((Integer)frontCards[i].getUserObject(), frontCards[i]);
-			scene.put((Integer)backCards[i].getUserObject(), backCards[i]);
 			locationCounter+=2;
 		}
 		
@@ -94,5 +98,37 @@ public class CreateReveal extends CreateScene{
 	    saveButton.setUserObject(2);
 	    scene.put((Integer) saveButton.getUserObject(), saveButton);
 		
+	}
+
+	public void reset() {
+		
+		backCards = null;
+		frontCards = null;
+		setupCards();
+		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
+		cardHeight = (int)(cardWidth*1.4533);
+		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
+		int locationCounter = 0;
+		int x = 4;
+		backCards = new Image[(locations.size/2)];
+		frontCards = new Image[(locations.size/2)];
+		for(int i = 0; i < backCards.length; i++){
+			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
+			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
+			backCards[i].setSize(cardWidth, cardHeight);
+			frontCards[i].setSize(cardWidth, cardHeight);
+			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
+			frontCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
+			frontCards[i].setName(cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+"");
+			backCards[i].setName(cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+"");
+			backCards[i].setUserObject(x+1);
+			frontCards[i].setUserObject(x);
+			frontCards[i].setVisible(false);
+			scene.put(x, frontCards[i]);
+			scene.put(x+1, backCards[i]);
+			x+=2;
+			locationCounter+=2;
+			
+		}
 	}
 }
