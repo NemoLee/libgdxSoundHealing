@@ -10,6 +10,7 @@ public class SceneHandler {
 	private CreateInfo createInfo;
 	private CreateChoose createChoose;
 	private CreateReveal createReveal;
+	private CreateCard createCard;
 	private Spread spread;
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
@@ -69,6 +70,14 @@ public class SceneHandler {
 			createReveal = new CreateReveal();
 		}
 		return createReveal;
+	}
+
+
+	public CreateScene getCreateCard() {
+		if(createCard == null){
+			createCard = new CreateCard();
+		}
+		return createCard;
 	}
 
 

@@ -5,11 +5,13 @@ import java.util.HashMap;
 public class AllCards {
 	
 	private Card[] cards = new Card[52];
+	private Card currentCard;
 	
 	private static final AllCards INSTANCE = new AllCards();
 	
 	public AllCards() {
 		createCards();
+		currentCard = cards[0];
 	}
 	
 	private void createCards() {
@@ -91,4 +93,10 @@ public class AllCards {
 		return INSTANCE;
 	}
 
+	public Card getCurrentCard() {
+		return currentCard;
+	}
+	public void setCurrentCard(Card currentCard) {
+		this.currentCard = currentCard;
+	}
 }

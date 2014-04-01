@@ -77,7 +77,7 @@ public enum Screen {
     Card {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new CardScreen();
+             return new CardScreen(SceneHandler.getInstance().getCreateCard().getSpec());
         }
     },
     

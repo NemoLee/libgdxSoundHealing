@@ -36,9 +36,19 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 
-				event.getListenerActor().addAction(Actions.parallel(Actions.moveBy(event.getListenerActor().getWidth()/2, 0, 0.5f),Actions.scaleTo(0, 1, 0.5f)));
-				stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1);
-				 
+				event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.3f)));
+				stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.visible(true)));
+				transitionStage = SceneHandler.getInstance().getCreateCard().getSpec().createStage();
+				transitionStage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.fadeIn(0.4f)));
+		 		stage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.fadeOut(0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
+
+					@Override
+					public void run() {
+						ScreenManager.getInstance().show(com.sound.healing.Screen.Card); 
+						
+					}
+		 			
+		 		})));
 	         }
 		};
 	}
