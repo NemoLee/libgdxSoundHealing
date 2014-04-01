@@ -50,6 +50,7 @@ public class AssetLoader {
 		manager.load("Menu/menu_title.png", Texture.class); 
 		manager.load("Menu/menu_author.png", Texture.class);
 		manager.load("Menu/menubutton.atlas", TextureAtlas.class);
+		loadCards();
 		manager.finishLoading();
 		}
 	}
@@ -103,5 +104,76 @@ public class AssetLoader {
 		
 	}
 	
+	public void loadChoose(){
+		if(!manager.isLoaded("Choose/minicard.png")){
+			manager.load("Choose/bigcard.png", Texture.class);
+			manager.load("Choose/minicard_bg.png", Texture.class);
+			manager.finishLoading();
+		}
+	}
 
+	public void loadReveal(){
+		if(!manager.isLoaded("Reveal/savebutton.atlas")){
+			manager.load("Reveal/savebutton.atlas", TextureAtlas.class);
+			manager.finishLoading();
+		}
+	}
+
+	public void loadCards(){
+		if(!manager.isLoaded("Card/52.png")){
+			manager.load("Card/1.png", Texture.class);
+			manager.load("Card/2.png", Texture.class);
+			manager.load("Card/3.png", Texture.class);
+			manager.load("Card/4.png", Texture.class);
+			manager.load("Card/5.png", Texture.class);
+			manager.load("Card/6.png", Texture.class);
+			manager.load("Card/7.png", Texture.class);
+			manager.load("Card/8.png", Texture.class);
+			manager.load("Card/9.png", Texture.class);
+			manager.load("Card/10.png", Texture.class);
+			manager.load("Card/11.png", Texture.class);
+			manager.load("Card/12.png", Texture.class);
+			manager.load("Card/13.png", Texture.class);
+			manager.load("Card/14.png", Texture.class);
+			manager.load("Card/15.png", Texture.class);
+			manager.load("Card/16.png", Texture.class);
+			manager.load("Card/17.png", Texture.class);
+			manager.load("Card/18.png", Texture.class);
+			manager.load("Card/19.png", Texture.class);
+			manager.load("Card/20.png", Texture.class);
+			manager.load("Card/21.png", Texture.class);
+			manager.load("Card/22.png", Texture.class);
+			manager.load("Card/23.png", Texture.class);
+			manager.load("Card/24.png", Texture.class);
+			manager.load("Card/25.png", Texture.class);
+			manager.load("Card/26.png", Texture.class);
+			manager.load("Card/27.png", Texture.class);
+			manager.load("Card/28.png", Texture.class);
+			manager.load("Card/29.png", Texture.class);
+			manager.load("Card/30.png", Texture.class);
+			manager.load("Card/31.png", Texture.class);
+			manager.load("Card/32.png", Texture.class);
+			manager.load("Card/33.png", Texture.class);
+			manager.load("Card/34.png", Texture.class);
+			manager.load("Card/35.png", Texture.class);
+			manager.load("Card/36.png", Texture.class);
+			manager.load("Card/37.png", Texture.class);
+			manager.load("Card/38.png", Texture.class);
+			manager.load("Card/39.png", Texture.class);
+			manager.load("Card/40.png", Texture.class);
+			manager.load("Card/41.png", Texture.class);
+			manager.load("Card/42.png", Texture.class);
+			manager.load("Card/43.png", Texture.class);
+			manager.load("Card/44.png", Texture.class);
+			manager.load("Card/45.png", Texture.class);
+			manager.load("Card/46.png", Texture.class);
+			manager.load("Card/47.png", Texture.class);
+			manager.load("Card/48.png", Texture.class);
+			manager.load("Card/49.png", Texture.class);
+			manager.load("Card/50.png", Texture.class);
+			manager.load("Card/51.png", Texture.class);
+			manager.load("Card/52.png", Texture.class);
+			
+		}
+	}
 }

@@ -88,7 +88,6 @@ public class CreateInfo extends CreateScene{
 		styleIndividual = new LabelStyle(descriptionFontIndividual, Color.WHITE);
 		styleMulti = new LabelStyle(descriptionFontMulti, Color.WHITE);
 		
-
 		labelDescription = new Label(SceneHandler.getInstance().getSpread().getInfoDescription(), getStyle());
 		labelDescription.setWrap(true);
 		labelDescription.setAlignment(Align.top | Align.left, Align.left);

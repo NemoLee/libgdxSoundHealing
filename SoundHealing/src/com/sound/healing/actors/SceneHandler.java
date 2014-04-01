@@ -8,6 +8,8 @@ public class SceneHandler {
 	private CreateMainMenu createMainMenu;
 	private CreateSpreadSelect createSpreadSelect;
 	private CreateInfo createInfo;
+	private CreateChoose createChoose;
+	private CreateReveal createReveal;
 	private Spread spread;
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
@@ -43,6 +45,16 @@ public class SceneHandler {
 		return createInfo;
 	}
 	
+	public CreateScene getCreateChoose() {
+		if(createChoose == null){
+			createChoose = new CreateChoose();
+		}
+		else{
+			createChoose.reset();
+		}
+		return createChoose;
+	}
+	
 	public void setSpread(Spread spread) {
 		this.spread = spread;
 	}
@@ -50,6 +62,16 @@ public class SceneHandler {
 	public Spread getSpread() {
 		return spread;
 	}
+
+
+	public CreateScene getCreateReveal() {
+		if(createReveal == null){
+			createReveal = new CreateReveal();
+		}
+		return createReveal;
+	}
+
+
 
 
 	

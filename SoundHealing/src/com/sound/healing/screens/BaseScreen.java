@@ -16,10 +16,10 @@ public class BaseScreen implements Screen{
 	protected ScreenSpec screenSpec;
 	public BaseScreen(ScreenSpec screenSpec) {
 		batch = new SpriteBatch();
-		WIDTH = Gdx.graphics.getWidth();
-		HEIGHT = Gdx.graphics.getHeight();
+		WIDTH = Gdx.graphics.getWidth()/5;
+		HEIGHT = Gdx.graphics.getHeight()/5;
 		camera = new OrthographicCamera(WIDTH,HEIGHT);
-		camera.setToOrtho(false, WIDTH, HEIGHT);
+		camera.setToOrtho(false, WIDTH/5, HEIGHT/5);
 		this.screenSpec = screenSpec;
 		stage = new Stage(WIDTH, HEIGHT);
 		transitionStage = new Stage(WIDTH,HEIGHT);

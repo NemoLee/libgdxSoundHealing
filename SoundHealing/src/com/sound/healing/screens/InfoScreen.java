@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.sound.healing.AssetLoader;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.SceneHandler;
 
@@ -40,6 +41,7 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 	@Override
 	public void show() {
+		AssetLoader.getInstance().loadChoose();
 		stage.clear();
 		transitionStage.clear();
 		stage = screenSpec.createStage();
@@ -63,8 +65,31 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 	         }
 		};
 		
-		stage.getActors().get(4).addListener(back);
+		ClickListener click = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 
+				 			transitionStage = SceneHandler.getInstance().getCreateChoose().getSpec().createStage();
+				 			transitionStage.getActors().get(3).setVisible(true);
+				 			transitionStage.getActors().get(4).setVisible(true);
+				 			transitionStage.getActors().get(5).setVisible(true);
+				 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
+					 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
+
+								@Override
+								public void run() {
+									ScreenManager.getInstance().show(com.sound.healing.Screen.CHOOSE); 
+								}
+					 			
+					 		})));
+					 		
+											 	
+				
+	         }
+		};
 		
+		stage.getActors().get(4).addListener(back);
+		stage.getActors().get(5).addListener(click);
 
 	}
 

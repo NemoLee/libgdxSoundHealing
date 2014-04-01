@@ -1,5 +1,10 @@
 package com.sound.healing.custom;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Array;
+
+
+
 public enum Spread {
 	
 	SOUND_ADVICE, SYMPHONY_OF_LIFE, DUET, HEARTSONG, RETUNING, SINGING_EARTH, ANGELS_OF_SOUND, INDIVIDUAL, MULTI;
@@ -88,5 +93,169 @@ public enum Spread {
 			return "";
 	}
 	}
+	
+	public int getNumberOfCards(){
+		switch(this){
+		case SOUND_ADVICE:
+			return 3;
+		case SYMPHONY_OF_LIFE:
+			return 6;
+		case DUET:
+			return 5;
+		case HEARTSONG:
+			return 5;
+		case RETUNING:
+			return 5;
+		case SINGING_EARTH:
+			return 5;
+		case ANGELS_OF_SOUND:
+			return 4;
+		case INDIVIDUAL:
+			return 9;
+		case MULTI:
+			return 9;
+		default:
+			return 0;
+	}
+	}
+	
+	Array<Integer> a = new Array<Integer>();
+	public Array<Integer> getSpreadLayout(){
+		a.removeAll(a, true);
+		int cardWidth;
+		int cardHeight;
+		int offset;
+		switch(this){
+		case SOUND_ADVICE:
+			cardWidth = (Gdx.graphics.getWidth()-(3*10))/3;
+			cardHeight = (int)(cardWidth*1.4533);
+			
+			a.add(Gdx.graphics.getWidth()/60);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()-(cardWidth)-Gdx.graphics.getWidth()/60);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			return a;
+		case SYMPHONY_OF_LIFE:
+			cardWidth = (Gdx.graphics.getWidth()-(6*10))/6;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/50;
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)));
+			
+			a.add(cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)));
+			
+			return a;
+		case DUET:
+			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/36;
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)));
+			
+			a.add(cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			return a;
+		case HEARTSONG:
+			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/36;
+			
+			a.add(0);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight);
+			
+			a.add((Gdx.graphics.getWidth()/3)-(cardWidth/2)-cardWidth/5);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight/2);
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()/2);
+			
+			a.add(Gdx.graphics.getWidth()-((Gdx.graphics.getWidth()/3)-(cardWidth/2)+cardWidth-cardWidth/5));
+			a.add(Gdx.graphics.getHeight()/2-cardHeight/2);
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight);
+			return a;
+		case RETUNING:
+			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/36;
+			
+			a.add(0);
+			a.add(Gdx.graphics.getHeight()/2);
+			
+			a.add((Gdx.graphics.getWidth()/3)-(cardWidth/2)-cardWidth/5);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight/2);
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()/2-cardHeight);
+			
+			a.add(Gdx.graphics.getWidth()-((Gdx.graphics.getWidth()/3)-(cardWidth/2)+cardWidth-cardWidth/5));
+			a.add(Gdx.graphics.getHeight()/2-cardHeight/2);
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(Gdx.graphics.getHeight()/2);
+			return a;
+		case SINGING_EARTH:
+			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/36;
+			
+			a.add(0);
+			a.add(Gdx.graphics.getHeight()/2);
+			
+			a.add(0);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight-offset);
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()/2);
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight-offset);
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(Gdx.graphics.getHeight()/2);
+			return a;
+		case ANGELS_OF_SOUND:
+			
+			return a;
+		case INDIVIDUAL:
+			
+			return a;
+		case MULTI:
+			
+			return a;
+		default:
+			return a;
+		}
 
+	}
+	
 }

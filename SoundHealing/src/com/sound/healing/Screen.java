@@ -63,14 +63,14 @@ public enum Screen {
     CHOOSE {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new ChooseScreen();
+             return new ChooseScreen(SceneHandler.getInstance().getCreateChoose().getSpec());
         }
     },
  
     REVEAL {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new RevealScreen();
+             return new RevealScreen(SceneHandler.getInstance().getCreateReveal().getSpec());
         }
     },
     

@@ -1,0 +1,19 @@
+
+savebutton.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+savebutton
+  rotate: false
+  xy: 1, 1
+  size: 201, 79
+  orig: 201, 79
+  offset: 0, 0
+  index: -1
+savebutton_dark
+  rotate: false
+  xy: 204, 1
+  size: 201, 79
+  orig: 201, 79
+  offset: 0, 0
+  index: -1
