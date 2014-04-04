@@ -1,5 +1,6 @@
 package com.sound.healing.actors;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.custom.Spread;
 
@@ -12,6 +13,7 @@ public class SceneHandler {
 	private CreateReveal createReveal;
 	private CreateCard createCard;
 	private Spread spread;
+	private Stage currentSpreadStage;
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
 
@@ -71,6 +73,9 @@ public class SceneHandler {
 		if(createCard == null){
 			createCard = new CreateCard();
 		}
+		else{
+			createCard.reset();
+		}
 		return createCard;
 	}
 	
@@ -81,7 +86,14 @@ public class SceneHandler {
 	public Spread getSpread() {
 		return spread;
 	}
-
+	
+	public Stage getCurrentSpreadStage() {
+		return currentSpreadStage;
+	}
+	
+	public void setCurrentSpreadStage(Stage currentSpreadStage) {
+		this.currentSpreadStage = currentSpreadStage;
+	}
 
 
 

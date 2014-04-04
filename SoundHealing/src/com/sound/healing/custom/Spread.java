@@ -123,7 +123,6 @@ public enum Spread {
 	public Array<Integer> getSpreadLayout(){
 		a = null;
 		a = new Array<Integer>(); 
-		Gdx.app.log("ee", this.toString());
 		int cardWidth;
 		int cardHeight;
 		int offset;

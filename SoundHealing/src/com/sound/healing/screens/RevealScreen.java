@@ -13,6 +13,7 @@ import com.sound.healing.cards.Card;
 
 public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen {
 	private ClickListener back, flip;
+	private boolean isCardFlip = false;
 	
 	public RevealScreen(ScreenSpec screenSpec) {
 		super(screenSpec);
@@ -38,6 +39,8 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
+				SceneHandler.getInstance().setCurrentSpreadStage(stage);
+				isCardFlip = true;
 				event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.3f)));
 				stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.visible(true)));
 				transitionStage = SceneHandler.getInstance().getCreateCard().getSpec().createStage();
@@ -81,15 +84,21 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 
 	@Override
 	public void show() {
-		stage.clear();
-		transitionStage.clear();
-		stage = screenSpec.createStage();
-		Gdx.input.setInputProcessor(stage);
-		stage.getActors().get(1).addListener(back);
-		for(int i = 5; i < 4+(SceneHandler.getInstance().getSpread().getNumberOfCards()*2); i++){
-			stage.getActors().get(i).addListener(flip);
+		if(isCardFlip){
+			Gdx.input.setInputProcessor(stage);
+			isCardFlip = false;
 		}
-		
+		else{
+			//might need to fix memory leak in scenehandler
+			stage.clear();
+			transitionStage.clear();
+			stage = screenSpec.createStage();
+			Gdx.input.setInputProcessor(stage);
+			stage.getActors().get(1).addListener(back);
+			for(int i = 5; i < 4+(SceneHandler.getInstance().getSpread().getNumberOfCards()*2); i++){
+				stage.getActors().get(i).addListener(flip);
+			}
+		}
 	}
 
 	@Override
