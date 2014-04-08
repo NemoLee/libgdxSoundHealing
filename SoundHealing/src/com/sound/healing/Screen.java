@@ -13,6 +13,7 @@ import com.sound.healing.screens.MainMenuScreen;
 import com.sound.healing.screens.MoreInfoScreen;
 import com.sound.healing.screens.RevealScreen;
 import com.sound.healing.screens.SpreadSelectScreen;
+import com.sound.healing.screens.loadRevealScreen;
 
 public enum Screen {
 	 
@@ -35,7 +36,7 @@ public enum Screen {
     LOAD {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new LoadScreen();
+             return new LoadScreen(SceneHandler.getInstance().getCreateLoad().getSpec());
         }
     },
     
@@ -81,10 +82,10 @@ public enum Screen {
         }
     },
     
-    Card_Back {
+    LOAD_REVEAL {
         @Override
         protected com.badlogic.gdx.Screen getScreenInstance() {
-             return new CardBackScreen();
+             return new loadRevealScreen(SceneHandler.getInstance().getCreateLoadReveal().getSpec());
         }
     };
     

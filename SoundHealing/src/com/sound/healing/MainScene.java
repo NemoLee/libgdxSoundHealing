@@ -14,15 +14,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class MainScene extends Game {
     @Override
     public void create() {
-        AssetLoader.getInstance().loadFont();
-        AssetLoader.getInstance().loadMainMenu();
-        ScreenManager.getInstance().initialize(this);
-        ScreenManager.getInstance().show(Screen.MAIN_MENU);
+  
+        setScreen(SceneManager.getInstance().createMainMenu(this));
     }
- 
-    @Override
-    public void dispose() {
-        super.dispose();
-        ScreenManager.getInstance().dispose();
-    }
+    
 }

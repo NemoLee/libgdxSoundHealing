@@ -12,8 +12,12 @@ public class SceneHandler {
 	private CreateChoose createChoose;
 	private CreateReveal createReveal;
 	private CreateCard createCard;
+	private CreateCardBack createCardBack;
 	private Spread spread;
 	private Stage currentSpreadStage;
+	private CreateLoad createLoad;
+	private CreateLoadReveal createLoadReveal;
+	private boolean isLoad = false;
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
 
@@ -63,6 +67,7 @@ public class SceneHandler {
 			createReveal = new CreateReveal();
 		}
 		else{
+			System.out.println("wtf");
 			createReveal.reset();
 		}
 		return createReveal;
@@ -77,6 +82,30 @@ public class SceneHandler {
 			createCard.reset();
 		}
 		return createCard;
+	}
+	
+	public CreateScene getCreateCardBack() {
+		if(createCardBack == null){
+			createCardBack = new CreateCardBack();
+		}
+		return createCardBack;
+	}
+	
+	public CreateScene getCreateLoad() {
+		if(createLoad == null){
+			createLoad = new CreateLoad();
+		}
+		return createLoad;
+	}	
+	
+	public CreateScene getCreateLoadReveal() {
+		if(createLoadReveal == null){
+			createLoadReveal = new CreateLoadReveal();
+		}
+		else{
+			createLoadReveal.reset();
+		}
+		return createLoadReveal;
 	}
 	
 	public void setSpread(Spread spread) {
@@ -94,11 +123,16 @@ public class SceneHandler {
 	public void setCurrentSpreadStage(Stage currentSpreadStage) {
 		this.currentSpreadStage = currentSpreadStage;
 	}
-
-
-
-
 	
+	public boolean isLoad() {
+		return isLoad;
+	}
+	
+	public void setLoad(boolean isLoad) {
+		this.isLoad = isLoad;
+	}
+
+
 	
 
 }

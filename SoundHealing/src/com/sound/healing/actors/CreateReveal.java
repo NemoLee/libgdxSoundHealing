@@ -26,7 +26,7 @@ public class CreateReveal extends CreateScene{
 	private Array<Integer> locations;
 	
 	public CreateReveal() {
-		setupCards();
+		cards = AllCards.getInstance().setupRevealCards();
 		setupTop(SceneHandler.getInstance().getSpread().toString());
 		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
 		cardHeight = (int)(cardWidth*1.4533);
@@ -37,21 +37,6 @@ public class CreateReveal extends CreateScene{
 		spec = new ScreenSpec(scene);
 	}
 
-	private void setupCards() {
-		cards = null;
-		cards = new Array<Card>();
-		int x = 0;
-		for(int i = 0; i < SceneHandler.getInstance().getSpread().getNumberOfCards(); i++){
-			x = MathUtils.random(51);
-			if(!cards.contains(AllCards.getInstance().getCard(x), false)){
-				cards.add(AllCards.getInstance().getCard(x));
-			}
-			else{
-				i--;
-			}
-		}
-	}
-
 	private void setupReveal() {
 		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2+Gdx.graphics.getHeight()/5-Gdx.graphics.getHeight()/120);
@@ -60,8 +45,8 @@ public class CreateReveal extends CreateScene{
 		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
 		int locationCounter = 0;
 		int x = 4;
-		backCards = new Image[(locations.size/2)];
-		frontCards = new Image[(locations.size/2)];
+		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
@@ -104,14 +89,15 @@ public class CreateReveal extends CreateScene{
 		
 		backCards = null;
 		frontCards = null;
-		setupCards();
+		cards = null;
+		cards = AllCards.getInstance().setupRevealCards();
 		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
 		int x = 4;
-		backCards = new Image[(locations.size/2)];
-		frontCards = new Image[(locations.size/2)];
+		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
@@ -128,7 +114,11 @@ public class CreateReveal extends CreateScene{
 			scene.put(x+1, backCards[i]);
 			x+=2;
 			locationCounter+=2;
-			
+		}
+		for(int i = x; i < scene.size(); i++){
+			if(scene.get(i)!= null){
+				scene.get(i).setSize(0, 0);
+			}
 		}
 	}
 }

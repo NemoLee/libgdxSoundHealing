@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.Scene;
+import com.sound.healing.SceneManager;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.SceneHandler;
 
@@ -50,7 +52,7 @@ public class ChooseScreen extends BaseScreen implements Screen {
 
 						@Override
 						public void run() {
-							ScreenManager.getInstance().show(com.sound.healing.Screen.INFO); 
+							SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createInfo());	
 						}
 			 			
 			 		})));
@@ -75,7 +77,7 @@ public class ChooseScreen extends BaseScreen implements Screen {
 
 						@Override
 						public void run() {
-							ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL); 
+							SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createReveal());	
 						}
 			 			
 			 		})));
@@ -133,7 +135,7 @@ public class ChooseScreen extends BaseScreen implements Screen {
 
 	@Override
 	public void show() {
-		AssetLoader.getInstance().loadReveal();
+		//AssetLoader.getInstance().loadReveal();
 		stage.clear();
 		transitionStage.clear();
 		stage = screenSpec.createStage();
@@ -177,6 +179,11 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	@Override
 	public void dispose() {
 		
+	}
+
+	@Override
+	public Scene getSceneType() {
+		return Scene.CHOOSE;
 	}
 
 }

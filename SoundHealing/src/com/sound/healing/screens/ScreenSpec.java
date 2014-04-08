@@ -29,6 +29,7 @@ public class ScreenSpec {
 	
 	public Stage createStage(){
 		if(stage.getActors().size == 0){
+		stage  = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 			for(int i = 0; i < actors.size(); i++){
 				stage.addActor(actors.get(i));
 			}

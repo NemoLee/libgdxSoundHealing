@@ -128,6 +128,7 @@ public enum Spread {
 		int offset;
 		switch(this){
 		case SOUND_ADVICE:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(3*10))/3;
 			cardHeight = (int)(cardWidth*1.4533);
 			
@@ -141,6 +142,7 @@ public enum Spread {
 			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
 			return a;
 		case SYMPHONY_OF_LIFE:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(6*10))/6;
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/50;
@@ -165,6 +167,7 @@ public enum Spread {
 			
 			return a;
 		case DUET:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;
@@ -185,6 +188,7 @@ public enum Spread {
 			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
 			return a;
 		case HEARTSONG:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;
@@ -205,6 +209,7 @@ public enum Spread {
 			a.add(Gdx.graphics.getHeight()/2-cardHeight);
 			return a;
 		case RETUNING:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;
@@ -225,6 +230,7 @@ public enum Spread {
 			a.add(Gdx.graphics.getHeight()/2);
 			return a;
 		case SINGING_EARTH:
+			a.removeAll(a, true);
 			cardWidth = (Gdx.graphics.getWidth()-(5*10))/5;
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;

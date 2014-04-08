@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.Scene;
+import com.sound.healing.SceneManager;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateMainMenu;
@@ -20,7 +22,7 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 
 	public SpreadSelectScreen(ScreenSpec screenSpec) {
 		super(screenSpec);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	@Override
@@ -38,15 +40,10 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
     	batch.end();
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
 	public void show() {
-		AssetLoader.getInstance().loadInfo();
 		stage.clear();
 		transitionStage.clear();
 		stage = screenSpec.createStage();
@@ -62,7 +59,8 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 
 								@Override
 								public void run() {
-									ScreenManager.getInstance().show(Screen.MAIN_MENU); 
+									//make main menu
+									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createSpreadSelect());	
 									
 								}
 					 			
@@ -112,7 +110,7 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 								@Override
 								public void run() {
 						
-									ScreenManager.getInstance().show(Screen.INFO); 
+									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createInfo());	
 									
 								}
 					 			
@@ -131,30 +129,15 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 		}
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void dispose() {
-		stage.dispose();
-		transitionStage.dispose();
-		
 
+	}
+
+	@Override
+	public Scene getSceneType() {
+		return Scene.SPREAD_SELECT;
 	}
 
 }

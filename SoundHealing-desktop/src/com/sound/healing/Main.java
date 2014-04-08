@@ -13,4 +13,4 @@ public class Main {
 		
 		new LwjglApplication(new MainScene(), cfg);
 	}
-}
+} 

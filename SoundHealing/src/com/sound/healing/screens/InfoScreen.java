@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.Scene;
+import com.sound.healing.SceneManager;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.SceneHandler;
 
@@ -41,7 +43,7 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 	@Override
 	public void show() {
-		AssetLoader.getInstance().loadChoose();
+	
 		stage.clear();
 		transitionStage.clear();
 		stage = screenSpec.createStage();
@@ -56,7 +58,7 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 								@Override
 								public void run() {
-									ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT); 
+									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createSpreadSelect());	
 									
 								}
 					 			
@@ -78,7 +80,7 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 								@Override
 								public void run() {
-									ScreenManager.getInstance().show(com.sound.healing.Screen.CHOOSE); 
+									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createChoose());	
 								}
 					 			
 					 		})));
@@ -93,28 +95,17 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Scene getSceneType() {
+	
+		return Scene.INFO;
 	}
 
 }

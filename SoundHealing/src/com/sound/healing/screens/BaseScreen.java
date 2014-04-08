@@ -5,9 +5,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.sound.healing.Scene;
 import com.sound.healing.ScreenManager;
 
-public class BaseScreen implements Screen{
+public abstract class BaseScreen implements Screen{
 
 	protected SpriteBatch batch = null;
 	protected float WIDTH, HEIGHT;
@@ -70,5 +71,7 @@ public class BaseScreen implements Screen{
 	public Stage getStage() {
 		return stage;
 	}
+
+	public abstract Scene getSceneType();
 
 }
