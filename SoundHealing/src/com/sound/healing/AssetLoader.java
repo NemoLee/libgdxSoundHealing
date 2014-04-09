@@ -250,6 +250,7 @@ public class AssetLoader {
 		manager.load("Instruct/instruct_oh.png", Texture.class);
 		manager.load("Instruct/instruct_ooh.png", Texture.class);
 		manager.load("Instruct/instruct_or.png", Texture.class);
+		manager.load("Instruct/instruct_ohm.png", Texture.class);
 		manager.load("Reveal/savebutton.atlas", TextureAtlas.class);
 		manager.load("Choose/minicard_bg.png", Texture.class);
 		manager.load("Info/startbutton.atlas", TextureAtlas.class);

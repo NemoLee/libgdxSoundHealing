@@ -2,6 +2,7 @@ package com.sound.healing.actors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.Screen;
 import com.sound.healing.custom.Spread;
 
 public class SceneHandler {
@@ -18,6 +19,8 @@ public class SceneHandler {
 	private CreateLoad createLoad;
 	private CreateLoadReveal createLoadReveal;
 	private boolean isLoad = false;
+	private boolean isBack = false;
+	private Stage previousStage;
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
 
@@ -46,18 +49,12 @@ public class SceneHandler {
 		if(createInfo == null){
 			createInfo = new CreateInfo();
 		}
-		else{
-			createInfo.reset();
-		}
 		return createInfo;
 	}
 	
 	public CreateScene getCreateChoose() {
 		if(createChoose == null){
 			createChoose = new CreateChoose();
-		}
-		else{
-			createChoose.reset();
 		}
 		return createChoose;
 	}
@@ -66,10 +63,6 @@ public class SceneHandler {
 		if(createReveal == null){
 			createReveal = new CreateReveal();
 		}
-		else{
-			System.out.println("wtf");
-			createReveal.reset();
-		}
 		return createReveal;
 	}
 
@@ -77,9 +70,6 @@ public class SceneHandler {
 	public CreateScene getCreateCard() {
 		if(createCard == null){
 			createCard = new CreateCard();
-		}
-		else{
-			createCard.reset();
 		}
 		return createCard;
 	}
@@ -101,9 +91,6 @@ public class SceneHandler {
 	public CreateScene getCreateLoadReveal() {
 		if(createLoadReveal == null){
 			createLoadReveal = new CreateLoadReveal();
-		}
-		else{
-			createLoadReveal.reset();
 		}
 		return createLoadReveal;
 	}
@@ -132,7 +119,19 @@ public class SceneHandler {
 		this.isLoad = isLoad;
 	}
 
-
+	public Stage getPreviousStage() {
+		return previousStage;
+	}
 	
+	public void setPreviousStage(Stage previousStage) {
+		this.previousStage = previousStage;
+	}
+
+	public boolean isBack() {
+		return isBack;
+	}
+	public void setBack(boolean isBack) {
+		this.isBack = isBack;
+	}
 
 }

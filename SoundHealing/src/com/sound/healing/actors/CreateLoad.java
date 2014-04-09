@@ -109,5 +109,42 @@ public class CreateLoad extends CreateScene{
 		
 	}
 	
+	@Override
+	public void reset() {	
+		loadButtons = null;
+		table = null;
+		container = null;
+		scroll = null;
+		
+		loadData = prefs.getString("spread", "");
+		StringTokenizer loads = new StringTokenizer(loadData, "^");
+		loadButtons = new MenuButton[loads.countTokens()];
+		
+		table = new Table();
+		container = new Table();
+		table.setBounds(0, 0, Gdx.graphics.getWidth(), loadButtons.length*(Gdx.graphics.getHeight()/7));
+		scroll = new ScrollPane(table);
+		container.add(scroll).width(Gdx.graphics.getWidth()).height(Gdx.graphics.getHeight()-(topImage.getHeight()+Gdx.graphics.getHeight()/7));
+		container.row();
+		container.setUserObject(3);
+		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-(topImage.getHeight()+Gdx.graphics.getHeight()/7));
+		
+		table.top();
+		
+		
+		for(int i = 0; i < loadButtons.length; i++){
+			String current = loads.nextToken();
+			String name = getSpreadName(current);
+			String time = getSpreadTime(current);
+			loadButtons[i] = new MenuButton(name+"\n Time: "+ time,style_menu_loadbutton,0,(loadButtons.length-i)*(Gdx.graphics.getHeight()/7),Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+			loadButtons[i].setUserObject(i+4);
+			loadButtons[i].setSpreadType(name);
+			loadButtons[i].setSpreadIDS(getSpreadCards(current));
+			table.add(loadButtons[i]).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+			table.row();
+		}
+		scene.put((Integer) container.getUserObject(), container);
+	}
+	
 
 }

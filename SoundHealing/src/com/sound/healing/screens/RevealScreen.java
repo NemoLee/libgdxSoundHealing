@@ -7,18 +7,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.sound.healing.Scene;
-import com.sound.healing.SceneManager;
 import com.sound.healing.ScreenManager;
+import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
 
-public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen {
+public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 	private ClickListener back, flip, save;
 	private boolean isCardFlip = false;
 	int flasher = 5;
@@ -26,24 +26,18 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 	Preferences prefs = Gdx.app.getPreferences("spread");
 
 	
-	public RevealScreen(final ScreenSpec screenSpec) {
-		super(screenSpec);
+	public RevealScreen(final CreateScene scene) {
+		super(scene);
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 					
-				 			transitionStage = SceneHandler.getInstance().getCreateSpreadSelect().getSpec().createStage();
-				 			transitionStage.addAction(Actions.sequence(Actions.moveTo(-transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-					 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-
-								@Override
-								public void run() {
-									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createSpreadSelect());	
-								for(int i = 4; i < screenSpec.actors.size(); i++)
-									screenSpec.actors.remove(i);	
-								}
-					 			
-					 		})));
+					SceneHandler.getInstance().setBack(true);
+					SceneHandler.getInstance().setPreviousStage(stage);
+					ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
+					for(int i = 4; i < scene.getSpec().actors.size(); i++)
+						scene.getSpec().actors.remove(i);	
+			 	
 					 		
 	         }
 		};
@@ -60,19 +54,12 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 					 		prefs.putString("spread", prefs.getString("spread", "")+SceneHandler.getInstance().getSpread().toString()+"|,"+cardIDs+"_"+format+"^");
 					 		System.out.println(prefs.getString("spread"));
 					 		prefs.flush();
-				 			transitionStage = SceneHandler.getInstance().getCreateMainMenu().getSpec().createStage();
-				 			transitionStage.addAction(Actions.sequence(Actions.moveTo(-transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-					 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-					 		
-								@Override
-								public void run() {
-									//mainmenu
-									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createSpreadSelect());	
-								for(int i = 4; i < screenSpec.actors.size(); i++)
-									screenSpec.actors.remove(i);	
-								}
-					 			
-					 		})));
+					 		SceneHandler.getInstance().setBack(true);
+							SceneHandler.getInstance().setPreviousStage(stage);
+							ScreenManager.getInstance().show(com.sound.healing.Screen.MAIN_MENU);
+							for(int i = 4; i < scene.getSpec().actors.size(); i++)
+								scene.getSpec().actors.remove(i);	
+						
 					 		
 	         }
 		};
@@ -94,19 +81,11 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 						isCardFlip = true;
 						event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.3f)));
 						stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.visible(true)));
-						transitionStage = SceneHandler.getInstance().getCreateCard().getSpec().createStage();
-			 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0),Actions.delay(0.6f), Actions.moveTo(0, 0, 0.4f)));
-				 		stage.addAction(Actions.sequence(Actions.delay(0.6f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.8f),Actions.run(new Runnable(){
-		
-							@Override
-							public void run() {
-								SceneHandler.getInstance().setLoad(false);
-								SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createCard());	
-								
-							}
-				 			
-				 		})));
-				
+						SceneHandler.getInstance().setLoad(false);
+						SceneHandler.getInstance().setBack(false);
+						SceneHandler.getInstance().setPreviousStage(stage);
+						ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
+											
 			         	}
 					 }
 				 else{
@@ -114,17 +93,9 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
 
-						transitionStage = SceneHandler.getInstance().getCreateCard().getSpec().createStage();
-			 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-				 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-		
-							@Override
-							public void run() {
-								SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createCard()); 
-								
-							}
-				 			
-				 		})));
+						SceneHandler.getInstance().setBack(false);
+						SceneHandler.getInstance().setPreviousStage(stage);
+						ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
 				 }
 			 }
 		};
@@ -150,18 +121,28 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 
 	@Override
 	public void show() {
+
 		if(isCardFlip){
+			stage.clear();
+			transitionStage.clear();
+			transitionStage = SceneHandler.getInstance().getPreviousStage();
+			stage = scene.getSpec().createStage();
+			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(transitionStage.getWidth(), 0, 0.4f)));
+	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
 			isCardFlip = false;
 		}
 		else{
-			//might need to fix memory leak in scenehandler
 			isFlash = true;
 			flasher = 5;
 			stage.clear();
 			transitionStage.clear();
-			stage = screenSpec.createStage();
-			Gdx.input.setInputProcessor(stage);
+			transitionStage = SceneHandler.getInstance().getPreviousStage();
+			scene.reset();
+			stage = scene.getSpec().createStage();
+			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(-transitionStage.getWidth(), 0, 0.4f)));
+	 		stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
+	 		Gdx.input.setInputProcessor(stage);
 			stage.getActors().get(1).addListener(back);
 			stage.getActors().get(2).addListener(save);
 			for(int i = 5; i < 4+(SceneHandler.getInstance().getSpread().getNumberOfCards()*2); i++){
@@ -169,6 +150,7 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 			}
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 		}
+		
 	}
 
 
@@ -176,11 +158,6 @@ public class RevealScreen  extends BaseScreen implements com.badlogic.gdx.Screen
 	public void dispose() {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public Scene getSceneType() {
-		return Scene.REVEAL;
 	}
 
 }

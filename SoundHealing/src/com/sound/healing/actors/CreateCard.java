@@ -127,6 +127,7 @@ public class CreateCard extends CreateScene{
 	    
 	}
 	
+	@Override
 	public void reset(){
 		textureRegion.setTexture(AssetLoader.manager.get("Card/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.IMAGE.getEnumID()), Texture.class));
 		textureRegionDrawable.setRegion(textureRegion);

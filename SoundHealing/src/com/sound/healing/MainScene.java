@@ -14,8 +14,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class MainScene extends Game {
     @Override
     public void create() {
-  
-        setScreen(SceneManager.getInstance().createMainMenu(this));
+        AssetLoader.getInstance().loadAll();
+        ScreenManager.getInstance().initialize(this);
+        ScreenManager.getInstance().show(Screen.MAIN_MENU);
     }
-    
+ 
+    @Override
+    public void dispose() {
+        super.dispose();
+        ScreenManager.getInstance().dispose();
+    }
 }

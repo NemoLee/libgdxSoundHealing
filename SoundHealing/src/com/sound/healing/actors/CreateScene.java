@@ -62,5 +62,10 @@ public class CreateScene {
 		style.down = skin.getDrawable(down);
 		return style;
 	}
+
+	public void reset() {
+		
+		
+	}
 	
 }

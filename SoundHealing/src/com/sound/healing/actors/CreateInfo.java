@@ -114,6 +114,7 @@ public class CreateInfo extends CreateScene{
 		
 	}
 
+	@Override
 	public void reset() {
 		topImage.setText(SceneHandler.getInstance().getSpread().toString());
 		textureRegion.setTexture(AssetLoader.manager.get(SceneHandler.getInstance().getSpread().getInfocard(), Texture.class));

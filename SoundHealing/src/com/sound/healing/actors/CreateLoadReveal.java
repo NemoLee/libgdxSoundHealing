@@ -28,7 +28,6 @@ public class CreateLoadReveal extends CreateScene{
 		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
-		//locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
 		setupReveal();
 		spec = new ScreenSpec(scene);
@@ -82,6 +81,7 @@ public class CreateLoadReveal extends CreateScene{
 		
 	}
 
+	@Override
 	public void reset() {
 		
 		backCards = null;

@@ -3,6 +3,7 @@ package com.sound.healing.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -10,70 +11,33 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sound.healing.AssetLoader;
-import com.sound.healing.Scene;
-import com.sound.healing.SceneManager;
 import com.sound.healing.Screen;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateMainMenu;
+import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.custom.Spread;
 
 public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
-	public SpreadSelectScreen(ScreenSpec screenSpec) {
-		super(screenSpec);
-		
-	}
+	private ClickListener back;
+	private ClickListener Info;
 	
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
-		transitionStage.act();
-		stage.act();
-		batch.setProjectionMatrix(camera.combined);
-		
-	    batch.begin();
-			stage.draw();
-			transitionStage.draw();
-    	batch.end();
-	}
-
-
-
-	@Override
-	public void show() {
-		stage.clear();
-		transitionStage.clear();
-		stage = screenSpec.createStage();
-		Gdx.input.setInputProcessor(stage);
-
-		ClickListener back = new ClickListener(){
+	public SpreadSelectScreen(CreateScene scene) {
+		super(scene);
+		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 
-				 			transitionStage = SceneHandler.getInstance().getCreateMainMenu().getSpec().createStage();
-				 			transitionStage.addAction(Actions.sequence(Actions.moveTo(-transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-					 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-
-								@Override
-								public void run() {
-									//make main menu
-									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createSpreadSelect());	
-									
-								}
-					 			
-					 		})));
+		 			SceneHandler.getInstance().setBack(true);
+		 			SceneHandler.getInstance().setPreviousStage(stage);
+		 			ScreenManager.getInstance().show(Screen.MAIN_MENU);
 					 		
 	         }
 		};
-		
-		ClickListener Info = new ClickListener(){
+		Info = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 		//check to see if switch if null to handle android vs desktop and make sure to check ios
-			
 							switch((Integer)(((Actor) event.getTarget()).getUserObject())){
 							case 3:
 								SceneHandler.getInstance().setSpread(Spread.SOUND_ADVICE);
@@ -103,41 +67,38 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 								SceneHandler.getInstance().setSpread(Spread.MULTI);
 								break;
 							}
-				 			transitionStage = SceneHandler.getInstance().getCreateInfo().getSpec().createStage();
-				 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-					 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-
-								@Override
-								public void run() {
-						
-									SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createInfo());	
-									
-								}
-					 			
-					 		})));
-					 		
-											 	
-				
+							SceneHandler.getInstance().setBack(false);
+							SceneHandler.getInstance().setPreviousStage(stage);
+							ScreenManager.getInstance().show(Screen.INFO);		
 	         }
 		};
+	}
+	
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		camera.update();
+		transitionStage.act();
+		stage.act();
+		batch.setProjectionMatrix(camera.combined);
+		
+	    batch.begin();
+			stage.draw();
+			transitionStage.draw();
+    	batch.end();
+	}
+
+
+
+	@Override
+	public void show() {
+		super.show();
 		
 		stage.getActors().get(2).addListener(back);
-		
 		Table t = (Table) stage.getActors().get(1);
 		for(int i = 0; i<t.getChildren().size; i++){
 			t.getChildren().get(i).addListener(Info);
 		}
 	}
-
-
-	@Override
-	public void dispose() {
-
-	}
-
-	@Override
-	public Scene getSceneType() {
-		return Scene.SPREAD_SELECT;
-	}
-
 }

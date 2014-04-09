@@ -103,7 +103,7 @@ public class CreateChoose extends CreateScene{
 		
 	}
 
-
+	@Override
 	public void reset() {
 		cardGroup = null;
 		miniCards = null;

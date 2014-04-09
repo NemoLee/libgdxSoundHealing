@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -11,9 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.sound.healing.AssetLoader;
-import com.sound.healing.Scene;
-import com.sound.healing.SceneManager;
 import com.sound.healing.ScreenManager;
+import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
 
 public class ChooseScreen extends BaseScreen implements Screen {
@@ -22,8 +22,8 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	private int currentCard = 1;
 	private boolean isStopped = false;
 	
-	public ChooseScreen(ScreenSpec screenSpec) {
-		super(screenSpec);
+	public ChooseScreen(CreateScene scene) {
+		super(scene);
 		cardClick = new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -46,16 +46,9 @@ public class ChooseScreen extends BaseScreen implements Screen {
 						(((HorizontalGroup) stage.getActors().get(7)).getChildren()).get(i).setVisible(false);
 						i+=2;
 					}
-					transitionStage = SceneHandler.getInstance().getCreateInfo().getSpec().createStage();
-		 			transitionStage.addAction(Actions.sequence(Actions.moveTo(-transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-			 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-
-						@Override
-						public void run() {
-							SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createInfo());	
-						}
-			 			
-			 		})));
+					SceneHandler.getInstance().setBack(true);
+					SceneHandler.getInstance().setPreviousStage(stage);
+					ScreenManager.getInstance().show(com.sound.healing.Screen.INFO);
 	         }
 		};
 	}
@@ -71,16 +64,9 @@ public class ChooseScreen extends BaseScreen implements Screen {
 					stage.getActors().get(4).setVisible(false);
 					stage.getActors().get(5).setVisible(false);
 					isStopped = true;
-		 			transitionStage = SceneHandler.getInstance().getCreateReveal().getSpec().createStage();
-		 			transitionStage.addAction(Actions.sequence(Actions.moveTo(transitionStage.getWidth(), 0), Actions.moveTo(0, 0, 0.4f)));
-			 		stage.addAction(Actions.sequence(Actions.delay(0.0f),Actions.moveTo(-stage.getWidth(), 0, 0.4f),Actions.delay(0.4f),Actions.run(new Runnable(){
-
-						@Override
-						public void run() {
-							SceneManager.getInstance().getGame().setScreen(SceneManager.getInstance().createReveal());	
-						}
-			 			
-			 		})));
+					SceneHandler.getInstance().setBack(false);
+					SceneHandler.getInstance().setPreviousStage(stage);
+					ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL);
 				}
 			}
 			
@@ -135,11 +121,7 @@ public class ChooseScreen extends BaseScreen implements Screen {
 
 	@Override
 	public void show() {
-		//AssetLoader.getInstance().loadReveal();
-		stage.clear();
-		transitionStage.clear();
-		stage = screenSpec.createStage();
-		Gdx.input.setInputProcessor(stage);
+		super.show();
 		isStopped = false;
 		currentCard = 1;
 		stage.getActors().get(3).setVisible(true);
@@ -158,32 +140,5 @@ public class ChooseScreen extends BaseScreen implements Screen {
 
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		
-	}
-
-	@Override
-	public Scene getSceneType() {
-		return Scene.CHOOSE;
-	}
 
 }

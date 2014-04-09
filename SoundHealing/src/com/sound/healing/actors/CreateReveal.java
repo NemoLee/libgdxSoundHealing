@@ -85,6 +85,7 @@ public class CreateReveal extends CreateScene{
 		
 	}
 
+	@Override
 	public void reset() {
 		
 		backCards = null;
