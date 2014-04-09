@@ -23,7 +23,7 @@ public enum Screen {
 		case MAIN_MENU:
 			return new MainMenuScreen(SceneHandler.getInstance().getCreateMainMenu());
 		case BROWSE:
-			return new BrowseScreen();
+			return new BrowseScreen(SceneHandler.getInstance().getCreateBrowse());
 		case LOAD:
 			return new LoadScreen(SceneHandler.getInstance().getCreateLoad());
 		case MORE_INFO:

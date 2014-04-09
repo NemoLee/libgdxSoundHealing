@@ -47,12 +47,19 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 						AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
-						event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.3f)));
-						stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.visible(true)));
-						SceneHandler.getInstance().setLoad(true);
-						SceneHandler.getInstance().setBack(false);
-						SceneHandler.getInstance().setPreviousStage(stage);
-						ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
+						event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.6f)));
+						stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.sequence(Actions.parallel(Actions.fadeIn(0.6f),Actions.visible(true)), new Action(){
+
+							@Override
+							public boolean act(float delta) {
+								SceneHandler.getInstance().setLoad(true);
+								SceneHandler.getInstance().setBack(false);
+								SceneHandler.getInstance().setPreviousStage(stage);
+								ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
+								return true;
+							}
+							
+						}));
 											
 			         	}
 					 }
@@ -68,7 +75,7 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 			 }
 		};
 	}
-
+	
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);

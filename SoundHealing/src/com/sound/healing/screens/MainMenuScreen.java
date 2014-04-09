@@ -69,9 +69,9 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 	}
 	
 	stage.getActors().get(3).addListener(click);
-	stage.getActors().get(4).addListener(click);
+	//stage.getActors().get(4).addListener(click);
 	stage.getActors().get(5).addListener(click2);
-	stage.getActors().get(6).addListener(click);
+	//stage.getActors().get(6).addListener(click);
     
    
 	}

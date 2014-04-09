@@ -13,11 +13,11 @@ public class SceneHandler {
 	private CreateChoose createChoose;
 	private CreateReveal createReveal;
 	private CreateCard createCard;
-	private CreateCardBack createCardBack;
 	private Spread spread;
 	private Stage currentSpreadStage;
 	private CreateLoad createLoad;
 	private CreateLoadReveal createLoadReveal;
+	private CreateBrowse createBrowse;
 	private boolean isLoad = false;
 	private boolean isBack = false;
 	private Stage previousStage;
@@ -74,13 +74,6 @@ public class SceneHandler {
 		return createCard;
 	}
 	
-	public CreateScene getCreateCardBack() {
-		if(createCardBack == null){
-			createCardBack = new CreateCardBack();
-		}
-		return createCardBack;
-	}
-	
 	public CreateScene getCreateLoad() {
 		if(createLoad == null){
 			createLoad = new CreateLoad();
@@ -93,6 +86,13 @@ public class SceneHandler {
 			createLoadReveal = new CreateLoadReveal();
 		}
 		return createLoadReveal;
+	}
+	
+	public CreateScene getCreateBrowse() {
+		if(createBrowse == null){
+			createBrowse = new CreateBrowse();
+		}
+		return createBrowse;
 	}
 	
 	public void setSpread(Spread spread) {
@@ -133,5 +133,6 @@ public class SceneHandler {
 	public void setBack(boolean isBack) {
 		this.isBack = isBack;
 	}
+
 
 }

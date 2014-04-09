@@ -30,8 +30,8 @@ public class CreateCard extends CreateScene{
 	private Image largeCard, sound1, sound2;
 	private TextButtonStyle style_info_backbutton,style_info_flipButton;
 	private MenuButton backButton, flipButton;
-	private TextureRegion textureRegion;
-	private TextureRegionDrawable textureRegionDrawable;
+	private TextureRegion textureRegion, textureRegion2;
+	private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2;
 	private Table table, container;
 	private ScrollPane scroll;
 	private Label labelDescription;
@@ -108,7 +108,9 @@ public class CreateCard extends CreateScene{
 	    sound1.setPosition(Gdx.graphics.getWidth()/8, 0);
 	    sound1.setUserObject(5);
 	    
-	    sound2 = new Image(AssetLoader.manager.get(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID(),Texture.class));
+	    textureRegion2 = new TextureRegion(AssetLoader.manager.get(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID(),Texture.class));
+	    textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
+	    sound2 = new Image(textureRegionDrawable2);
 	    sound2.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getWidth()/4);
 	    sound2.setPosition((Gdx.graphics.getWidth()/8)*5, 0);
 	    sound2.setUserObject(6);
@@ -133,7 +135,9 @@ public class CreateCard extends CreateScene{
 		textureRegionDrawable.setRegion(textureRegion);
 		largeCard.setDrawable(textureRegionDrawable);
 		labelDescription.setText("DESCRIPTION:\n\n"+(String) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.DESCRIPTION.getEnumID()));
-		
+		textureRegion2.setTexture(AssetLoader.manager.get(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID(),Texture.class));
+		textureRegionDrawable2.setRegion(textureRegion2);
+		sound2.setDrawable(textureRegionDrawable2);
 	}
 	
 	

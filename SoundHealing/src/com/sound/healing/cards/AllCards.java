@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.custom.Spread;
 
 public class AllCards {
 	
@@ -103,10 +104,19 @@ public class AllCards {
 		revealCards = new Array<Card>();
 		int x = 0;
 		for(int i = 0; i < SceneHandler.getInstance().getSpread().getNumberOfCards(); i++){
-			x = MathUtils.random(51);
+			if(SceneHandler.getInstance().getSpread().compareTo(Spread.SYMPHONY_OF_LIFE) == 0){
+				if(i == 5){
+					x = MathUtils.random(3)+48;
+				}
+				else{
+					x = MathUtils.random(47);
+				}
+			}
+			else{
+				x = MathUtils.random(51);
+			}
 			if(!revealCards.contains(getCard(x), false)){
 				revealCards.add(getCard(x));
-				System.out.print(x);
 			}
 			else{
 				i--;

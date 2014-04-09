@@ -147,23 +147,24 @@ public enum Spread {
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/50;
 			
-			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
-			
-			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)));
 			
 			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
 			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)));
 			
-			a.add(cardWidth/2);
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight+cardHeight/2));
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
 			
 			a.add(Gdx.graphics.getWidth()-cardWidth-cardWidth/2);
 			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight+cardHeight/2));
 			
-			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)));
+			a.add(cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight+cardHeight/2));
+			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
+			
 			
 			return a;
 		case DUET:
@@ -172,8 +173,11 @@ public enum Spread {
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;
 			
-			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
+			a.add(cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
 			
 			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
 			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
@@ -181,11 +185,9 @@ public enum Spread {
 			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
 			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)));
 			
-			a.add(cardWidth/2);
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
-			
-			a.add(Gdx.graphics.getWidth()-cardWidth-cardWidth/2);
-			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+offset+cardHeight));
+
 			return a;
 		case HEARTSONG:
 			a.removeAll(a, true);
@@ -235,20 +237,21 @@ public enum Spread {
 			cardHeight = (int)(cardWidth*1.4533);
 			offset = Gdx.graphics.getHeight()/36;
 			
-			a.add(0);
-			a.add(Gdx.graphics.getHeight()/2);
-			
-			a.add(0);
-			a.add(Gdx.graphics.getHeight()/2-cardHeight-offset);
-			
 			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
 			a.add(Gdx.graphics.getHeight()/2);
 			
-			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(0);
 			a.add(Gdx.graphics.getHeight()/2-cardHeight-offset);
+			
+			a.add(0);
+			a.add(Gdx.graphics.getHeight()/2);
 			
 			a.add(Gdx.graphics.getWidth()-cardWidth);
 			a.add(Gdx.graphics.getHeight()/2);
+			
+			a.add(Gdx.graphics.getWidth()-cardWidth);
+			a.add(Gdx.graphics.getHeight()/2-cardHeight-offset);
+		
 			return a;
 		case ANGELS_OF_SOUND:
 			
