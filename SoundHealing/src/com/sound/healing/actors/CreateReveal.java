@@ -53,7 +53,6 @@ public class CreateReveal extends CreateScene{
 		}
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
-		//locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
 		setupReveal();
 		setupDialog();
@@ -111,8 +110,7 @@ public class CreateReveal extends CreateScene{
 		group.addActor(no);
 		scene.put((Integer) group.getUserObject(), group);
 		
-		//scene.put((Integer) yes.getUserObject(), yes);
-		//scene.put((Integer) no.getUserObject(), no);
+	
 		
 	}
 
@@ -204,6 +202,10 @@ public class CreateReveal extends CreateScene{
 			if(scene.get(i)!= null){
 				scene.get(i).setVisible(false);
 			}
+			else{
+				scene.put(i, scene.get(9));
+			}
+			System.out.println(scene.get(i));
 		}
 		group.setVisible(false);
 		group.setUserObject(x);
