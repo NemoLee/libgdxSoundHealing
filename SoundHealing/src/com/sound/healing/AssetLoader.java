@@ -251,6 +251,7 @@ public class AssetLoader {
 		manager.load("Instruct/instruct_ooh.png", Texture.class);
 		manager.load("Instruct/instruct_or.png", Texture.class);
 		manager.load("Instruct/instruct_ohm.png", Texture.class);
+		manager.load("Instruct/instruct_angel.png", Texture.class);
 		manager.load("Reveal/savebutton.atlas", TextureAtlas.class);
 		manager.load("Choose/minicard_bg.png", Texture.class);
 		manager.load("Info/startbutton.atlas", TextureAtlas.class);
@@ -283,6 +284,25 @@ public class AssetLoader {
 		manager.load("Reveal/savebutton.atlas", TextureAtlas.class);
 		manager.load("Choose/bigcard.png", Texture.class);
 		manager.load("Style/lightpurp.png", Texture.class);		
+		manager.load("Browse/select_type_down.png", Texture.class);	
+		manager.load("Browse/select_type_up.png", Texture.class);
+		manager.load("Browse/rootbtn.png", Texture.class);
+		manager.load("Browse/sacralbtn.png", Texture.class);
+		manager.load("Browse/throatbtn.png", Texture.class);
+		manager.load("Browse/heartbtn.png", Texture.class);
+		manager.load("Browse/thirdeyebtn.png", Texture.class);
+		manager.load("Browse/crownbtn.png", Texture.class);
+		manager.load("Browse/solarplexusbtn.png", Texture.class);
+		manager.load("Browse/wholebodybtn.png", Texture.class);
+		manager.load("Browse/angelcardsbtn.png", Texture.class);
+		manager.load("Card/spread8_1.png", Texture.class);
+		manager.load("Card/spread8_2.png", Texture.class);
+		manager.load("Card/spread8_3.png", Texture.class);
+		manager.load("Card/spread8_4.png", Texture.class);
+		manager.load("Card/spread8_5.png", Texture.class);
+		manager.load("Card/spread8_6.png", Texture.class);
+		manager.load("Card/spread8_7.png", Texture.class);
+		manager.load("Card/spread8_8.png", Texture.class);
 		manager.finishLoading();
 	}
 }

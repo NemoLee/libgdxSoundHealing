@@ -38,7 +38,7 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 					 if(event.getListenerActor().equals(stage.getActors().get(flasher))){
 							stage.getActors().get(flasher).clearActions();
 							flasher+=2;
-							if(flasher < 4+(SceneHandler.getInstance().getSpread().getNumberOfCards()*2)){
+							if(flasher < 4+(AllCards.getInstance().getLoadedCards().size*2)){
 								stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 							}
 							else{
@@ -52,7 +52,7 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 
 							@Override
 							public boolean act(float delta) {
-								SceneHandler.getInstance().setLoad(true);
+								SceneHandler.getInstance().setLoad(0);
 								SceneHandler.getInstance().setBack(false);
 								SceneHandler.getInstance().setPreviousStage(stage);
 								ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
@@ -116,7 +116,7 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 	 		stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 	 		Gdx.input.setInputProcessor(stage);
 			stage.getActors().get(1).addListener(back);
-			for(int i = 5; i < 4+(SceneHandler.getInstance().getSpread().getNumberOfCards()*2); i++){
+			for(int i = 5; i < 4+(AllCards.getInstance().getLoadedCards().size*2); i++){
 				stage.getActors().get(i).addListener(flip);
 			}
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));

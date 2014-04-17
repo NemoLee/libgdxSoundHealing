@@ -62,7 +62,10 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 								break;
 							case 10:
 								SceneHandler.getInstance().setSpread(Spread.INDIVIDUAL);
-								break;
+								SceneHandler.getInstance().setBack(false);
+								SceneHandler.getInstance().setPreviousStage(stage);
+								ScreenManager.getInstance().show(Screen.INDIVIDUAL);	
+								return;
 							case 11:
 								SceneHandler.getInstance().setSpread(Spread.MULTI);
 								break;

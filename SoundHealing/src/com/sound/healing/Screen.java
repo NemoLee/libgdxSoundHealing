@@ -4,6 +4,7 @@ import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.screens.BrowseScreen;
 import com.sound.healing.screens.CardScreen;
 import com.sound.healing.screens.ChooseScreen;
+import com.sound.healing.screens.IndividualScreen;
 import com.sound.healing.screens.InfoScreen;
 import com.sound.healing.screens.LoadScreen;
 import com.sound.healing.screens.MainMenuScreen;
@@ -14,7 +15,7 @@ import com.sound.healing.screens.loadRevealScreen;
 
 public enum Screen {
 	 
-	MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL;
+	MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL, INDIVIDUAL;
  
 	
 	
@@ -22,7 +23,7 @@ public enum Screen {
 		switch(this){
 		case MAIN_MENU:
 			return new MainMenuScreen(SceneHandler.getInstance().getCreateMainMenu());
-		case BROWSE:
+		case BROWSE:  
 			return new BrowseScreen(SceneHandler.getInstance().getCreateBrowse());
 		case LOAD:
 			return new LoadScreen(SceneHandler.getInstance().getCreateLoad());
@@ -40,6 +41,8 @@ public enum Screen {
 			return new CardScreen(SceneHandler.getInstance().getCreateCard());
 		case LOAD_REVEAL:
 			return new loadRevealScreen(SceneHandler.getInstance().getCreateLoadReveal());
+		case INDIVIDUAL:
+			return new IndividualScreen(SceneHandler.getInstance().getCreateIndividual());
 		default:
 			return null;
 		}

@@ -27,17 +27,21 @@ public class CardScreen extends BaseScreen implements Screen {
 									stage.getActors().get(3).addAction(Actions.sequence(Actions.fadeOut(0.3f), Actions.visible(false)));
 									stage.getActors().get(0).addAction(Actions.parallel(Actions.visible(true),Actions.fadeIn(0.3f)));
 									isFlipped = false;
-									if(SceneHandler.getInstance().isLoad()){
+									if(SceneHandler.getInstance().getLoad() == 0){
 										SceneHandler.getInstance().setBack(true);
 										SceneHandler.getInstance().setPreviousStage(stage);
 										ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD_REVEAL);
 									}
-									else{
+									else if(SceneHandler.getInstance().getLoad() == 1){
 										SceneHandler.getInstance().setBack(true);
 										SceneHandler.getInstance().setPreviousStage(stage);
 										ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL);
 									}
-						
+									else if(SceneHandler.getInstance().getLoad() == 2){
+										SceneHandler.getInstance().setBack(true);
+										SceneHandler.getInstance().setPreviousStage(stage);
+										ScreenManager.getInstance().show(com.sound.healing.Screen.BROWSE);
+									}
 					 		
 	         }
 		};

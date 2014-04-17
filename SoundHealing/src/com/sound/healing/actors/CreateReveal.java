@@ -3,38 +3,117 @@ package com.sound.healing.actors;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
 import com.sound.healing.custom.MenuButton;
+import com.sound.healing.custom.Spread;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateReveal extends CreateScene{
 	
 	private MenuButton backButton, saveButton;
-	private TextButtonStyle style_info_backbutton, style_info_startButton;
-	private Image darkPurple;
+	private TextButton yes, no;
+	private TextButtonStyle style_info_backbutton, style_info_startButton, style_yesno;
+	private Image darkPurple, black, popupBackground;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
 	private int cardWidth, cardHeight;
 	private Array<Integer> locations;
-	
+	private int x = 4;
+	private FreeTypeFontParameter font;
+	private BitmapFont descriptionFont;
+	private LabelStyle style;
+	private Label labelDescription;
+	private Group group;
+
 	public CreateReveal() {
 		cards = AllCards.getInstance().setupRevealCards();
 		setupTop(SceneHandler.getInstance().getSpread().toString());
-		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
+		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
+			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
+		}
+		else{
+			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
+		}
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		//locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
 		setupReveal();
+		setupDialog();
 		spec = new ScreenSpec(scene);
+	}
+
+	private void setupDialog() {
+		group = new Group();
+		group.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		group.setPosition(0, 0);
+		group.setUserObject(x);
+		group.setVisible(false);
+		black = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		black.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		black.setPosition(0, 0);
+		black.addAction(Actions.alpha(0.8f));
+		black.setUserObject(x);
+		//black.setVisible(false);
+		group.addActor(black);
+	   // scene.put((Integer) black.getUserObject(), black);
+	    popupBackground = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+	    popupBackground.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getWidth()/3);
+	    popupBackground.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/2);
+	    popupBackground.setUserObject(x+1);
+	   // popupBackground.setVisible(false);
+	    group.addActor(popupBackground);
+	   // scene.put((Integer) popupBackground.getUserObject(), popupBackground);
+	    
+	    font = new FreeTypeFontParameter();
+	    font.size = Gdx.graphics.getWidth()/25;
+	    descriptionFont = AssetLoader.getInstance().generator.generateFont(font);
+	    style = new LabelStyle(descriptionFont, Color.WHITE);
+	    labelDescription = new Label("All Spread Info Will Be Lost. Continue?", style);
+		labelDescription.setWrap(true);
+		labelDescription.setAlignment(Align.top | Align.center);
+		labelDescription.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getWidth()/4);
+		labelDescription.setUserObject(x+2);
+		labelDescription.setPosition(Gdx.graphics.getWidth()/4,  Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/12);
+		//labelDescription.setVisible(false);
+		group.addActor(labelDescription);
+		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
+		
+		style_yesno =  createTextButtonStyle("Menu/menubutton.atlas","menu_button","menu_button_dark", Gdx.graphics.getWidth()/18);
+		yes = new TextButton("YES", style_yesno);
+		no = new TextButton("NO", style_yesno);
+		yes.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getWidth()/12);
+		no.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getWidth()/12);
+		yes.setPosition(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/50, Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/50);
+		no.setPosition(Gdx.graphics.getWidth()/4+(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/50), Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/50);
+		yes.setUserObject(x+3);
+		no.setUserObject(x+4);
+		//yes.setVisible(false);
+		//no.setVisible(false);
+		group.addActor(yes);
+		group.addActor(no);
+		scene.put((Integer) group.getUserObject(), group);
+		
+		//scene.put((Integer) yes.getUserObject(), yes);
+		//scene.put((Integer) no.getUserObject(), no);
+		
 	}
 
 	private void setupReveal() {
@@ -44,9 +123,9 @@ public class CreateReveal extends CreateScene{
 		darkPurple.setUserObject(3);
 		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
 		int locationCounter = 0;
-		int x = 4;
-		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
-		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		x = 4;
+		backCards = new Image[(cards.size)];
+		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
@@ -64,7 +143,7 @@ public class CreateReveal extends CreateScene{
 			x+=2;
 			locationCounter+=2;
 		}
-		
+		System.out.print(x);
 		
 	}
 	
@@ -92,13 +171,18 @@ public class CreateReveal extends CreateScene{
 		frontCards = null;
 		cards = null;
 		cards = AllCards.getInstance().setupRevealCards();
-		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
+		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
+			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
+		}
+		else{
+			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
+		}
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
-		int x = 4;
-		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
-		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		x = 4;
+		backCards = new Image[(cards.size)];
+		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
@@ -118,8 +202,13 @@ public class CreateReveal extends CreateScene{
 		}
 		for(int i = x; i < scene.size(); i++){
 			if(scene.get(i)!= null){
-				scene.get(i).setSize(0, 0);
+				scene.get(i).setVisible(false);
 			}
 		}
+		group.setVisible(false);
+		group.setUserObject(x);
+		scene.put((Integer) group.getUserObject(), group);
+	    
+		
 	}
 }

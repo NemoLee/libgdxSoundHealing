@@ -10,6 +10,7 @@ import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
 import com.sound.healing.custom.MenuButton;
+import com.sound.healing.custom.Spread;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateLoadReveal extends CreateScene{
@@ -25,7 +26,12 @@ public class CreateLoadReveal extends CreateScene{
 	public CreateLoadReveal() {
 		cards = AllCards.getInstance().getLoadedCards();
 		setupTop(SceneHandler.getInstance().getSpread().toString());
-		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
+		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
+			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
+		}
+		else{
+			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
+		}
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
@@ -41,8 +47,8 @@ public class CreateLoadReveal extends CreateScene{
 		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
 		int locationCounter = 0;
 		int x = 4;
-		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
-		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		backCards = new Image[(cards.size)];
+		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
@@ -88,13 +94,18 @@ public class CreateLoadReveal extends CreateScene{
 		frontCards = null;
 		cards = null;
 		cards = AllCards.getInstance().getLoadedCards();
-		cardWidth = (Gdx.graphics.getWidth()-(SceneHandler.getInstance().getSpread().getNumberOfCards()*10))/SceneHandler.getInstance().getSpread().getNumberOfCards();
+		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
+			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
+		}
+		else{
+			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
+		}
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
 		int x = 4;
-		backCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
-		frontCards = new Image[(SceneHandler.getInstance().getSpread().getNumberOfCards())];
+		backCards = new Image[(cards.size)];
+		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));

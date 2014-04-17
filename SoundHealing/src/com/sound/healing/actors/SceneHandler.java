@@ -18,7 +18,7 @@ public class SceneHandler {
 	private CreateLoad createLoad;
 	private CreateLoadReveal createLoadReveal;
 	private CreateBrowse createBrowse;
-	private boolean isLoad = false;
+	private int isLoad = 0;
 	private boolean isBack = false;
 	private Stage previousStage;
 	
@@ -111,11 +111,11 @@ public class SceneHandler {
 		this.currentSpreadStage = currentSpreadStage;
 	}
 	
-	public boolean isLoad() {
+	public int getLoad() {
 		return isLoad;
 	}
 	
-	public void setLoad(boolean isLoad) {
+	public void setLoad(int isLoad) {
 		this.isLoad = isLoad;
 	}
 

@@ -51,11 +51,11 @@ public enum Spread {
 			case SINGING_EARTH:
 				return "Info/infocard6.png";
 			case ANGELS_OF_SOUND:
-				return "Info/infocard7.png";
-			case INDIVIDUAL:
 				return "Info/infocard8.png";
-			case MULTI:
+			case INDIVIDUAL:
 				return "Info/infocard9.png";
+			case MULTI:
+				return "Info/infocard7.png";
 			default:
 				return "";
 		}
@@ -254,13 +254,77 @@ public enum Spread {
 		
 			return a;
 		case ANGELS_OF_SOUND:
+			a.removeAll(a, true);
+			cardWidth = (Gdx.graphics.getWidth()-(4*10))/3;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getHeight()/20;
 			
+			a.add(Gdx.graphics.getWidth()/60+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/60+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2)+ cardHeight);
+			
+			
+			a.add((Gdx.graphics.getWidth()/3)-(cardWidth/4)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add((Gdx.graphics.getWidth()/3)-(cardWidth/4)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2)+ cardHeight);
+			
+			
+			a.add((Gdx.graphics.getWidth()/3)+(cardWidth/2)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add((Gdx.graphics.getWidth()/3)+(cardWidth/2)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2)+ cardHeight);
+				
+			
+			a.add(Gdx.graphics.getWidth()-(cardWidth)+(Gdx.graphics.getWidth()/25)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()-(cardWidth)+(Gdx.graphics.getWidth()/25)+offset);
+			a.add((Gdx.graphics.getHeight()/2)-(cardHeight/2)+ cardHeight);
+				
+
 			return a;
 		case INDIVIDUAL:
 			
 			return a;
 		case MULTI:
+			a.removeAll(a, true);
+			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getWidth()/80;
+					
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+1*(offset+cardHeight)));	
 			
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)));
+		
+			a.add((Gdx.graphics.getWidth()/2)-(cardWidth/2));
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)));
+				
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+5*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+6*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+7*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+8*(offset+cardHeight)));
+			
+			a.add(Gdx.graphics.getWidth()/2+cardWidth);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)+cardHeight/2));
+			
+	
 			return a;
 		default:
 			return a;

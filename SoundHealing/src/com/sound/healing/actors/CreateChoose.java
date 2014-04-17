@@ -111,19 +111,29 @@ public class CreateChoose extends CreateScene{
 		miniCards = new Image[SceneHandler.getInstance().getSpread().getNumberOfCards()];
 		miniCardsBG = new Image[SceneHandler.getInstance().getSpread().getNumberOfCards()];
 		cardGroup = new HorizontalGroup();
-		cardGroup.setSize((Gdx.graphics.getWidth()/10+Gdx.graphics.getWidth()/20)*miniCards.length, (Gdx.graphics.getWidth()/2)+Gdx.graphics.getWidth()/8);
-		cardGroup.setPosition(Gdx.graphics.getWidth()/2-cardGroup.getWidth()/2+Gdx.graphics.getWidth()/40,Gdx.graphics.getHeight()/7+Gdx.graphics.getHeight()/42);
 		cardGroup.setLayoutEnabled(false);
 		cardGroup.setUserObject(7);
 		for(int i = 0; i < miniCards.length; i++){
 			miniCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
 			miniCardsBG[i] = new Image(AssetLoader.manager.get("Choose/minicard_bg.png", Texture.class));
 			miniCards[i].setSize(Gdx.graphics.getWidth()/10, (float) ((Gdx.graphics.getWidth()/10)*1.4533));
-			miniCards[i].setPosition((miniCards[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
 			miniCards[i].setUserObject(i+9);
 			miniCards[i].setVisible(false);
 			miniCardsBG[i].setSize(Gdx.graphics.getWidth()/10, (float) ((Gdx.graphics.getWidth()/10)*1.4533));
-			miniCardsBG[i].setPosition((miniCardsBG[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
+			
+			if(SceneHandler.getInstance().getSpread().getNumberOfCards()<8){
+				cardGroup.setSize((Gdx.graphics.getWidth()/10+Gdx.graphics.getWidth()/20)*miniCards.length, (Gdx.graphics.getWidth()/2)+Gdx.graphics.getWidth()/8);
+				cardGroup.setPosition(Gdx.graphics.getWidth()/2-cardGroup.getWidth()/2+Gdx.graphics.getWidth()/40,Gdx.graphics.getHeight()/7+Gdx.graphics.getHeight()/42);
+				miniCards[i].setPosition((miniCards[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
+				miniCardsBG[i].setPosition((miniCardsBG[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
+			}
+			else{
+				cardGroup.setSize((Gdx.graphics.getWidth()/10+Gdx.graphics.getWidth()/100)*miniCards.length, (Gdx.graphics.getWidth()/2)+Gdx.graphics.getWidth()/8);
+				cardGroup.setPosition(Gdx.graphics.getWidth()/2-cardGroup.getWidth()/2+Gdx.graphics.getWidth()/200,Gdx.graphics.getHeight()/7+Gdx.graphics.getHeight()/42);
+				miniCards[i].setPosition((miniCards[i].getWidth()+Gdx.graphics.getWidth()/100)*i,0);
+				miniCardsBG[i].setPosition((miniCardsBG[i].getWidth()+Gdx.graphics.getWidth()/100)*i,0);
+			}
+			
 			cardGroup.addActor(miniCardsBG[i]);
 			cardGroup.addActor(miniCards[i]);
 		}

@@ -15,7 +15,7 @@ import com.sound.healing.actors.SceneHandler;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
-	private ClickListener click, click2;
+	private ClickListener click, click2, click3;
 
 	public MainMenuScreen(CreateScene scene) {	
 		super(scene);
@@ -35,6 +35,16 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 				 		SceneHandler.getInstance().setBack(false);
 				 		SceneHandler.getInstance().setPreviousStage(stage);
 						ScreenManager.getInstance().show(Screen.LOAD);
+		 	
+				
+	         }
+		};
+		click3 = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 		SceneHandler.getInstance().setBack(false);
+				 		SceneHandler.getInstance().setPreviousStage(stage);
+						ScreenManager.getInstance().show(Screen.BROWSE);
 		 	
 				
 	         }
@@ -69,7 +79,7 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 	}
 	
 	stage.getActors().get(3).addListener(click);
-	//stage.getActors().get(4).addListener(click);
+	stage.getActors().get(4).addListener(click3);
 	stage.getActors().get(5).addListener(click2);
 	//stage.getActors().get(6).addListener(click);
     

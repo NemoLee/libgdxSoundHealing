@@ -103,6 +103,34 @@ public class AllCards {
 		revealCards = null;
 		revealCards = new Array<Card>();
 		int x = 0;
+		if(SceneHandler.getInstance().getSpread().compareTo(Spread.ANGELS_OF_SOUND) == 0){
+			for(int i = 0; i < 8; i++){
+				if(i%2 == 0){
+					x = MathUtils.random(51);
+				}
+				else{
+					x = MathUtils.random(3)+48;
+				}
+				if(!revealCards.contains(getCard(x), false)){
+					revealCards.add(getCard(x));
+				}
+				else{
+					i--;
+				}
+			}
+		}
+		else if(SceneHandler.getInstance().getSpread().compareTo(Spread.MULTI) == 0){
+			revealCards.add(getCard(MathUtils.random(5)));
+			revealCards.add(getCard(MathUtils.random(5)+6));
+			revealCards.add(getCard(MathUtils.random(5)+12));
+			revealCards.add(getCard(MathUtils.random(5)+18));
+			revealCards.add(getCard(MathUtils.random(5)+24));
+			revealCards.add(getCard(MathUtils.random(5)+30));
+			revealCards.add(getCard(MathUtils.random(5)+36));
+			revealCards.add(getCard(MathUtils.random(5)+42));
+			revealCards.add(getCard(MathUtils.random(3)+48));
+		}
+		else{
 		for(int i = 0; i < SceneHandler.getInstance().getSpread().getNumberOfCards(); i++){
 			if(SceneHandler.getInstance().getSpread().compareTo(Spread.SYMPHONY_OF_LIFE) == 0){
 				if(i == 5){
@@ -122,7 +150,7 @@ public class AllCards {
 				i--;
 			}
 		}
-		System.out.println();
+		}
 		return revealCards;
 	}
 	

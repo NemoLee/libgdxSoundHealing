@@ -50,7 +50,7 @@ public enum CardType {
 		case WHOLEBODY:
 			return "Instruct/instruct_iam.png";
 		case ANGEL:
-			return "Instruct/instruct_ah.png";
+			return "Instruct/instruct_angel.png";
 		case ALL:
 			return "All";
 		default: return "No SUIT";
