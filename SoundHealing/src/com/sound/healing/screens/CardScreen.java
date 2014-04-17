@@ -42,6 +42,11 @@ public class CardScreen extends BaseScreen implements Screen {
 										SceneHandler.getInstance().setPreviousStage(stage);
 										ScreenManager.getInstance().show(com.sound.healing.Screen.BROWSE);
 									}
+									else if(SceneHandler.getInstance().getLoad() == 3){
+										SceneHandler.getInstance().setBack(true);
+										SceneHandler.getInstance().setPreviousStage(stage);
+										ScreenManager.getInstance().show(com.sound.healing.Screen.REVEALINDI);
+									}
 					 		
 	         }
 		};

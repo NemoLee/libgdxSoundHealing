@@ -11,6 +11,7 @@ import com.sound.healing.AssetLoader;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.custom.Spread;
 
 public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
@@ -31,11 +32,15 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 		click = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-
+				 			
 				 			SceneHandler.getInstance().setBack(false);
 				 			SceneHandler.getInstance().setPreviousStage(stage);
-				 			ScreenManager.getInstance().show(com.sound.healing.Screen.CHOOSE);
-	
+				 			if(SceneHandler.getInstance().getSpread().equals(Spread.INDIVIDUAL)){
+				 				ScreenManager.getInstance().show(com.sound.healing.Screen.INDIVIDUAL);
+				 			}
+				 			else{
+				 				ScreenManager.getInstance().show(com.sound.healing.Screen.CHOOSE);
+				 			}
 	         }
 		};
 	}

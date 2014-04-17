@@ -111,7 +111,7 @@ public enum Spread {
 		case ANGELS_OF_SOUND:
 			return 4;
 		case INDIVIDUAL:
-			return 9;
+			return 10;
 		case MULTI:
 			return 9;
 		default:
@@ -289,7 +289,41 @@ public enum Spread {
 
 			return a;
 		case INDIVIDUAL:
+			a.removeAll(a, true);
+			cardWidth = (Gdx.graphics.getWidth()-(8*10))/8;
+			cardHeight = (int)(cardWidth*1.4533);
+			offset = Gdx.graphics.getWidth()/20;
+					
+		
+			a.add(Gdx.graphics.getWidth()/2+cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+1*(offset+cardHeight)+cardHeight/2));
 			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+1*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2+cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+2*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2+cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+3*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2+cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2-cardWidth-cardWidth/2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2+cardWidth*2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)+cardHeight/2));
+			
+			a.add(Gdx.graphics.getWidth()/2-(cardWidth+cardWidth/2)*2);
+			a.add(Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+4*(offset+cardHeight)+cardHeight/2));
 			return a;
 		case MULTI:
 			a.removeAll(a, true);

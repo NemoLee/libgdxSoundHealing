@@ -11,7 +11,8 @@ public class AllCards {
 	
 	private Card[] cards = new Card[52];
 	private Card currentCard;
-	private Array<Card> revealCards, loadCards;
+	private int individual = 0;
+	private Array<Card> revealCards, loadCards, inCards;
 	
 	private static final AllCards INSTANCE = new AllCards();
 	
@@ -170,4 +171,22 @@ public class AllCards {
 	public Array<Card> getLoadedCards() {	
 		return loadCards;
 	}
+
+	public void setIndividual(int individual) {
+		this.individual = individual;
+	}
+	
+	public Array<Card> getIndividual(){
+		inCards = null;
+		inCards = new Array<Card>();
+		for(int i = individual*6; i < individual*6+6; i++){
+			inCards.add(getCard(i));	
+		}
+		inCards.add(getCard(48));
+		inCards.add(getCard(49));
+		inCards.add(getCard(50));
+		inCards.add(getCard(51));
+		return inCards;
+	}
+	
 }
