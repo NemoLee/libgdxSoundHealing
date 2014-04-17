@@ -18,6 +18,7 @@ public class SceneHandler {
 	private CreateLoad createLoad;
 	private CreateLoadReveal createLoadReveal;
 	private CreateBrowse createBrowse;
+	private CreateIndividual createIndividual;
 	private int isLoad = 0;
 	private boolean isBack = false;
 	private Stage previousStage;
@@ -95,6 +96,13 @@ public class SceneHandler {
 		return createBrowse;
 	}
 	
+	public CreateScene getCreateIndividual() {
+		if(createIndividual == null){
+			createIndividual = new CreateIndividual();
+		}
+		return createIndividual;
+	}
+	
 	public void setSpread(Spread spread) {
 		this.spread = spread;
 	}
@@ -133,6 +141,8 @@ public class SceneHandler {
 	public void setBack(boolean isBack) {
 		this.isBack = isBack;
 	}
+
+
 
 
 }

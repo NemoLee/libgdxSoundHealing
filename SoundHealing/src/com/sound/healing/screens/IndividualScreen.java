@@ -36,7 +36,7 @@ public class IndividualScreen extends BaseScreen {
 
 	@Override
 	public void show() {
-		
+		super.show();
 
 	}
 
