@@ -1,7 +1,7 @@
 
 startbutton.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 startbutton
   rotate: false

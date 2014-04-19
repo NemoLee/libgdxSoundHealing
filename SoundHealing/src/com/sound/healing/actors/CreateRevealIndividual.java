@@ -26,7 +26,7 @@ public class CreateRevealIndividual extends CreateScene{
 	
 	private MenuButton backButton, saveButton;
 	private TextButton yes, no;
-	private TextButtonStyle style_info_backbutton, style_info_startButton, style_yesno;
+	private TextButtonStyle style_info_backbutton, style_info_startButton, style_yes,style_no;
 	private Image darkPurple, black, popupBackground;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
@@ -71,45 +71,32 @@ public class CreateRevealIndividual extends CreateScene{
 		//black.setVisible(false);
 		group.addActor(black);
 	   // scene.put((Integer) black.getUserObject(), black);
-	    popupBackground = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
-	    popupBackground.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getWidth()/3);
-	    popupBackground.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/2);
+	    popupBackground = new Image(AssetLoader.manager.get("UI/wait.png", Texture.class));
+	    popupBackground.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/3);
+	    popupBackground.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/3);
 	    popupBackground.setUserObject(x+1);
 	   // popupBackground.setVisible(false);
 	    group.addActor(popupBackground);
 	   // scene.put((Integer) popupBackground.getUserObject(), popupBackground);
-	    
-	    font = new FreeTypeFontParameter();
-	    font.size = Gdx.graphics.getWidth()/25;
-	    descriptionFont = AssetLoader.getInstance().generator.generateFont(font);
-	    style = new LabelStyle(descriptionFont, Color.WHITE);
-	    labelDescription = new Label("All Spread Info Will Be Lost. Continue?", style);
-		labelDescription.setWrap(true);
-		labelDescription.setAlignment(Align.top | Align.center);
-		labelDescription.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getWidth()/4);
-		labelDescription.setUserObject(x+2);
-		labelDescription.setPosition(Gdx.graphics.getWidth()/4,  Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/12);
-		//labelDescription.setVisible(false);
-		group.addActor(labelDescription);
+	   
 		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
 		
-		style_yesno =  createTextButtonStyle("Menu/menubutton.atlas","menu_button","menu_button_dark", Gdx.graphics.getWidth()/18);
-		yes = new TextButton("YES", style_yesno);
-		no = new TextButton("NO", style_yesno);
-		yes.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getWidth()/12);
-		no.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getWidth()/12);
-		yes.setPosition(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/50, Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/50);
-		no.setPosition(Gdx.graphics.getWidth()/4+(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/50), Gdx.graphics.getHeight()/2+Gdx.graphics.getWidth()/50);
-		yes.setUserObject(x+3);
-		no.setUserObject(x+4);
+		style_yes =  createTextButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark", Gdx.graphics.getWidth()/18);
+		style_no =  createTextButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark", Gdx.graphics.getWidth()/18);
+		yes = new TextButton("", style_yes);
+		no = new TextButton("", style_no);
+		yes.setSize(Gdx.graphics.getWidth()/4-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/12);
+		no.setSize(Gdx.graphics.getWidth()/4-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/12);
+		yes.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/3);
+		no.setPosition(Gdx.graphics.getWidth()/4+(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
+		yes.setUserObject(x+2);
+		no.setUserObject(x+3);
 		//yes.setVisible(false);
 		//no.setVisible(false);
 		group.addActor(yes);
 		group.addActor(no);
 		scene.put((Integer) group.getUserObject(), group);
 		
-		//scene.put((Integer) yes.getUserObject(), yes);
-		//scene.put((Integer) no.getUserObject(), no);
 		
 	}
 

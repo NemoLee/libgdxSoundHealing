@@ -16,16 +16,10 @@ import com.sound.healing.custom.Spread;
 public class MainScene extends Game {
     @Override
     public void create() {
-        AssetLoader.getInstance().loadAll();
-        ScreenManager.getInstance().initialize(this);
-        SceneHandler.getInstance().setSpread(Spread.SOUND_ADVICE);
-        Screen.SPREAD_SELECT.getScreenInstance();
-        Screen.INFO.getScreenInstance();
-        Screen.CHOOSE.getScreenInstance();
-        Screen.REVEAL.getScreenInstance();
-        Screen.Card.getScreenInstance();
-        Screen.LOAD.getScreenInstance();
-        ScreenManager.getInstance().show(Screen.MAIN_MENU);
+    	AssetLoader.getInstance().loadSplash();
+    	ScreenManager.getInstance().initialize(this);
+    	ScreenManager.getInstance().show(Screen.SPLASH);
+
     }
  
     @Override

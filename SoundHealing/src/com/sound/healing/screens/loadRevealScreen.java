@@ -38,12 +38,6 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 					 if(event.getListenerActor().equals(stage.getActors().get(flasher))){
 							stage.getActors().get(flasher).clearActions();
 							flasher+=2;
-							if(flasher < 4+(AllCards.getInstance().getLoadedCards().size*2)){
-								stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-							}
-							else{
-								isFlash = false;
-							}
 						AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
@@ -55,6 +49,12 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 								SceneHandler.getInstance().setLoad(0);
 								SceneHandler.getInstance().setBack(false);
 								SceneHandler.getInstance().setPreviousStage(stage);
+								if(flasher < 4+(AllCards.getInstance().getRevealCards().size*2)){
+									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+								}
+								else{
+									isFlash = false;
+								}
 								ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
 								return true;
 							}

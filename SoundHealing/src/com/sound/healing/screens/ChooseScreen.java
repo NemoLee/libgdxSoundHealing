@@ -29,7 +29,9 @@ public class ChooseScreen extends BaseScreen implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				if(!isStopped){
 					stage.getActors().get((Integer)(((Actor) event.getTarget()).getUserObject())).setVisible(false);
-					miniCardShow();
+					if(currentCard <= SceneHandler.getInstance().getSpread().getNumberOfCards()*2){
+						miniCardShow();
+					}
 				}
 			}
 		};
@@ -68,11 +70,11 @@ public class ChooseScreen extends BaseScreen implements Screen {
 					SceneHandler.getInstance().setPreviousStage(stage);
 					ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL);
 				}
+			
 			}
 			
 		})));
 		currentCard+=2;
-		
 	}
 
 	@Override

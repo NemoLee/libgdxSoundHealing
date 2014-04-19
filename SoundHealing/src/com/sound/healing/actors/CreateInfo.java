@@ -63,26 +63,26 @@ public class CreateInfo extends CreateScene{
 		scene.put((Integer) lightPurple.getUserObject(), lightPurple);
 		
 		font = new FreeTypeFontParameter();
-		font.size = Gdx.graphics.getWidth()/17;
+		font.size = Gdx.graphics.getWidth()/15;
 		titleFont = AssetLoader.getInstance().generator.generateFont(font);
 		labelTitle = new Label(SceneHandler.getInstance().getSpread().toString(), new LabelStyle(titleFont, Color.WHITE));
 		labelTitle.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/20);
 		labelTitle.setUserObject(6);
-		labelTitle.setPosition(Gdx.graphics.getWidth()/100,  Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/5+darkPurple.getHeight()+Gdx.graphics.getHeight()/30));
+		labelTitle.setPosition(Gdx.graphics.getWidth()/50,  Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/5+darkPurple.getHeight()+Gdx.graphics.getHeight()/30));
 		scene.put((Integer) labelTitle.getUserObject(), labelTitle);
 	
 		font2 = new FreeTypeFontParameter();
 		fontAngel = new FreeTypeFontParameter();
 		fontIndividual = new FreeTypeFontParameter();
 		fontMulti = new FreeTypeFontParameter();
-		font2.size = Gdx.graphics.getWidth()/25;
-		fontAngel.size = Gdx.graphics.getWidth()/28;
-		fontIndividual.size = Gdx.graphics.getWidth()/35;
-		fontMulti.size = Gdx.graphics.getWidth()/28;
-		descriptionFont = AssetLoader.getInstance().generator.generateFont(font2);
-		descriptionFontAngel = AssetLoader.getInstance().generator.generateFont(fontAngel);
-		descriptionFontIndividual = AssetLoader.getInstance().generator.generateFont(fontIndividual);
-		descriptionFontMulti = AssetLoader.getInstance().generator.generateFont(fontMulti);
+		font2.size = Gdx.graphics.getWidth()/30;
+		fontAngel.size = Gdx.graphics.getWidth()/34;
+		fontIndividual.size = Gdx.graphics.getWidth()/41;
+		fontMulti.size = Gdx.graphics.getWidth()/38;
+		descriptionFont = AssetLoader.getInstance().generator2.generateFont(font2);
+		descriptionFontAngel = AssetLoader.getInstance().generator2.generateFont(fontAngel);
+		descriptionFontIndividual = AssetLoader.getInstance().generator2.generateFont(fontIndividual);
+		descriptionFontMulti = AssetLoader.getInstance().generator2.generateFont(fontMulti);
 		style = new LabelStyle(descriptionFont, Color.WHITE);
 		styleAngel = new LabelStyle(descriptionFontAngel, Color.WHITE);
 		styleIndividual = new LabelStyle(descriptionFontIndividual, Color.WHITE);
@@ -91,9 +91,9 @@ public class CreateInfo extends CreateScene{
 		labelDescription = new Label(SceneHandler.getInstance().getSpread().getInfoDescription(), getStyle());
 		labelDescription.setWrap(true);
 		labelDescription.setAlignment(Align.top | Align.left, Align.left);
-		labelDescription.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/200, Gdx.graphics.getHeight()/6);
+		labelDescription.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/25, Gdx.graphics.getHeight()/6);
 		labelDescription.setUserObject(7);
-		labelDescription.setPosition(Gdx.graphics.getWidth()/100,  Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/4+darkPurple.getHeight()+Gdx.graphics.getHeight()/7));
+		labelDescription.setPosition(Gdx.graphics.getWidth()/50,  Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/4+darkPurple.getHeight()+Gdx.graphics.getHeight()/7));
 		scene.put((Integer) labelDescription.getUserObject(), labelDescription);
 		
 	}

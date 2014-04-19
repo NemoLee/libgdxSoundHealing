@@ -121,6 +121,7 @@ public class CreateBrowse extends CreateScene{
 		container = new Table();
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), (Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
 		scroll = new ScrollPane(table);
+		scroll.setFlingTime(1.4f);
 		container.add(scroll).width(Gdx.graphics.getWidth()).height((Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
 		container.row();
 		container.setUserObject(3);

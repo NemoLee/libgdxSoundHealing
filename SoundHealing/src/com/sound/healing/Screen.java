@@ -11,17 +11,20 @@ import com.sound.healing.screens.MainMenuScreen;
 import com.sound.healing.screens.MoreInfoScreen;
 import com.sound.healing.screens.RevealIndividualScreen;
 import com.sound.healing.screens.RevealScreen;
+import com.sound.healing.screens.SplashScreen;
 import com.sound.healing.screens.SpreadSelectScreen;
 import com.sound.healing.screens.loadRevealScreen;
 
 public enum Screen {
 	 
-	MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL, INDIVIDUAL, REVEALINDI;
+	SPLASH,MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL, INDIVIDUAL, REVEALINDI;
  
 	
 	
 	public com.badlogic.gdx.Screen getScreenInstance(){
 		switch(this){
+		case SPLASH:
+			return new SplashScreen(SceneHandler.getInstance().getCreateSplash());
 		case MAIN_MENU:
 			return new MainMenuScreen(SceneHandler.getInstance().getCreateMainMenu());
 		case BROWSE:  

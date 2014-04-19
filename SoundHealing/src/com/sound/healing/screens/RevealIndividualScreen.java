@@ -81,16 +81,6 @@ public class RevealIndividualScreen extends BaseScreen {
 								stage.getActors().get(flasher+2).clearActions();
 								flasher+=4;
 								pick++;
-								if(pick < 3){
-									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-									stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-								}
-								else{
-									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-									stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-									stage.getActors().get(flasher+4).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-									stage.getActors().get(flasher+6).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-								}
 								AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 								SceneHandler.getInstance().setCurrentSpreadStage(stage);
 								isCardFlip = true;
@@ -102,6 +92,16 @@ public class RevealIndividualScreen extends BaseScreen {
 										SceneHandler.getInstance().setLoad(3);
 										SceneHandler.getInstance().setBack(false);
 										SceneHandler.getInstance().setPreviousStage(stage);
+										if(pick < 3){
+											stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+											stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+										}
+										else{
+											stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+											stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+											stage.getActors().get(flasher+4).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+											stage.getActors().get(flasher+6).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+										}
 										ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
 										return true;
 									}
@@ -208,8 +208,8 @@ public class RevealIndividualScreen extends BaseScreen {
 				stage.getActors().get(i).addListener(flip);
 			}
 			
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(yes);
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(4).addListener(no);
+			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(2).addListener(yes);
+			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(no);
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 			stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 		}

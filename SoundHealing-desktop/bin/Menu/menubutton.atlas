@@ -1,7 +1,7 @@
 
 menubutton.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 menu_button
   rotate: false

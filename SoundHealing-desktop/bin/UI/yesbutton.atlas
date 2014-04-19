@@ -1,0 +1,19 @@
+
+yesbutton.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+yesbutton
+  rotate: false
+  xy: 1, 1
+  size: 152, 54
+  orig: 152, 54
+  offset: 0, 0
+  index: -1
+yesbutton_dark
+  rotate: false
+  xy: 155, 1
+  size: 152, 54
+  orig: 152, 54
+  offset: 0, 0
+  index: -1

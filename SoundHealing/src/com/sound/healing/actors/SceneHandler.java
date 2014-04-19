@@ -20,6 +20,7 @@ public class SceneHandler {
 	private CreateBrowse createBrowse;
 	private CreateIndividual createIndividual;
 	private CreateRevealIndividual createRevealIndividual;
+	private CreateSplash createSplash;
 	private int isLoad = 0;
 	private boolean isBack = false;
 	private Stage previousStage;
@@ -109,6 +110,13 @@ public class SceneHandler {
 			createRevealIndividual = new CreateRevealIndividual();
 		}
 		return createRevealIndividual;
+	}
+	
+	public CreateScene getCreateSplash() {
+		if(createSplash == null){
+			createSplash = new CreateSplash();
+		}
+		return createSplash;
 	}
 
 	public void setSpread(Spread spread) {

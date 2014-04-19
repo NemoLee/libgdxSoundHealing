@@ -92,15 +92,15 @@ public class CreateCard extends CreateScene{
 		font2.size = Gdx.graphics.getWidth()/25;
 		descriptionFont = AssetLoader.getInstance().generator.generateFont(font2);
 		style = new LabelStyle(descriptionFont, Color.WHITE);
-		labelDescription = new Label("DESCRIPTION:\n\n"+(String) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.DESCRIPTION.getEnumID()), style);
+		labelDescription = new Label("\n\nDESCRIPTION:\n\n"+(String) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.DESCRIPTION.getEnumID()), style);
 		labelDescription.setWrap(true);
 		labelDescription.setAlignment(Align.top | Align.left, Align.left);
-		labelDescription.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/200, Gdx.graphics.getHeight()/2);
+		labelDescription.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/50, Gdx.graphics.getHeight()/2);
 		labelDescription.setUserObject(4);
 		labelDescription.setPosition(Gdx.graphics.getWidth()/100,  Gdx.graphics.getHeight()/2);
 		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
 		table.top();
-	    table.add(labelDescription).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
+	    table.add(labelDescription).padLeft(Gdx.graphics.getWidth()/100).padRight(Gdx.graphics.getWidth()/100).size(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/50, Gdx.graphics.getHeight()/2);
 	    table.row();
 	   
 	    sound1 = new Image(AssetLoader.manager.get("Instruct/instruct_i.png", Texture.class));

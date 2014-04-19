@@ -1,0 +1,19 @@
+
+nobutton.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+nobutton
+  rotate: false
+  xy: 1, 1
+  size: 152, 55
+  orig: 152, 55
+  offset: 0, 0
+  index: -1
+nobutton_dark
+  rotate: false
+  xy: 155, 1
+  size: 152, 55
+  orig: 152, 55
+  offset: 0, 0
+  index: -1

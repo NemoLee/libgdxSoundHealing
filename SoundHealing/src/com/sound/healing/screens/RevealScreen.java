@@ -104,12 +104,7 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 					 if(event.getListenerActor().equals(stage.getActors().get(flasher))){
 							stage.getActors().get(flasher).clearActions();
 							flasher+=2;
-							if(flasher < 4+(AllCards.getInstance().getRevealCards().size*2)){
-								stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
-							}
-							else{
-								isFlash = false;
-							}
+
 						AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
@@ -121,6 +116,12 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 								SceneHandler.getInstance().setLoad(1);
 								SceneHandler.getInstance().setBack(false);
 								SceneHandler.getInstance().setPreviousStage(stage);
+								if(flasher < 4+(AllCards.getInstance().getRevealCards().size*2)){
+									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+								}
+								else{
+									isFlash = false;
+								}
 								ScreenManager.getInstance().show(com.sound.healing.Screen.Card);
 								return true;
 							}
@@ -190,8 +191,8 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				stage.getActors().get(i).addListener(flip);
 			}
 			
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(yes);
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(4).addListener(no);
+			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(2).addListener(yes);
+			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(no);
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 		}
 		

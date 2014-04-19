@@ -68,16 +68,36 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 
 	@Override
 	public void show() {
-	if(SceneHandler.getInstance().isBack()){
-		super.show();
-	}
-	else{
+		stage.clear();
+		transitionStage.clear();
+		transitionStage = SceneHandler.getInstance().getPreviousStage();
+		scene.reset();
+		stage = scene.getSpec().createStage();
+
+		if(SceneHandler.getInstance().isBack()){
+			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(transitionStage.getWidth(), 0, 0.4f)));
+	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
+		}
+		else{
+		transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(-transitionStage.getWidth(), 0, 0.4f)));
+	 	stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f), Actions.run(new Runnable(){
+	 		@Override
+	 		public void run() {
+	 			AssetLoader.manager.unload("Splash/splash.png");
+	 			AssetLoader.manager.unload("Splash/loading.png");
+	 			ScreenManager.getInstance().dispose(Screen.SPLASH);
+	 		}
+	 	})));
+		}
+ 		Gdx.input.setInputProcessor(stage);
+	//}
+	/*else{
 		stage.clear();
 		transitionStage.clear();
 		stage = scene.getSpec().createStage();
 		Gdx.input.setInputProcessor(stage);
 	}
-	
+	*/
 	stage.getActors().get(3).addListener(click);
 	stage.getActors().get(4).addListener(click3);
 	stage.getActors().get(5).addListener(click2);
