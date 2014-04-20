@@ -43,7 +43,7 @@ public class CreateChoose extends CreateScene{
 
 
 	private void setupMovingCards() {
-		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		darkPurple = new Image(allAtlas.findRegion("darkpurp"));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		darkPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2);
 		darkPurple.setUserObject(2);
@@ -51,7 +51,7 @@ public class CreateChoose extends CreateScene{
 		
 		bigCards = new Image[3];
 		for(int i = 0; i < 3; i++){
-			bigCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
+			bigCards[i] = new Image(allAtlas.findRegion("bigcard"));
 			bigCards[i].setSize(Gdx.graphics.getWidth()/3, (float)(Gdx.graphics.getWidth()/3*1.4533));
 			bigCards[i].setUserObject(i+3);
 		}
@@ -66,7 +66,7 @@ public class CreateChoose extends CreateScene{
 
 
 	private void setupMiniCards() {
-		lightPurple = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+		lightPurple = new Image(allAtlas.findRegion("lightpurp"));
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		lightPurple.setUserObject(6);
@@ -80,8 +80,8 @@ public class CreateChoose extends CreateScene{
 		cardGroup.setLayoutEnabled(false);
 		cardGroup.setUserObject(7);
 		for(int i = 0; i < miniCards.length; i++){
-			miniCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
-			miniCardsBG[i] = new Image(AssetLoader.manager.get("Choose/minicard_bg.png", Texture.class));
+			miniCards[i] = new Image(allAtlas.findRegion("bigcard"));
+			miniCardsBG[i] = new Image(allAtlas.findRegion("minicard_bg"));
 			miniCards[i].setSize(Gdx.graphics.getWidth()/10, (float) ((Gdx.graphics.getWidth()/10)*1.4533));
 			miniCards[i].setPosition((miniCards[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
 			miniCards[i].setUserObject(i+9);
@@ -95,7 +95,7 @@ public class CreateChoose extends CreateScene{
 	}
 	
 	private void setupSmallPurple() {
-		smallPurple = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+		smallPurple = new Image(allAtlas.findRegion("lightpurp"));
 		smallPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/20);
 		smallPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/2);
 		smallPurple.setUserObject(8);
@@ -114,8 +114,8 @@ public class CreateChoose extends CreateScene{
 		cardGroup.setLayoutEnabled(false);
 		cardGroup.setUserObject(7);
 		for(int i = 0; i < miniCards.length; i++){
-			miniCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
-			miniCardsBG[i] = new Image(AssetLoader.manager.get("Choose/minicard_bg.png", Texture.class));
+			miniCards[i] = new Image(allAtlas.findRegion("bigcard"));
+			miniCardsBG[i] = new Image(allAtlas.findRegion("minicard_bg"));
 			miniCards[i].setSize(Gdx.graphics.getWidth()/10, (float) ((Gdx.graphics.getWidth()/10)*1.4533));
 			miniCards[i].setUserObject(i+9);
 			miniCards[i].setVisible(false);

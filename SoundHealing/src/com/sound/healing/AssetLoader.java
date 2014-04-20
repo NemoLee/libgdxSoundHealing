@@ -203,19 +203,16 @@ public class AssetLoader {
 		generator2 = new FreeTypeFontGenerator(Gdx.files.internal("Font/sans.ttf"));
 		font = new FreeTypeFontParameter();
 
-		manager.load("Menu/start.png", Texture.class , param);
-		manager.load("Menu/browse.png", Texture.class ,param);
-		manager.load("Menu/load.png", Texture.class ,param);
-		manager.load("Menu/more_info.png", Texture.class ,param);
-		manager.load("Menu/menu_title_background.png", Texture.class ,param);
-		manager.load("Menu/menu_title.png", Texture.class, param); 
-		manager.load("Menu/menu_author.png", Texture.class, param);	
+		//loadMenu
+	//	manager.load("Menu/menu.atlas", TextureAtlas.class);
 		manager.load("Menu/menubutton.atlas", TextureAtlas.class);
+		manager.load("All/all.atlas", TextureAtlas.class);
 		
 		manager.load("Back/backbutton.atlas", TextureAtlas.class);
-		manager.load("Top/top_header.png", Texture.class ,param);
+		//manager.load("Top/top_header.png", Texture.class ,param);
 		manager.load("Back/backbuttonsmall.atlas", TextureAtlas.class);
 		
+		/*
 		manager.load("Select/select_soundadvice.png", Texture.class ,param);
 		manager.load("Select/select_symphony.png", Texture.class ,param);
 		manager.load("Select/select_duet.png", Texture.class ,param);
@@ -241,8 +238,14 @@ public class AssetLoader {
 		
 		manager.load("Choose/bigcard.png", Texture.class ,param);
 		manager.load("Choose/minicard_bg.png", Texture.class ,param);
-		
+		*/
+		manager.load("Info/startbutton.atlas", TextureAtlas.class);
 		manager.load("Reveal/savebutton.atlas", TextureAtlas.class);
+		manager.load("Card/flipbutton.atlas", TextureAtlas.class);
+		manager.load("UI/yesbutton.atlas", TextureAtlas.class);
+		manager.load("UI/nobutton.atlas", TextureAtlas.class);
+		
+		
 		manager.load("Card/1.png", Texture.class, param);
 		manager.load("Card/2.png", Texture.class, param);
 		manager.load("Card/3.png", Texture.class, param);
@@ -295,13 +298,12 @@ public class AssetLoader {
 		manager.load("Card/50.png", Texture.class, param);
 		manager.load("Card/51.png", Texture.class, param);
 		manager.load("Card/52.png", Texture.class, param);
-		manager.load("UI/yesbutton.atlas", TextureAtlas.class);
-		manager.load("UI/nobutton.atlas", TextureAtlas.class);	
+	
 		manager.load("UI/wait.png", Texture.class, param);
-		manager.load("Card/flipbutton.atlas", TextureAtlas.class);
 		
 		
 		
+		/*
 		manager.load("Instruct/instruct_ah.png", Texture.class,param);
 		manager.load("Instruct/instruct_ay.png", Texture.class,param);
 		manager.load("Instruct/instruct_ee.png", Texture.class,param);
@@ -320,7 +322,7 @@ public class AssetLoader {
 		manager.load("Card/spread8_6.png", Texture.class ,param);
 		manager.load("Card/spread8_7.png", Texture.class ,param);
 		manager.load("Card/spread8_8.png", Texture.class ,param);
-
+		 
 		
 		manager.load("Browse/select_type_down.png", Texture.class ,param);	
 		manager.load("Browse/select_type_up.png", Texture.class ,param);
@@ -333,7 +335,7 @@ public class AssetLoader {
 		manager.load("Browse/solarplexusbtn.png", Texture.class ,param);
 		manager.load("Browse/wholebodybtn.png", Texture.class ,param);
 		manager.load("Browse/angelcardsbtn.png", Texture.class ,param);
-
-		manager.finishLoading();
+	*/
+		//manager.finishLoading();
 	}
 }

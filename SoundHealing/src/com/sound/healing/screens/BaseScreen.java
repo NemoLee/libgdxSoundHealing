@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
+import com.sound.healing.actors.CreateSplash;
 import com.sound.healing.actors.SceneHandler;
 
 public abstract class BaseScreen implements Screen{
@@ -18,6 +19,7 @@ public abstract class BaseScreen implements Screen{
 	protected OrthographicCamera camera;
 	protected Stage stage, transitionStage;
 	protected CreateScene scene;
+	protected CreateSplash scene2;
 	//protected ScreenSpec screenSpec;
 	public BaseScreen(CreateScene scene) {
 		batch = new SpriteBatch();
@@ -26,6 +28,17 @@ public abstract class BaseScreen implements Screen{
 		camera = new OrthographicCamera(WIDTH,HEIGHT);
 		camera.setToOrtho(false, WIDTH/5, HEIGHT/5);
 		this.scene = scene;
+		stage = new Stage(WIDTH, HEIGHT);
+		transitionStage = new Stage(WIDTH,HEIGHT);
+	}
+	
+	public BaseScreen(CreateSplash scene){
+		batch = new SpriteBatch();
+		WIDTH = Gdx.graphics.getWidth()/5;
+		HEIGHT = Gdx.graphics.getHeight()/5;
+		camera = new OrthographicCamera(WIDTH,HEIGHT);
+		camera.setToOrtho(false, WIDTH/5, HEIGHT/5);
+		scene2 = scene;
 		stage = new Stage(WIDTH, HEIGHT);
 		transitionStage = new Stage(WIDTH,HEIGHT);
 	}

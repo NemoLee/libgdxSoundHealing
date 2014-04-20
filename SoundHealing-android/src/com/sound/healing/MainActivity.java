@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class MainActivity extends AndroidApplication {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    @Override 
+    public void onCreate(Bundle savedInstanceState) { 
         super.onCreate(savedInstanceState);
         
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();

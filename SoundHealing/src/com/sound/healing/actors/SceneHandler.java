@@ -112,7 +112,7 @@ public class SceneHandler {
 		return createRevealIndividual;
 	}
 	
-	public CreateScene getCreateSplash() {
+	public CreateSplash getCreateSplash() {
 		if(createSplash == null){
 			createSplash = new CreateSplash();
 		}

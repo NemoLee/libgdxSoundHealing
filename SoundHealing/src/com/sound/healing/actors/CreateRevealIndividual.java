@@ -63,7 +63,7 @@ public class CreateRevealIndividual extends CreateScene{
 		group.setPosition(0, 0);
 		group.setUserObject(x);
 		group.setVisible(false);
-		black = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		black = new Image(allAtlas.findRegion("darkpurp"));
 		black.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black.setPosition(0, 0);
 		black.addAction(Actions.alpha(0.8f));
@@ -101,7 +101,7 @@ public class CreateRevealIndividual extends CreateScene{
 	}
 
 	private void setupReveal() {
-		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		darkPurple = new Image(allAtlas.findRegion("darkpurp"));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2+Gdx.graphics.getHeight()/5-Gdx.graphics.getHeight()/120);
 		darkPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		darkPurple.setUserObject(3);
@@ -111,7 +111,7 @@ public class CreateRevealIndividual extends CreateScene{
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
-			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
+			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);
@@ -168,7 +168,7 @@ public class CreateRevealIndividual extends CreateScene{
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
-			backCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
+			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
 			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);

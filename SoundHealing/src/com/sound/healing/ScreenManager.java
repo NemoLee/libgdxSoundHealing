@@ -33,7 +33,6 @@ public final class ScreenManager {
         if (!screens.containsKey(screen.ordinal())) {
             screens.put(screen.ordinal(), screen.getScreenInstance());
         }
-    
         game.setScreen(screens.get(screen.ordinal()));
     }
     

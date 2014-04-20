@@ -39,23 +39,23 @@ public enum Spread {
 	public String getInfocard(){
 		switch(this){
 			case SOUND_ADVICE:
-				return "Info/infocard1.png";
+				return "infocard1";
 			case SYMPHONY_OF_LIFE:
-				return "Info/infocard2.png";
+				return "infocard2";
 			case DUET:
-				return "Info/infocard3.png";
+				return "infocard3";
 			case HEARTSONG:
-				return "Info/infocard4.png";
+				return "infocard4";
 			case RETUNING:
-				return "Info/infocard5.png";
+				return "infocard5";
 			case SINGING_EARTH:
-				return "Info/infocard6.png";
+				return "infocard6";
 			case ANGELS_OF_SOUND:
-				return "Info/infocard8.png";
+				return "infocard8";
 			case INDIVIDUAL:
-				return "Info/infocard9.png";
+				return "infocard9";
 			case MULTI:
-				return "Info/infocard7.png";
+				return "infocard7";
 			default:
 				return "";
 		}

@@ -24,8 +24,10 @@ public class CreateScene {
 	protected ScreenSpec spec;
 	protected HashMap<Integer, Actor> scene;
 	protected TopImage topImage;
+	protected TextureAtlas allAtlas;
 	
 	public CreateScene() {
+		allAtlas = AssetLoader.manager.get("All/all.atlas", TextureAtlas.class);
 		scene = new HashMap<Integer, Actor>();
 	}
 	
@@ -34,7 +36,7 @@ public class CreateScene {
 	}
 	
 	protected void setupTop(String title) {
-		topImage = new TopImage(title, new TextButtonStyle(null, null, null, new BitmapFont()), AssetLoader.manager.get("Top/top_header.png", Texture.class), Gdx.graphics.getWidth()/12, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		topImage = new TopImage(title, new TextButtonStyle(null, null, null, new BitmapFont()),allAtlas.findRegion("top_header"), Gdx.graphics.getWidth()/12, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		topImage.setPosition(0, Gdx.graphics.getHeight()-topImage.getHeight());
 		topImage.setUserObject(0);
 		scene.put((Integer) topImage.getUserObject(), topImage);	

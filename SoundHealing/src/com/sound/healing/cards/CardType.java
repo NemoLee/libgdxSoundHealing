@@ -34,23 +34,23 @@ public enum CardType {
 		public String getSoundID(){
 		switch(this){
 		case ROOT:
-			return "Instruct/instruct_ah.png";
+			return "instruct_ah";
 		case SACRAL:
-			return "Instruct/instruct_ay.png";
+			return "instruct_ay";
 		case SOLARPLEXUS:
-			return "Instruct/instruct_or.png";
+			return "instruct_or";
 		case HEART:
-			return "Instruct/instruct_oh.png";
+			return "instruct_oh";
 		case THROAT:
-			return "Instruct/instruct_ee.png";
+			return "instruct_ee";
 		case THIRDEYE:
-			return "Instruct/instruct_ohm.png";
+			return "instruct_ohm";
 		case CROWN:
-			return "Instruct/instruct_ooh.png";
+			return "instruct_ooh";
 		case WHOLEBODY:
-			return "Instruct/instruct_iam.png";
+			return "instruct_iam";
 		case ANGEL:
-			return "Instruct/instruct_angel.png";
+			return "instruct_angel";
 		case ALL:
 			return "All";
 		default: return "No SUIT";

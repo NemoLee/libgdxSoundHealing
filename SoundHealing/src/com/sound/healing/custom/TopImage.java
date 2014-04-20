@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -19,10 +20,10 @@ public class TopImage extends TextButton{
 	private FreeTypeFontParameter font;
 	private NinePatch temp;
 	
-	public TopImage(String text, TextButtonStyle style, Texture image, int size, float WIDTH, float HEIGHT) {
+	public TopImage(String text, TextButtonStyle style, AtlasRegion atlasRegion, int size, float WIDTH, float HEIGHT) {
 		//might change to text button
 		super(text, style);
-		temp = new NinePatch(image, 0, 0, 0, 0);
+		temp = new NinePatch(atlasRegion, 0, 0, 0, 0);
 		skin = new Skin();
 		skin.add("top", temp);
 		font = new FreeTypeFontParameter();

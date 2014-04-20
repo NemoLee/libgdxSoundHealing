@@ -1,19 +1,29 @@
 package com.sound.healing.actors;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.screens.ScreenSpec;
 
-public class CreateSplash extends CreateScene{
+public class CreateSplash{
 	
+	protected ScreenSpec spec;
+	protected HashMap<Integer, Actor> scene;
 	private Image background, rotate;
 	
 	public CreateSplash() {
+		scene = new HashMap<Integer, Actor>();
 		setupBackground();
 		setupForground();
 		spec = new ScreenSpec(scene);
+	}
+	
+	public ScreenSpec getSpec() {
+		return spec;
 	}
 
 	private void setupBackground() {

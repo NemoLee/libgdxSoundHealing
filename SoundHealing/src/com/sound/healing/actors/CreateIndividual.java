@@ -29,7 +29,7 @@ public class CreateIndividual extends CreateScene{
 	}
 
 	private void setupMiddle() {
-		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		darkPurple = new Image(allAtlas.findRegion("darkpurp"));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		darkPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2);
 		darkPurple.setUserObject(1);
@@ -37,12 +37,12 @@ public class CreateIndividual extends CreateScene{
 		
 		
 		bigCards = new Image[6];
-		bigCards[0] = new Image(AssetLoader.manager.get("Card/spread8_1.png", Texture.class));
-		bigCards[1] = new Image(AssetLoader.manager.get("Card/spread8_2.png", Texture.class));
-		bigCards[2] = new Image(AssetLoader.manager.get("Card/spread8_3.png", Texture.class));
-		bigCards[3] = new Image(AssetLoader.manager.get("Card/spread8_4.png", Texture.class));
-		bigCards[4] = new Image(AssetLoader.manager.get("Card/spread8_5.png", Texture.class));
-		bigCards[5] = new Image(AssetLoader.manager.get("Card/spread8_6.png", Texture.class));
+		bigCards[0] = new Image(allAtlas.findRegion("spread8_1"));
+		bigCards[1] = new Image(allAtlas.findRegion("spread8_2"));
+		bigCards[2] = new Image(allAtlas.findRegion("spread8_3"));
+		bigCards[3] = new Image(allAtlas.findRegion("spread8_4"));
+		bigCards[4] = new Image(allAtlas.findRegion("spread8_5"));
+		bigCards[5] = new Image(allAtlas.findRegion("spread8_6"));
 
 		
 		for(int i = 0; i < 6; i++){
@@ -67,7 +67,7 @@ public class CreateIndividual extends CreateScene{
 	}
 	
 	private void setupMiniCards() {
-		lightPurple = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+		lightPurple = new Image(allAtlas.findRegion("lightpurp"));
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		lightPurple.setUserObject(8);
@@ -81,8 +81,8 @@ public class CreateIndividual extends CreateScene{
 		cardGroup.setLayoutEnabled(false);
 		cardGroup.setUserObject(9);
 		for(int i = 0; i < miniCards.length; i++){
-			miniCards[i] = new Image(AssetLoader.manager.get("Choose/bigcard.png", Texture.class));
-			miniCardsBG[i] = new Image(AssetLoader.manager.get("Choose/minicard_bg.png", Texture.class));
+			miniCards[i] = new Image(allAtlas.findRegion("bigcard"));
+			miniCardsBG[i] = new Image(allAtlas.findRegion("minicard_bg"));
 			miniCards[i].setSize(Gdx.graphics.getWidth()/10, (float) ((Gdx.graphics.getWidth()/10)*1.4533));
 			miniCards[i].setPosition((miniCards[i].getWidth()+Gdx.graphics.getWidth()/20)*i,0);
 			miniCards[i].setUserObject(i);
@@ -97,7 +97,7 @@ public class CreateIndividual extends CreateScene{
 	
 	
 	private void setupSmallPurple() {
-		smallPurple = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+		smallPurple = new Image(allAtlas.findRegion("lightpurp"));
 		smallPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/20);
 		smallPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/2);
 		smallPurple.setUserObject(10);

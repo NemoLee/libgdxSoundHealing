@@ -54,80 +54,80 @@ public class CreateSpreadSelect extends CreateScene{
 
 	    soundAdvice = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    soundAdvice.setUserObject(3);
-	    image = new Image(AssetLoader.manager.get("Select/select_soundadvice.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_soundadvice"));
 	    image.setUserObject(3);
 	    soundAdvice.add(image);
 	   
 	    table.add(soundAdvice).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    table.row();
 
-	   // style[1].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_symphony.png", Texture.class)));
+	   // style[1].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_symphony")));
 		symphonyOfLife = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		symphonyOfLife.setUserObject(4);
-	    image = new Image(AssetLoader.manager.get("Select/select_symphony.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_symphony"));
 	    image.setUserObject(4);
 		symphonyOfLife.add(image);
 		table.add(symphonyOfLife).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	  //  style[2].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_duet.png", Texture.class)));
+	  //  style[2].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_duet")));
 	    duet = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    duet.setUserObject(5);
-	    image = new Image(AssetLoader.manager.get("Select/select_duet.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_duet"));
 	    image.setUserObject(5);
 	    duet.add(image);
 		table.add(duet).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	   // style[3].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_heartsong.png", Texture.class)));
+	   // style[3].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_heartsong")));
 	    heartSong = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    heartSong.setUserObject(6);
-	    image = new Image(AssetLoader.manager.get("Select/select_heartsong.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_heartsong"));
 	    image.setUserObject(6);
 	    heartSong.add(image);
 		table.add(heartSong).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	  //  style[4].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_retuning.png", Texture.class)));
+	  //  style[4].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_retuning")));
 	    retuning = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    retuning.setUserObject(7);
-	    image = new Image(AssetLoader.manager.get("Select/select_retuning.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_retuning"));
 	    image.setUserObject(7);
 	    retuning.add(image);
 		table.add(retuning).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	  //  style[5].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_singingearth.png", Texture.class)));
+	  //  style[5].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_singingearth")));
 	    singingEarth = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    singingEarth.setUserObject(8);
-	    image = new Image(AssetLoader.manager.get("Select/select_singingearth.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_singingearth"));
 	    image.setUserObject(8);
 	    singingEarth.add(image);
 		table.add(singingEarth).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	  //  style[6].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_angel.png", Texture.class)));
+	  //  style[6].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_angel")));
 	    angelsOfSound = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    angelsOfSound.setUserObject(9);
-	    image = new Image(AssetLoader.manager.get("Select/select_angel.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_angel"));
 	    image.setUserObject(9);
 	    angelsOfSound.add(image);
 		table.add(angelsOfSound).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	 //   style[7].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_individual.png", Texture.class)));
+	 //   style[7].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_individual")));
 	    individual = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    individual.setUserObject(10);
-	    image = new Image(AssetLoader.manager.get("Select/select_individual.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_individual"));
 	    image.setUserObject(10);
 	    individual.add(image);
 		table.add(individual).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 		table.row();
 		
-	   // style[8].imageUp =  new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Select/select_multi.png", Texture.class)));
+	   // style[8].imageUp =  new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("select_multi")));
 	    multi = new SelectImageButton(style,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);
 	    multi.setUserObject(11);
-	    image = new Image(AssetLoader.manager.get("Select/select_multi.png", Texture.class));
+	    image = new Image(allAtlas.findRegion("select_multi"));
 	    image.setUserObject(11);
 	    multi.add(image);
 	    table.add(multi).size(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/6);

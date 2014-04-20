@@ -38,7 +38,7 @@ public class CreateBrowse extends CreateScene{
 	}
 
 	private void setupOverlay() {
-		textureRegion = new TextureRegion(AssetLoader.manager.get("Browse/select_type_down.png", Texture.class));
+		textureRegion = new TextureRegion(allAtlas.findRegion("select_type_down"));
 		textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 		selectType = new Image(textureRegionDrawable);
 		selectType.setUserObject(2);
@@ -48,35 +48,35 @@ public class CreateBrowse extends CreateScene{
 		float offset = (Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight()));
 		
 		
-		root = new Image(AssetLoader.manager.get("Browse/rootbtn.png", Texture.class));
+		root = new Image(allAtlas.findRegion("rootbtn"));
 		root.setUserObject(4);
 		root.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		root.setPosition(0, offset+backButton.getHeight()-offset/6);
 		root.setVisible(false);
 		scene.put((Integer) root.getUserObject(), root);
 		
-		sacral = new Image(AssetLoader.manager.get("Browse/sacralbtn.png", Texture.class));
+		sacral = new Image(allAtlas.findRegion("sacralbtn"));
 		sacral.setUserObject(5);
 		sacral.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		sacral.setPosition(Gdx.graphics.getWidth()/2, offset+backButton.getHeight()-offset/6);
 		sacral.setVisible(false);
 		scene.put((Integer) sacral.getUserObject(), sacral);
 		
-		throat = new Image(AssetLoader.manager.get("Browse/throatbtn.png", Texture.class));
+		throat = new Image(allAtlas.findRegion("throatbtn"));
 		throat.setUserObject(6);
 		throat.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		throat.setPosition(0, offset+backButton.getHeight()-(offset/6)*2);
 		throat.setVisible(false);
 		scene.put((Integer) throat.getUserObject(), throat);
 		
-		heart = new Image(AssetLoader.manager.get("Browse/heartbtn.png", Texture.class));
+		heart = new Image(allAtlas.findRegion("heartbtn"));
 		heart.setUserObject(7);
 		heart.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		heart.setPosition(Gdx.graphics.getWidth()/2, offset+backButton.getHeight()-(offset/6)*2);
 		heart.setVisible(false);
 		scene.put((Integer) heart.getUserObject(), heart);
 		
-		thirdEye = new Image(AssetLoader.manager.get("Browse/thirdeyebtn.png", Texture.class));
+		thirdEye = new Image(allAtlas.findRegion("thirdeyebtn"));
 		thirdEye.setUserObject(8);
 		thirdEye.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		thirdEye.setPosition(0, offset+backButton.getHeight()-(offset/6)*3);
@@ -84,7 +84,7 @@ public class CreateBrowse extends CreateScene{
 		scene.put((Integer) thirdEye.getUserObject(), thirdEye);
 		
 		
-		crown = new Image(AssetLoader.manager.get("Browse/crownbtn.png", Texture.class));
+		crown = new Image(allAtlas.findRegion("crownbtn"));
 		crown.setUserObject(9);
 		crown.setSize(Gdx.graphics.getWidth()/2, offset/6);
 		crown.setPosition(Gdx.graphics.getWidth()/2, offset+backButton.getHeight()-(offset/6)*3);
@@ -92,21 +92,21 @@ public class CreateBrowse extends CreateScene{
 		scene.put((Integer) crown.getUserObject(), crown);
 		
 		
-		solar = new Image(AssetLoader.manager.get("Browse/solarplexusbtn.png", Texture.class));
+		solar = new Image(allAtlas.findRegion("solarplexusbtn"));
 		solar.setUserObject(10);
 		solar.setSize(Gdx.graphics.getWidth(), offset/6);
 		solar.setPosition(0, offset+backButton.getHeight()-(offset/6)*4);
 		solar.setVisible(false);
 		scene.put((Integer) solar.getUserObject(), solar);
 		
-		whole = new Image(AssetLoader.manager.get("Browse/wholebodybtn.png", Texture.class));
+		whole = new Image(allAtlas.findRegion("wholebodybtn"));
 		whole.setUserObject(11);
 		whole.setSize(Gdx.graphics.getWidth(), offset/6);
 		whole.setPosition(0, offset+backButton.getHeight()-(offset/6)*5);
 		whole.setVisible(false);
 		scene.put((Integer) whole.getUserObject(), whole);
 		
-		angel = new Image(AssetLoader.manager.get("Browse/angelcardsbtn.png", Texture.class));
+		angel = new Image(allAtlas.findRegion("angelcardsbtn"));
 		angel.setUserObject(12);
 		angel.setSize(Gdx.graphics.getWidth(), offset/6);
 		angel.setPosition(0, offset+backButton.getHeight()-(offset));
@@ -126,7 +126,7 @@ public class CreateBrowse extends CreateScene{
 		container.row();
 		container.setUserObject(3);
 		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), (Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
-		container.setBackground(new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Style/darkpurp.png", Texture.class))));
+		container.setBackground(new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("darkpurp"))));
 		scrollCards = AllCards.getInstance().getCards();
 		for(int i = 0; i < scrollCards.length; i++){
 			Image image = new Image(AssetLoader.manager.get("Card/"+(String) scrollCards[i].getCardSpec().getCardProperty(CardEnum.IMAGE.getEnumID()), Texture.class));

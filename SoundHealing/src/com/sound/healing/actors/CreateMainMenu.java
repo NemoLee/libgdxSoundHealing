@@ -38,21 +38,21 @@ public class CreateMainMenu extends CreateScene{
 
 	private void setupTop() {
 		//Image Menu Title Background
-		image_Menu_Title_Background = new Image(AssetLoader.manager.get("Menu/menu_title_background.png", Texture.class));
+		image_Menu_Title_Background = new Image(allAtlas.findRegion("menu_title_background"));
 		image_Menu_Title_Background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/7)*4);
 		image_Menu_Title_Background.setPosition(0, Gdx.graphics.getHeight()-(image_Menu_Title_Background.getHeight()));
 		image_Menu_Title_Background.setUserObject(0);
 		scene.put((Integer) image_Menu_Title_Background.getUserObject(), image_Menu_Title_Background);
 		
 		//Image Menu Title
-		image_Menu_Title = new Image(AssetLoader.manager.get("Menu/menu_title.png", Texture.class));
+		image_Menu_Title = new Image(allAtlas.findRegion("menu_title"));
 	    image_Menu_Title.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/6);
 	    image_Menu_Title.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()-(image_Menu_Title.getHeight()+Gdx.graphics.getHeight()/16));
 	    image_Menu_Title.setUserObject(1);
 	    scene.put((Integer) image_Menu_Title.getUserObject(), image_Menu_Title);
-		
+	    
 	    //Image Menu Author
-		image_Menu_Author =new Image( AssetLoader.manager.get("Menu/menu_author.png", Texture.class));
+		image_Menu_Author =new Image( allAtlas.findRegion("menu_author"));
 	    image_Menu_Author.setSize(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/18);
 	    image_Menu_Author.setPosition(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()-(image_Menu_Author.getHeight()+Gdx.graphics.getHeight()/4+Gdx.graphics.getHeight()/24));
 	    image_Menu_Author.addListener(new ClickListener(){
@@ -75,7 +75,7 @@ public class CreateMainMenu extends CreateScene{
 	    //Start button
 	    startButton = new SelectImageButton(style_menu_startbutton,0,3*(Gdx.graphics.getHeight()/7),Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 	    startButton.setUserObject(3);
-	    textureRegion = new TextureRegion(AssetLoader.manager.get("Menu/start.png", Texture.class));
+	    textureRegion = new TextureRegion(allAtlas.findRegion("start"));
 	    textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 	    textureRegionDrawable.setMinWidth(Gdx.graphics.getWidth()/7);
 	    textureRegionDrawable.setMinHeight(Gdx.graphics.getWidth()/15);
@@ -88,7 +88,7 @@ public class CreateMainMenu extends CreateScene{
 	    //Browse Button  
 	    browseButton = new SelectImageButton(style_menu_startbutton,0,2*(Gdx.graphics.getHeight()/7), Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 	    browseButton.setUserObject(4);
-	    textureRegion = new TextureRegion(AssetLoader.manager.get("Menu/browse.png", Texture.class));
+	    textureRegion = new TextureRegion(allAtlas.findRegion("browse"));
 	    textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 	    textureRegionDrawable.setMinWidth(Gdx.graphics.getWidth()/6);
 	    textureRegionDrawable.setMinHeight(Gdx.graphics.getWidth()/15);
@@ -100,7 +100,7 @@ public class CreateMainMenu extends CreateScene{
 	    //Load Button
 	    loadButton = new SelectImageButton(style_menu_startbutton,0,(Gdx.graphics.getHeight()/7), Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 	    loadButton.setUserObject(5);
-	    textureRegion = new TextureRegion(AssetLoader.manager.get("Menu/load.png", Texture.class));
+	    textureRegion = new TextureRegion(allAtlas.findRegion("load"));
 	    textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 	    textureRegionDrawable.setMinWidth(Gdx.graphics.getWidth()/9);
 	    textureRegionDrawable.setMinHeight(Gdx.graphics.getWidth()/15);
@@ -113,7 +113,7 @@ public class CreateMainMenu extends CreateScene{
 	    //MoreInfo Button
 	    moreinfoButton = new SelectImageButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight()/7);
 	    moreinfoButton.setUserObject(6);
-	    textureRegion = new TextureRegion(AssetLoader.manager.get("Menu/more_info.png", Texture.class));
+	    textureRegion = new TextureRegion(allAtlas.findRegion("more_info"));
 	    textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 	    textureRegionDrawable.setMinWidth(Gdx.graphics.getWidth()/5);
 	    textureRegionDrawable.setMinHeight(Gdx.graphics.getWidth()/15);

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -31,9 +32,9 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 
 	public BrowseScreen(CreateScene scene) {
 		super(scene);
-		textureRegionUp = new TextureRegion(AssetLoader.manager.get("Browse/select_type_up.png", Texture.class));
+		textureRegionUp = new TextureRegion(AssetLoader.manager.get("All/all.atlas", TextureAtlas.class).findRegion("select_type_up"));
 		textureRegionDrawableUp = new TextureRegionDrawable(textureRegionUp);
-		textureRegionDown = new TextureRegion(AssetLoader.manager.get("Browse/select_type_down.png", Texture.class));
+		textureRegionDown = new TextureRegion(AssetLoader.manager.get("All/all.atlas", TextureAtlas.class).findRegion("select_type_down"));
 		textureRegionDrawableDown = new TextureRegionDrawable(textureRegionDown);
 		back = new ClickListener(){
 			 @Override

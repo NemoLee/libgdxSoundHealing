@@ -33,7 +33,7 @@ public class CreateLoad extends CreateScene{
 	}
 
 	private void setupScroll() {
-		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		darkPurple = new Image(allAtlas.findRegion("darkpurp"));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2+Gdx.graphics.getHeight()/5-Gdx.graphics.getHeight()/120);
 		darkPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		darkPurple.setUserObject(2);

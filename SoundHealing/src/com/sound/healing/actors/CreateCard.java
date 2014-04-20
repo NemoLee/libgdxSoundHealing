@@ -85,7 +85,7 @@ public class CreateCard extends CreateScene{
 		container.row();
 		container.setUserObject(3);
 		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/7);
-		container.setBackground(new TextureRegionDrawable(new TextureRegion(AssetLoader.manager.get("Style/lightpurp.png", Texture.class))));
+		container.setBackground(new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("lightpurp"))));
 		
 		
 		font2 = new FreeTypeFontParameter();
@@ -103,12 +103,12 @@ public class CreateCard extends CreateScene{
 	    table.add(labelDescription).padLeft(Gdx.graphics.getWidth()/100).padRight(Gdx.graphics.getWidth()/100).size(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/50, Gdx.graphics.getHeight()/2);
 	    table.row();
 	   
-	    sound1 = new Image(AssetLoader.manager.get("Instruct/instruct_i.png", Texture.class));
+	    sound1 = new Image(allAtlas.findRegion("instruct_i"));
 	    sound1.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getWidth()/4);
 	    sound1.setPosition(Gdx.graphics.getWidth()/8, 0);
 	    sound1.setUserObject(5);
 	    
-	    textureRegion2 = new TextureRegion(AssetLoader.manager.get(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID(),Texture.class));
+	    textureRegion2 = new TextureRegion(allAtlas.findRegion(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID()));
 	    textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
 	    sound2 = new Image(textureRegionDrawable2);
 	    sound2.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getWidth()/4);
@@ -135,7 +135,7 @@ public class CreateCard extends CreateScene{
 		textureRegionDrawable.setRegion(textureRegion);
 		largeCard.setDrawable(textureRegionDrawable);
 		labelDescription.setText("DESCRIPTION:\n\n"+(String) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.DESCRIPTION.getEnumID()));
-		textureRegion2.setTexture(AssetLoader.manager.get(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID(),Texture.class));
+		textureRegion2.setRegion(allAtlas.findRegion(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getSoundID()));
 		textureRegionDrawable2.setRegion(textureRegion2);
 		sound2.setDrawable(textureRegionDrawable2);
 	}

@@ -40,13 +40,13 @@ public class CreateInfo extends CreateScene{
 	}
 
 	private void setupInfoCards() {
-		darkPurple = new Image(AssetLoader.manager.get("Style/darkpurp.png", Texture.class));
+		darkPurple = new Image(allAtlas.findRegion("darkpurp"));
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/3);
 		darkPurple.setPosition(0, Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+darkPurple.getHeight()));
 		darkPurple.setUserObject(1);
 		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
 		
-		textureRegion = new TextureRegion(AssetLoader.manager.get(SceneHandler.getInstance().getSpread().getInfocard(), Texture.class));
+		textureRegion = new TextureRegion(allAtlas.findRegion(SceneHandler.getInstance().getSpread().getInfocard()));
 		textureRegionDrawable = new TextureRegionDrawable(textureRegion);
 		infoCard = new Image(textureRegionDrawable);
 		infoCard.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/3);
@@ -56,7 +56,7 @@ public class CreateInfo extends CreateScene{
 	}
 
 	private void setupDescription() {
-		lightPurple = new Image(AssetLoader.manager.get("Style/lightpurp.png", Texture.class));
+		lightPurple = new Image(allAtlas.findRegion("lightpurp"));
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/6+darkPurple.getHeight()+lightPurple.getHeight()));
 		lightPurple.setUserObject(2);
@@ -117,8 +117,7 @@ public class CreateInfo extends CreateScene{
 	@Override
 	public void reset() {
 		topImage.setText(SceneHandler.getInstance().getSpread().toString());
-		textureRegion.setTexture(AssetLoader.manager.get(SceneHandler.getInstance().getSpread().getInfocard(), Texture.class));
-		
+		textureRegion.setRegion(allAtlas.findRegion(SceneHandler.getInstance().getSpread().getInfocard()));
 		textureRegionDrawable.setRegion(textureRegion);
 		infoCard.setDrawable(textureRegionDrawable);
 		labelTitle.setText(SceneHandler.getInstance().getSpread().toString());

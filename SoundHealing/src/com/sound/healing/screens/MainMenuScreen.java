@@ -72,6 +72,7 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		transitionStage.clear();
 		transitionStage = SceneHandler.getInstance().getPreviousStage();
 		scene.reset();
+
 		stage = scene.getSpec().createStage();
 
 		if(SceneHandler.getInstance().isBack()){
