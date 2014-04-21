@@ -2,28 +2,56 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.cards.AllCards;
+import com.sound.healing.cards.CardEnum;
+import com.sound.healing.cards.CardType;
 
 public class CardScreen extends BaseScreen implements Screen {
 
-	private ClickListener back, bigFlip;
+	private ClickListener back, bigFlip, playAll, playLast;
 	private boolean isFlipped = false;
+	private Music cardSound;
+	private int play = 1;
 	
 	public CardScreen(CreateScene scene) {
 		super(scene);
+		playAll = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 cardSound.stop();
+				 	play = 3;
+				 
+			 }
+		};
+		playLast = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 cardSound.stop();
+				 	play = 1;
+				 
+			 }
+		};
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 			
-				 	
+					cardSound.stop();
+				 	cardSound.dispose();
+				 	cardSound = null;
 									stage.getActors().get(3).addAction(Actions.sequence(Actions.fadeOut(0.3f), Actions.visible(false)));
 									stage.getActors().get(0).addAction(Actions.parallel(Actions.visible(true),Actions.fadeIn(0.3f)));
 									isFlipped = false;
@@ -76,7 +104,30 @@ public class CardScreen extends BaseScreen implements Screen {
 		transitionStage.act();
 		stage.act();
 		batch.setProjectionMatrix(camera.combined);
-		
+		if(!cardSound.isPlaying()&&play == 3){
+			cardSound.stop();
+		 	cardSound.dispose();
+		 	cardSound = null;
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.SOUND1.getEnumID())));
+			cardSound.play();
+			play = 2;
+		}
+		else if(!cardSound.isPlaying()&&play == 2){
+			cardSound.stop();
+		 	cardSound.dispose();
+		 	cardSound = null;
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.SOUND2.getEnumID())));
+			cardSound.play();
+			play = 1;
+		}
+		else if(!cardSound.isPlaying()&&play == 1){
+			cardSound.stop();
+		 	cardSound.dispose();
+		 	cardSound = null;
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getBreatheSound())));
+			cardSound.play();
+			play = 0;
+		}
 	    batch.begin();
 			stage.draw();
 			transitionStage.draw();
@@ -92,7 +143,13 @@ public class CardScreen extends BaseScreen implements Screen {
 		isFlipped = false;
 		stage.getActors().get(1).addListener(back);
 		stage.getActors().get(2).addListener(bigFlip);
-
+		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(1)).getChildren().get(0).addListener(playAll);
+		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(1)).getChildren().get(1).addListener(playLast);
+		//((HorizontalGroup) ((Table) stage.getActors().get(3)).getChildren().get(0)).getChildren().get(0).addListener(playAll);
+		//((HorizontalGroup) ((Table) stage.getActors().get(3)).getChildren().get(0)).getChildren().get(1).addListener(playLast);
+		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.SOUND1.getEnumID())));
+		cardSound.play();
+		play = 2;
 	}
 
 }

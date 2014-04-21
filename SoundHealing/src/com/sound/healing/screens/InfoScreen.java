@@ -2,6 +2,8 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -16,13 +18,16 @@ import com.sound.healing.custom.Spread;
 public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
 	private ClickListener back, click;
+	private Music infoSound;
 	
 	public InfoScreen(CreateScene scene) {
 		super(scene);
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 
+				 	infoSound.stop();
+				 	infoSound.dispose();
+				 	infoSound = null;
 		 			SceneHandler.getInstance().setBack(true);
 		 			SceneHandler.getInstance().setPreviousStage(stage);
 		 			ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
@@ -32,7 +37,9 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 		click = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 			
+				 			infoSound.stop();
+				 			infoSound.dispose();
+				 			infoSound = null;
 				 			SceneHandler.getInstance().setBack(false);
 				 			SceneHandler.getInstance().setPreviousStage(stage);
 				 			if(SceneHandler.getInstance().getSpread().equals(Spread.INDIVIDUAL)){
@@ -72,7 +79,8 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 		super.show();
 		stage.getActors().get(4).addListener(back);
 		stage.getActors().get(5).addListener(click);
-
+		infoSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+SceneHandler.getInstance().getSpread().getSound()));
+		infoSound.play();
 	}
 
 }

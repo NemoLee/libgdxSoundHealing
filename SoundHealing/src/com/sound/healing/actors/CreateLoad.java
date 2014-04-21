@@ -20,7 +20,7 @@ public class CreateLoad extends CreateScene{
 	private MenuButton[] loadButtons;
 	private TextButtonStyle style_menu_backbutton, style_menu_loadbutton;
 	private Image darkPurple;
-	private Preferences prefs = Gdx.app.getPreferences("spread");
+	private Preferences prefs;
 	private String loadData;
 	private Table table, container;
 	private ScrollPane scroll;
@@ -41,7 +41,7 @@ public class CreateLoad extends CreateScene{
 		
 		
 
-		
+		prefs = Gdx.app.getPreferences("spread");
 		loadData = prefs.getString("spread", "");
 		StringTokenizer loads = new StringTokenizer(loadData, "^");
 		loadButtons = new MenuButton[loads.countTokens()];
@@ -115,7 +115,7 @@ public class CreateLoad extends CreateScene{
 		table = null;
 		container = null;
 		scroll = null;
-		
+		prefs = Gdx.app.getPreferences("spread");
 		loadData = prefs.getString("spread", "");
 		StringTokenizer loads = new StringTokenizer(loadData, "^");
 		loadButtons = new MenuButton[loads.countTokens()];

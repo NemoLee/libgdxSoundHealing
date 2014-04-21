@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
 import com.badlogic.gdx.assets.loaders.TextureLoader.TextureParameter;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -300,8 +302,7 @@ public class AssetLoader {
 		manager.load("Card/52.png", Texture.class, param);
 	
 		manager.load("UI/wait.png", Texture.class, param);
-		
-		
+
 		
 		/*
 		manager.load("Instruct/instruct_ah.png", Texture.class,param);
@@ -337,5 +338,12 @@ public class AssetLoader {
 		manager.load("Browse/angelcardsbtn.png", Texture.class ,param);
 	*/
 		//manager.finishLoading();
+	}
+
+	public Music loadSound(String sound) {
+		manager.load("Sound/"+sound,Music.class);
+		manager.finishLoading();
+		manager.get("Sound/"+sound,Music.class).play();
+		return manager.get("Sound/"+sound,Music.class);
 	}
 }

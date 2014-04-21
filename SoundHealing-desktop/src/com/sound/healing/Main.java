@@ -10,7 +10,7 @@ public class Main {
 		cfg.title = "SoundHealing";
 		cfg.width = 720;
 		cfg.height = 1280;
-		
+		 
 		new LwjglApplication(new MainScene(), cfg);
 	}
 } 

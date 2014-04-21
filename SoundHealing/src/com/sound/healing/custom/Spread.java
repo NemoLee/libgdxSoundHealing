@@ -61,6 +61,31 @@ public enum Spread {
 		}
 	}
 	
+	public String getSound(){
+		switch(this){
+			case SOUND_ADVICE:
+				return "006.mp3";
+			case SYMPHONY_OF_LIFE:
+				return "010.mp3";
+			case DUET:
+				return "017.mp3";
+			case HEARTSONG:
+				return "023.mp3";
+			case RETUNING:
+				return "029.mp3";
+			case SINGING_EARTH:
+				return "035.mp3";
+			case ANGELS_OF_SOUND:
+				return "041.mp3";
+			case INDIVIDUAL:
+				return "048.mp3";
+			case MULTI:
+				return "060.mp3";
+			default:
+				return "";
+		}
+	}
+	
 	public String getInfoDescription(){
 		switch(this){
 		case SOUND_ADVICE:
@@ -116,6 +141,89 @@ public enum Spread {
 			return 9;
 		default:
 			return 0;
+	}
+	}
+	
+	Array<String> sound = null;
+	public Array<String> getCardsSound(){
+		sound = null;
+		sound = new Array<String>(); 
+		switch(this){
+		case SOUND_ADVICE:
+			sound.add("007.mp3");
+			sound.add("008.mp3");
+			sound.add("009.mp3");
+			return sound;
+		case SYMPHONY_OF_LIFE:
+			sound.add("011.mp3");
+			sound.add("012.mp3");
+			sound.add("013.mp3");
+			sound.add("014.mp3");
+			sound.add("015.mp3");
+			sound.add("016.mp3");
+			return sound;
+		case DUET:
+			sound.add("018.mp3");
+			sound.add("019.mp3");
+			sound.add("020.mp3");
+			sound.add("021.mp3");
+			sound.add("022.mp3");
+			return sound;
+		case HEARTSONG:
+			sound.add("024.mp3");
+			sound.add("025.mp3");
+			sound.add("026.mp3");
+			sound.add("027.mp3");
+			sound.add("028.mp3");
+			return sound;
+		case RETUNING:
+			sound.add("030.mp3");
+			sound.add("031.mp3");
+			sound.add("032.mp3");
+			sound.add("033.mp3");
+			sound.add("034.mp3");
+			return sound;
+		case SINGING_EARTH:
+			sound.add("036.mp3");
+			sound.add("037.mp3");
+			sound.add("038.mp3");
+			sound.add("039.mp3");
+			sound.add("040.mp3");
+			return sound;
+		case ANGELS_OF_SOUND:
+			sound.add("043.mp3");
+			sound.add("044.mp3");
+			sound.add("045.mp3");
+			sound.add("046.mp3");
+			//add other 2
+			return sound;
+		case INDIVIDUAL:
+			sound.add("049.mp3");
+			sound.add("050.mp3");
+			sound.add("051.mp3");
+			sound.add("052.mp3");
+			sound.add("053.mp3");
+			sound.add("054.mp3");
+			sound.add("055.mp3");
+			sound.add("056.mp3");
+			sound.add("057.mp3");
+			sound.add("058.mp3");
+			sound.add("059.mp3");
+			return sound;
+		case MULTI:
+			sound.add("061.mp3");
+			sound.add("062.mp3");
+			sound.add("063.mp3");
+			sound.add("064.mp3");
+			sound.add("065.mp3");
+			sound.add("066.mp3");
+			sound.add("067.mp3");
+			sound.add("068.mp3");
+			sound.add("069.mp3");
+			sound.add("070.mp3");
+			return sound;
+		default:
+			return sound;
 	}
 	}
 	

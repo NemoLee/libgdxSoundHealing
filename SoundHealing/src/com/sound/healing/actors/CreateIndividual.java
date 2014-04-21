@@ -37,12 +37,12 @@ public class CreateIndividual extends CreateScene{
 		
 		
 		bigCards = new Image[6];
-		bigCards[0] = new Image(allAtlas.findRegion("spread8_1"));
-		bigCards[1] = new Image(allAtlas.findRegion("spread8_2"));
-		bigCards[2] = new Image(allAtlas.findRegion("spread8_3"));
-		bigCards[3] = new Image(allAtlas.findRegion("spread8_4"));
-		bigCards[4] = new Image(allAtlas.findRegion("spread8_5"));
-		bigCards[5] = new Image(allAtlas.findRegion("spread8_6"));
+		bigCards[0] = new Image(allAtlas.findRegion("spread81"));
+		bigCards[1] = new Image(allAtlas.findRegion("spread82"));
+		bigCards[2] = new Image(allAtlas.findRegion("spread83"));
+		bigCards[3] = new Image(allAtlas.findRegion("spread84"));
+		bigCards[4] = new Image(allAtlas.findRegion("spread85"));
+		bigCards[5] = new Image(allAtlas.findRegion("spread86"));
 
 		
 		for(int i = 0; i < 6; i++){

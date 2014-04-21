@@ -38,7 +38,7 @@ bigcard
   orig: 279, 392
   offset: 0, 0
   index: -1
-spread8
+spread81
   rotate: false
   xy: 403, 86
   size: 279, 391
@@ -59,14 +59,14 @@ angelcardsbtn
   orig: 400, 76
   offset: 0, 0
   index: -1
-spread8
+spread82
   rotate: false
   xy: 684, 632
   size: 279, 391
   orig: 279, 391
   offset: 0, 0
   index: 2
-spread8
+spread83
   rotate: false
   xy: 684, 239
   size: 279, 391
@@ -141,7 +141,7 @@ select_multi
   orig: 458, 132
   offset: 0, 0
   index: -1
-spread8
+spread84
   rotate: false
   xy: 461, 625
   size: 279, 391
@@ -176,7 +176,7 @@ select_type_up
   orig: 400, 83
   offset: 0, 0
   index: -1
-spread8
+spread85
   rotate: false
   xy: 742, 625
   size: 279, 391
@@ -190,7 +190,7 @@ solarplexusbtn
   orig: 400, 76
   offset: 0, 0
   index: -1
-spread8
+spread86
   rotate: false
   xy: 403, 147
   size: 279, 391
@@ -246,7 +246,7 @@ select_heartsong
   orig: 218, 144
   offset: 0, 0
   index: -1
-spread8
+spread87
   rotate: false
   xy: 684, 147
   size: 279, 391
@@ -279,7 +279,7 @@ all3.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-spread8
+spread88
   rotate: false
   xy: 1, 583
   size: 279, 391

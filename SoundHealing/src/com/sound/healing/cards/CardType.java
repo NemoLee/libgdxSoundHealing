@@ -58,5 +58,33 @@ public enum CardType {
 		}
 	
 	}
+		public String getBreatheSound(){
+		switch(this){
+		case ROOT:
+			return "073.mp3";
+		case SACRAL:
+			return "086.mp3";
+		case SOLARPLEXUS:
+			return "099.mp3";
+		case HEART:
+			return "112.mp3";
+		case THROAT:
+			return "125.mp3";
+		case THIRDEYE:
+			return "138.mp3";
+		case CROWN:
+			return "151.mp3";
+		case WHOLEBODY:
+			return "164.mp3";
+		case ANGEL:
+			return "001.mp3";
+		case ALL:
+			return "001.mp3";
+		default: return "No SUIT";
+		
+		}
+	
+	}
+		
 
 }

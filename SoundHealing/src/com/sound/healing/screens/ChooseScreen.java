@@ -2,6 +2,7 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
+import com.badlogic.gdx.utils.Array;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
@@ -21,6 +23,8 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	private ClickListener cardClick, back;
 	private int currentCard = 1;
 	private boolean isStopped = false;
+	private Array<String> sounds;
+	private Music cardSound;
 	
 	public ChooseScreen(CreateScene scene) {
 		super(scene);
@@ -38,7 +42,9 @@ public class ChooseScreen extends BaseScreen implements Screen {
 		 back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 
+					cardSound.stop();
+				 	cardSound.dispose();
+				 	cardSound = null;
 				 	stage.getActors().get(3).setVisible(false);
 					stage.getActors().get(4).setVisible(false);
 					stage.getActors().get(5).setVisible(false);
@@ -68,6 +74,9 @@ public class ChooseScreen extends BaseScreen implements Screen {
 					isStopped = true;
 					SceneHandler.getInstance().setBack(false);
 					SceneHandler.getInstance().setPreviousStage(stage);
+					cardSound.stop();
+				 	cardSound.dispose();
+				 	cardSound = null;
 					ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL);
 				}
 			
@@ -75,6 +84,13 @@ public class ChooseScreen extends BaseScreen implements Screen {
 			
 		})));
 		currentCard+=2;
+		if(currentCard <= SceneHandler.getInstance().getSpread().getNumberOfCards()*2){
+			cardSound.stop();
+		 	cardSound.dispose();
+		 	cardSound = null;
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get((currentCard+1)/2-1)));
+			cardSound.play();
+		}
 	}
 
 	@Override
@@ -139,7 +155,10 @@ public class ChooseScreen extends BaseScreen implements Screen {
 		stage.getActors().get(3).addListener(cardClick);
 		stage.getActors().get(4).addListener(cardClick);
 		stage.getActors().get(5).addListener(cardClick);
-
+		sounds = null;
+		sounds = SceneHandler.getInstance().getSpread().getCardsSound();
+		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(currentCard-1)));
+		cardSound.play();
 	}
 
 
