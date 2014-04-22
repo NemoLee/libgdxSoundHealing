@@ -36,10 +36,6 @@ public class CreateReveal extends CreateScene{
 	private int cardWidth, cardHeight;
 	private Array<Integer> locations;
 	private int x = 4;
-	private FreeTypeFontParameter font;
-	private BitmapFont descriptionFont;
-	private LabelStyle style;
-	private Label labelDescription;
 	private Group group;
 
 	public CreateReveal() {

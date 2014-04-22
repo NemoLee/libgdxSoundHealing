@@ -36,17 +36,19 @@ public class CreateIndividual extends CreateScene{
 		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
 		
 		
-		bigCards = new Image[6];
+		bigCards = new Image[8];
 		bigCards[0] = new Image(allAtlas.findRegion("spread81"));
 		bigCards[1] = new Image(allAtlas.findRegion("spread82"));
 		bigCards[2] = new Image(allAtlas.findRegion("spread83"));
 		bigCards[3] = new Image(allAtlas.findRegion("spread84"));
 		bigCards[4] = new Image(allAtlas.findRegion("spread85"));
 		bigCards[5] = new Image(allAtlas.findRegion("spread86"));
+		bigCards[6] = new Image(allAtlas.findRegion("spread87"));
+		bigCards[7] = new Image(allAtlas.findRegion("spread88"));
 
 		
-		for(int i = 0; i < 6; i++){
-			bigCards[i].setSize(Gdx.graphics.getWidth()/6, (float)(Gdx.graphics.getWidth()/6*1.4533));
+		for(int i = 0; i < 8; i++){
+			bigCards[i].setSize(Gdx.graphics.getWidth()/8, (float)(Gdx.graphics.getWidth()/8*1.4533));
 			bigCards[i].setUserObject(i+2);
 		}
 		
@@ -56,6 +58,8 @@ public class CreateIndividual extends CreateScene{
 		bigCards[3].setPosition(bigCards[3].getWidth()*2+bigCards[3].getWidth()/2, (Gdx.graphics.getHeight()/4)+Gdx.graphics.getHeight()/16);
 		bigCards[4].setPosition((bigCards[4].getWidth()*3+bigCards[4].getWidth()), (Gdx.graphics.getHeight()/4)*2+Gdx.graphics.getHeight()/16);
 		bigCards[5].setPosition((bigCards[5].getWidth()*3+bigCards[5].getWidth()), (Gdx.graphics.getHeight()/4)+Gdx.graphics.getHeight()/16);
+		bigCards[6].setPosition((bigCards[6].getWidth()*4+bigCards[6].getWidth()+bigCards[6].getWidth()/2), (Gdx.graphics.getHeight()/4)*2+Gdx.graphics.getHeight()/16);
+		bigCards[7].setPosition((bigCards[7].getWidth()*4+bigCards[7].getWidth()+bigCards[7].getWidth()/2), (Gdx.graphics.getHeight()/4)+Gdx.graphics.getHeight()/16);
 		
 		scene.put((Integer) bigCards[0].getUserObject(), bigCards[0]);
 		scene.put((Integer) bigCards[1].getUserObject(), bigCards[1]);
@@ -63,6 +67,8 @@ public class CreateIndividual extends CreateScene{
 		scene.put((Integer) bigCards[3].getUserObject(), bigCards[3]);
 		scene.put((Integer) bigCards[4].getUserObject(), bigCards[4]);
 		scene.put((Integer) bigCards[5].getUserObject(), bigCards[5]);
+		scene.put((Integer) bigCards[6].getUserObject(), bigCards[6]);
+		scene.put((Integer) bigCards[7].getUserObject(), bigCards[7]);
 		
 	}
 	
@@ -70,7 +76,7 @@ public class CreateIndividual extends CreateScene{
 		lightPurple = new Image(allAtlas.findRegion("lightpurp"));
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()/7);
-		lightPurple.setUserObject(8);
+		lightPurple.setUserObject(10);
 		scene.put((Integer) lightPurple.getUserObject(), lightPurple);
 		
 		miniCards = new Image[1];
@@ -79,7 +85,7 @@ public class CreateIndividual extends CreateScene{
 		cardGroup.setSize((Gdx.graphics.getWidth()/10+Gdx.graphics.getWidth()/20)*miniCards.length, (Gdx.graphics.getWidth()/2)+Gdx.graphics.getWidth()/8);
 		cardGroup.setPosition(Gdx.graphics.getWidth()/2-cardGroup.getWidth()/2+Gdx.graphics.getWidth()/40,Gdx.graphics.getHeight()/7+Gdx.graphics.getHeight()/42);
 		cardGroup.setLayoutEnabled(false);
-		cardGroup.setUserObject(9);
+		cardGroup.setUserObject(11);
 		for(int i = 0; i < miniCards.length; i++){
 			miniCards[i] = new Image(allAtlas.findRegion("bigcard"));
 			miniCardsBG[i] = new Image(allAtlas.findRegion("minicard_bg"));
@@ -100,7 +106,7 @@ public class CreateIndividual extends CreateScene{
 		smallPurple = new Image(allAtlas.findRegion("lightpurp"));
 		smallPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/20);
 		smallPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/2);
-		smallPurple.setUserObject(10);
+		smallPurple.setUserObject(12);
 		scene.put((Integer) smallPurple.getUserObject(), smallPurple);
 		
 	}
@@ -110,7 +116,7 @@ public class CreateIndividual extends CreateScene{
 		
 	    //Start button
 		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
-		backButton.setUserObject(11);
+		backButton.setUserObject(13);
 	    scene.put((Integer) backButton.getUserObject(), backButton);
 		
 	}

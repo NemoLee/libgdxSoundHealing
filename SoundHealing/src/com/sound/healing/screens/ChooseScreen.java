@@ -17,6 +17,7 @@ import com.sound.healing.AssetLoader;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.custom.Spread;
 
 public class ChooseScreen extends BaseScreen implements Screen {
 
@@ -25,12 +26,15 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	private boolean isStopped = false;
 	private Array<String> sounds;
 	private Music cardSound;
+	private int play = 0;
+	private boolean block = false;
 	
 	public ChooseScreen(CreateScene scene) {
 		super(scene);
 		cardClick = new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				play = 0;
 				if(!isStopped){
 					stage.getActors().get((Integer)(((Actor) event.getTarget()).getUserObject())).setVisible(false);
 					if(currentCard <= SceneHandler.getInstance().getSpread().getNumberOfCards()*2){
@@ -62,11 +66,12 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	}
 
 	protected void miniCardShow() {
+
 		(((HorizontalGroup) stage.getActors().get(7)).getChildren()).get(currentCard).setVisible(true);
-		(((HorizontalGroup) stage.getActors().get(7)).getChildren()).get(currentCard).addAction(Actions.sequence(Actions.alpha(0f),Actions.alpha(1f, 0.4f),Actions.run(new Runnable(){
+		(((HorizontalGroup) stage.getActors().get(7)).getChildren()).get(currentCard).addAction(Actions.sequence(Actions.alpha(0f),Actions.alpha(1f, 0.4f),new Action(){
 
 			@Override
-			public void run() {
+			public boolean act(float delta) {
 				if(currentCard > SceneHandler.getInstance().getSpread().getNumberOfCards()*2){
 					stage.getActors().get(3).setVisible(false);
 					stage.getActors().get(4).setVisible(false);
@@ -74,15 +79,18 @@ public class ChooseScreen extends BaseScreen implements Screen {
 					isStopped = true;
 					SceneHandler.getInstance().setBack(false);
 					SceneHandler.getInstance().setPreviousStage(stage);
-					cardSound.stop();
-				 	cardSound.dispose();
-				 	cardSound = null;
+					if(!block){
+						block = true;
+						cardSound.stop();
+					 	cardSound.dispose();
+					 	cardSound = null;
 					ScreenManager.getInstance().show(com.sound.healing.Screen.REVEAL);
+					}
 				}
-			
+				return true;
 			}
 			
-		})));
+		}));
 		currentCard+=2;
 		if(currentCard <= SceneHandler.getInstance().getSpread().getNumberOfCards()*2){
 			cardSound.stop();
@@ -102,6 +110,14 @@ public class ChooseScreen extends BaseScreen implements Screen {
 		stage.act();
 		if(!isStopped){
 			update();
+			if(!cardSound.isPlaying() && play == 1){
+				cardSound.stop();
+			 	cardSound.dispose();
+			 	cardSound = null;
+				cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(currentCard-1)));
+				cardSound.play();
+				play = 0;
+			}
 		}
 		batch.setProjectionMatrix(camera.combined);
 		
@@ -140,6 +156,7 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	@Override
 	public void show() {
 		super.show();
+		block = false;
 		isStopped = false;
 		currentCard = 1;
 		stage.getActors().get(3).setVisible(true);
@@ -157,8 +174,15 @@ public class ChooseScreen extends BaseScreen implements Screen {
 		stage.getActors().get(5).addListener(cardClick);
 		sounds = null;
 		sounds = SceneHandler.getInstance().getSpread().getCardsSound();
-		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(currentCard-1)));
-		cardSound.play();
+		if(SceneHandler.getInstance().getSpread().equals(Spread.ANGELS_OF_SOUND)){
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/042.mp3"));
+			cardSound.play();
+			play = 1;
+		}
+		else{
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(currentCard-1)));
+			cardSound.play();
+		}
 	}
 
 

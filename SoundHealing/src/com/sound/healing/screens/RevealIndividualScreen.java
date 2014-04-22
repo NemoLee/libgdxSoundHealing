@@ -6,6 +6,7 @@ import java.util.Date;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
@@ -35,6 +36,8 @@ public class RevealIndividualScreen extends BaseScreen {
 	Dialog dialog;
 	FreeTypeFontParameter font;
 	BitmapFont titleFont;
+	private Music cardSound;
+	private String[] sounds = new String[]{"051.mp3","052.mp3","053.mp3","054.mp3","055.mp3","056.mp3","057.mp3","058.mp3","059.mp3",};
 
 	
 	public RevealIndividualScreen(final CreateScene scene) {
@@ -51,7 +54,11 @@ public class RevealIndividualScreen extends BaseScreen {
 		yes = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				
+				 if(isFlash){
+					 	cardSound.stop();
+					 	cardSound.dispose();
+					 	cardSound = null;
+					 }
 					SceneHandler.getInstance().setBack(true);
 					SceneHandler.getInstance().setPreviousStage(stage);
 					ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
@@ -81,6 +88,9 @@ public class RevealIndividualScreen extends BaseScreen {
 								stage.getActors().get(flasher+2).clearActions();
 								flasher+=4;
 								pick++;
+							 	cardSound.stop();
+							 	cardSound.dispose();
+							 	cardSound = null;
 								AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 								SceneHandler.getInstance().setCurrentSpreadStage(stage);
 								isCardFlip = true;
@@ -187,6 +197,10 @@ public class RevealIndividualScreen extends BaseScreen {
 	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
 			isCardFlip = false;
+			if(isFlash){
+				cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds[pick]));
+				cardSound.play();
+			}
 		}
 		else{
 			isFlash = true;
@@ -212,6 +226,8 @@ public class RevealIndividualScreen extends BaseScreen {
 			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(no);
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
 			stage.getActors().get(flasher+2).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds[pick]));
+			cardSound.play();
 		}
 		
 	}

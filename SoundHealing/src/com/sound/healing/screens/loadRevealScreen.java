@@ -2,11 +2,14 @@ package com.sound.healing.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Music.OnCompletionListener;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
@@ -16,15 +19,23 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 
 	private ClickListener back, flip;
 	private boolean isCardFlip = false;
+	private Music cardSound;
+	private Array<String> sounds;
 	int flasher = 5;
 	private boolean isFlash = true;
+	private int isDone = 0;
 	
 	public loadRevealScreen(CreateScene sccene) {
 		super(sccene);
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				 
+				 if(isFlash||isDone ==1){
+					 	//isDone = false;
+					 	cardSound.stop();
+					 	cardSound.dispose();
+					 	cardSound = null;
+					 }
 				 	SceneHandler.getInstance().setBack(true);
 					SceneHandler.getInstance().setPreviousStage(stage);
 					ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD);
@@ -38,6 +49,9 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 					 if(event.getListenerActor().equals(stage.getActors().get(flasher))){
 							stage.getActors().get(flasher).clearActions();
 							flasher+=2;
+						 	cardSound.stop();
+						 	cardSound.dispose();
+						 	cardSound = null;
 						AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
@@ -64,6 +78,13 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 			         	}
 					 }
 				 else{
+						 if(isDone == 1){
+							 isDone = 2;
+							 	cardSound.stop();
+							 	cardSound.dispose();
+							 	cardSound = null;
+							 	//isDone = false;
+						 }
 						AllCards.getInstance().setCurrentCard(Integer.parseInt(event.getListenerActor().getName())); 
 						SceneHandler.getInstance().setCurrentSpreadStage(stage);
 						isCardFlip = true;
@@ -103,10 +124,32 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
 			isCardFlip = false;
+			if(isFlash){
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get((flasher-5)/2)));
+			cardSound.play();
+			}
+			else if(isDone == 0){
+				isDone = 1;
+				cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/004.mp3"));
+				cardSound.setOnCompletionListener(new OnCompletionListener(){
+
+					@Override
+					public void onCompletion(Music music) {	
+							cardSound.stop();
+						 	cardSound.dispose();
+						 	cardSound = null;
+							cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/005.mp3"));
+							cardSound.play();
+					}
+					
+				});
+				cardSound.play();
+			}
 		}
 		else{
 			isFlash = true;
 			flasher = 5;
+			isDone = 0;
 			stage.clear();
 			transitionStage.clear();
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
@@ -120,6 +163,10 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 				stage.getActors().get(i).addListener(flip);
 			}
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+			sounds = null;
+			sounds = SceneHandler.getInstance().getSpread().getCardsSound();
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(flasher-5)));
+			cardSound.play();
 		}
 
 	}

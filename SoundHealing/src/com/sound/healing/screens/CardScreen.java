@@ -124,7 +124,21 @@ public class CardScreen extends BaseScreen implements Screen {
 			cardSound.stop();
 		 	cardSound.dispose();
 		 	cardSound = null;
-			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getBreatheSound())));
+		 	if(AllCards.getInstance().getCurrentCard().equals(AllCards.getInstance().getCard(48))){
+		 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/177.mp3"));
+		 	}
+		 	else if(AllCards.getInstance().getCurrentCard().equals(AllCards.getInstance().getCard(49))){
+		 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/180.mp3"));
+		 	}
+		 	else if(AllCards.getInstance().getCurrentCard().equals(AllCards.getInstance().getCard(50))){
+		 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/183.mp3"));
+		 	}
+		 	else if(AllCards.getInstance().getCurrentCard().equals(AllCards.getInstance().getCard(51))){
+		 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/186.mp3"));
+		 	}
+		 	else{
+		 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+(((CardType) AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.TYPE.getEnumID())).getBreatheSound())));
+		 	}
 			cardSound.play();
 			play = 0;
 		}

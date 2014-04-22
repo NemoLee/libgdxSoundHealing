@@ -21,6 +21,7 @@ public class CreateLoadReveal extends CreateScene{
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
 	private int cardWidth, cardHeight;
+	private int x = 4;
 	private Array<Integer> locations;
 	
 	public CreateLoadReveal() {
@@ -103,7 +104,7 @@ public class CreateLoadReveal extends CreateScene{
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
-		int x = 4;
+		x = 4;
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
@@ -125,8 +126,17 @@ public class CreateLoadReveal extends CreateScene{
 		}
 		for(int i = x; i < scene.size(); i++){
 			if(scene.get(i)!= null){
-				scene.get(i).setSize(0, 0);
+				scene.get(i).setVisible(false);
 			}
+			else{
+				scene.put(i, scene.get(9));
+			}
+			System.out.println(scene.get(i));
 		}
+		//group.setVisible(false);
+		//group.setUserObject(x);
+		//scene.put((Integer) group.getUserObject(), group);
+	    
+		
 	}
 }

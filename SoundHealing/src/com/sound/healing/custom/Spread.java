@@ -192,9 +192,9 @@ public enum Spread {
 			return sound;
 		case ANGELS_OF_SOUND:
 			sound.add("043.mp3");
-			sound.add("044.mp3");
 			sound.add("045.mp3");
 			sound.add("046.mp3");
+			sound.add("047.mp3");
 			//add other 2
 			return sound;
 		case INDIVIDUAL:
