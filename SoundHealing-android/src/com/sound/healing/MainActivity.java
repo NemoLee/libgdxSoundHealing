@@ -16,11 +16,7 @@ public class MainActivity extends AndroidApplication {
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
         initialize(new MainScene(), cfg);
     }
-    
-    @Override
-    public void onBackPressed() {
  
-    }
     
     @Override
     protected void onPause() {
@@ -32,10 +28,8 @@ public class MainActivity extends AndroidApplication {
 
 /**
  * things to fix:
- * the rest of the back buttons
- * each individual screen test for bottleneck
  * angel and indi fixes
  * grammar fixes.
  * 
  * /
- */
+ */  
