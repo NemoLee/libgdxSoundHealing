@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -21,16 +22,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateLoad extends CreateScene{
 	
-	private MenuButton backButton;
+	private BackButton backButton;
 	private MenuButton[] loadButtons;
 	private Image[] deleteButtons;
 	private TextButton yes, no;
-	private TextButtonStyle style_menu_backbutton, style_menu_loadbutton, style_info_startButton, style_yes,style_no;
+	ButtonStyle style_menu_backbutton;
+	private TextButtonStyle style_menu_loadbutton, style_info_startButton, style_yes,style_no;
 	private Image darkPurple, black, popupBackground;
 	private Preferences prefs;
 	private String loadData;
@@ -167,10 +170,10 @@ public class CreateLoad extends CreateScene{
 	}
 
 	private void setupBackButton() {
-		style_menu_backbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_backbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_backbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_backbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
 	    scene.add(backButton);
 		

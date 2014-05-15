@@ -3,6 +3,7 @@ package com.sound.healing.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Array;
@@ -10,14 +11,17 @@ import com.sound.healing.AssetLoader;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.custom.Spread;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateLoadReveal extends CreateScene{
 	
-	private MenuButton backButton, saveButton;
-	private TextButtonStyle style_info_backbutton, style_info_startButton;
+	BackButton backButton;
+	private BackButton saveButton;
+	ButtonStyle style_info_backbutton;
+	private ButtonStyle style_info_startButton;
 	private Image darkPurple;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
@@ -81,15 +85,15 @@ public class CreateLoadReveal extends CreateScene{
 
 	private void setupBottom() {
 		
-		style_info_backbutton = createTextButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark", Gdx.graphics.getWidth()/14);
+		style_info_backbutton = createImageButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark");
 		
-		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
 	    scene.add(backButton);
 	    
-	    style_info_startButton = createTextButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark", Gdx.graphics.getWidth()/14);
+	    style_info_startButton = createImageButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark");
 		
-	    saveButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+	    saveButton = new BackButton(style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    saveButton.setUserObject(2);
 	    scene.add(saveButton);
 		

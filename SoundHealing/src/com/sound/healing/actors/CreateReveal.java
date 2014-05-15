@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -23,6 +24,7 @@ import com.sound.healing.AssetLoader;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.custom.Spread;
 import com.sound.healing.custom.TopImage;
@@ -30,9 +32,14 @@ import com.sound.healing.screens.ScreenSpec;
 
 public class CreateReveal extends CreateScene{
 	
-	private MenuButton backButton, saveButton;
-	private TextButton yes, no;
-	private TextButtonStyle style_info_backbutton, style_info_startButton, style_yes,style_no;
+	BackButton backButton;
+	private BackButton saveButton;
+	BackButton yes;
+	private BackButton no;
+	ButtonStyle style_info_backbutton;
+	ButtonStyle style_info_startButton;
+	ButtonStyle style_yes;
+	private ButtonStyle style_no;
 	private Image darkPurple, black, popupBackground, help;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
@@ -99,18 +106,14 @@ public class CreateReveal extends CreateScene{
 	   
 		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
 		
-		style_yes =  createTextButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark", Gdx.graphics.getWidth()/18);
-		style_no =  createTextButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark", Gdx.graphics.getWidth()/18);
-		yes = new TextButton("", style_yes);
-		no = new TextButton("", style_no);
-		yes.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
-		no.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		style_yes =  createImageButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark");
+		style_no =  createImageButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark");
+		yes = new BackButton(style_yes, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		no = new BackButton(style_no, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
 		yes.setPosition(Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/3);
 		no.setPosition(Gdx.graphics.getWidth()/6+((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
 		yes.setUserObject(38);
 		no.setUserObject(39);
-		//yes.setVisible(false);
-		//no.setVisible(false);
 		group.addActor(yes);
 		group.addActor(no);
 		scene.add(group); 
@@ -153,19 +156,20 @@ public class CreateReveal extends CreateScene{
 
 	private void setupBottom() {
 		
-		style_info_backbutton = createTextButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark", Gdx.graphics.getWidth()/14);
+		style_info_backbutton = createImageButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark");
 		
-		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(2);
 	    scene.add(backButton);
 	    
-	    style_info_startButton = createTextButtonStyle("Reveal/savebutton.atlas","savebutton","savebutton_dark", Gdx.graphics.getWidth()/14);
+	    style_info_startButton = createImageButtonStyle("Reveal/savebutton.atlas","savebutton","savebutton_dark");
 		
-	    saveButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+	    saveButton = new BackButton(style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    saveButton.setUserObject(3);
 	    scene.add(saveButton);
 		
 	}
+	
 
 	@Override
 	public void reset() {

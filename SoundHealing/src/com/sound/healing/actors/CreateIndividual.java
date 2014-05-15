@@ -2,18 +2,20 @@ package com.sound.healing.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateIndividual extends CreateScene{
 	
 	
-	private MenuButton backButton;
-	private TextButtonStyle style_menu_startbutton;
+	private BackButton backButton;
+	private ButtonStyle style_menu_startbutton;
 	private Image darkPurple, lightPurple, smallPurple;
 	private Image[] bigCards,miniCards, miniCardsBG;
 	private HorizontalGroup cardGroup;
@@ -112,10 +114,10 @@ public class CreateIndividual extends CreateScene{
 	}
 
 	private void setupBottom() {
-		style_menu_startbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_startbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(13);
 	    scene.add(backButton);
 		

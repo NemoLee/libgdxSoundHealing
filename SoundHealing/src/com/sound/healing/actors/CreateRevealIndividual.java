@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -19,15 +20,18 @@ import com.sound.healing.AssetLoader;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.custom.Spread;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateRevealIndividual extends CreateScene{
 	
-	private MenuButton backButton, saveButton;
+	BackButton backButton;
+	private MenuButton saveButton;
 	private TextButton yes, no;
-	private TextButtonStyle style_info_backbutton, style_info_startButton, style_yes,style_no;
+	ButtonStyle style_info_backbutton;
+	private TextButtonStyle style_info_startButton, style_yes,style_no;
 	private Image darkPurple, black, popupBackground;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
@@ -136,9 +140,9 @@ public class CreateRevealIndividual extends CreateScene{
 
 	private void setupBottom() {
 		
-		style_info_backbutton = createTextButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark", Gdx.graphics.getWidth()/14);
+		style_info_backbutton = createImageButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark");
 		
-		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
 	    scene.add(backButton);
 	    

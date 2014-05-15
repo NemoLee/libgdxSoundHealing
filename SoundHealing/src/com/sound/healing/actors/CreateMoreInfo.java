@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.custom.SelectImageButton;
 import com.sound.healing.screens.ScreenSpec;
@@ -15,8 +16,8 @@ import com.sound.healing.screens.ScreenSpec;
 public class CreateMoreInfo extends CreateScene{
 	
 	private SelectImageButton intro, sounds, meanings, suits, using;
-	private MenuButton backButton;
-	private TextButtonStyle style_menu_startbutton;
+	private BackButton backButton;
+	private ButtonStyle style_menu_startbutton;
 	private ButtonStyle style;
 	private Table table, container;
 	private ScrollPane scroll;
@@ -117,15 +118,17 @@ public class CreateMoreInfo extends CreateScene{
 	    
 	}
 
+
 	
 	private void setupBackButton() {
-		style_menu_startbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_startbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(2);
 	    scene.add(backButton);
 		
 		
 	}
+	
 }

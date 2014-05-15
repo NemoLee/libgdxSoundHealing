@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -19,19 +20,22 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.custom.Spread;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateInfo extends CreateScene{
 	
-	private MenuButton backButton, startButton;
-	private TextButtonStyle style_info_backbutton, style_info_startButton, style_menu_startbutton;
+	BackButton backButton;
+	private BackButton startButton;
+	ButtonStyle style_info_backbutton;
+	private ButtonStyle style_info_startButton;
+	ButtonStyle style_menu_startbutton;
 	private Image darkPurple, lightPurple, infoCard, cardPurpose, scrollbackground, scrollbar;
-	private BitmapFont titleFont, descriptionFont, descriptionFontAngel, descriptionFontIndividual, descriptionFontMulti;
+	private BitmapFont titleFont, descriptionFont;
 	private Label labelTitle;
-	private FreeTypeFontParameter font, font2, fontAngel, fontIndividual, fontMulti;
-	private LabelStyle style, styleAngel, styleIndividual, styleMulti;
+	private LabelStyle style;
 	private TextureRegion textureRegion;
 	private TextureRegionDrawable textureRegionDrawable;
 	private Image[] cardImages;
@@ -84,24 +88,10 @@ public class CreateInfo extends CreateScene{
 		scrollbar.setUserObject(5);
 		scene.add(scrollbar);
 		
-		
-		font2 = new FreeTypeFontParameter();
-		fontAngel = new FreeTypeFontParameter();
-		fontIndividual = new FreeTypeFontParameter();
-		fontMulti = new FreeTypeFontParameter();
-		font2.size = Gdx.graphics.getWidth()/25;
-		fontAngel.size = Gdx.graphics.getWidth()/34;
-		fontIndividual.size = Gdx.graphics.getWidth()/41;
-		fontMulti.size = Gdx.graphics.getWidth()/38;
-		descriptionFont = AssetLoader.getInstance().generator2.generateFont(font2);
-		descriptionFontAngel = AssetLoader.getInstance().generator2.generateFont(fontAngel);
-		descriptionFontIndividual = AssetLoader.getInstance().generator2.generateFont(fontIndividual);
-		descriptionFontMulti = AssetLoader.getInstance().generator2.generateFont(fontMulti);
+
+		descriptionFont = AssetLoader.getInstance().sans;
 		style = new LabelStyle(descriptionFont, Color.WHITE);
-		styleAngel = new LabelStyle(descriptionFontAngel, Color.WHITE);
-		styleIndividual = new LabelStyle(descriptionFontIndividual, Color.WHITE);
-		styleMulti = new LabelStyle(descriptionFontMulti, Color.WHITE);
-		
+
 		table = new Table();
 		container = new Table();
 		//table.setBounds(0, 0, Gdx.graphics.getWidth(),(Gdx.graphics.getHeight()/7));
@@ -113,9 +103,9 @@ public class CreateInfo extends CreateScene{
 		
 		table.top();
 		
-		font = new FreeTypeFontParameter();
-		font.size = Gdx.graphics.getWidth()/17;
-		titleFont = AssetLoader.getInstance().generator.generateFont(font);
+		//font = new FreeTypeFontParameter();
+		//font.size = Gdx.graphics.getWidth()/17;
+		titleFont = AssetLoader.getInstance().smallSlab;
 		labelTitle = new Label("CARD PURPOSES", new LabelStyle(titleFont, Color.WHITE));
 		labelTitle.setUserObject(7);
 		labelTitle.setAlignment(Align.center);
@@ -150,25 +140,25 @@ public class CreateInfo extends CreateScene{
 
 	private void setupBottom() {
 		
-		style_info_backbutton = createTextButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark", Gdx.graphics.getWidth()/14);
+		style_info_backbutton = createImageButtonStyle("Back/backbuttonsmall.atlas","backbuttonsmall","backbuttonsmall_dark");
 		
-		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(7);
 	    scene.add(backButton);
 	    
-	    style_info_startButton = createTextButtonStyle("Info/startbutton.atlas","startbutton","startbutton_dark", Gdx.graphics.getWidth()/14);
+	    style_info_startButton = createImageButtonStyle("Info/startbutton.atlas","startbutton","startbutton_dark");
 		
-	    startButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+	    startButton = new BackButton(style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    startButton.setUserObject(8);
 	    scene.add(startButton);
 		
 	}
 	
 	private void setupBackButton() {
-		style_menu_startbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_startbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(9);
 		backButton.setVisible(false);
 	    scene.add(backButton);
@@ -225,25 +215,9 @@ public class CreateInfo extends CreateScene{
 		textureRegion.setRegion(allAtlas.findRegion(SceneHandler.getInstance().getSpread().getInfocard()));
 		textureRegionDrawable.setRegion(textureRegion);
 		infoCard.setDrawable(textureRegionDrawable);
-		//labelDescription.setText(SceneHandler.getInstance().getSpread().getInfoDescription());
-		//labelDescription.setStyle(getStyle());
-		//table.getCell(labelDescription).size(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/25, labelDescription.getPrefHeight());
 	}
 
 	private LabelStyle getStyle() {
-		/*
-		switch(SceneHandler.getInstance().getSpread()){
-		case ANGELS_OF_SOUND:
-			return styleAngel;
-		case INDIVIDUAL:
-			return styleIndividual;
-		case MULTI:
-			return styleMulti;
-		default:
-			
-			return style;
-		}
-		*/
 		return style;
 	}
 	

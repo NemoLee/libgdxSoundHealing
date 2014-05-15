@@ -16,13 +16,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.CardEnum;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateMoreInfoSub extends CreateScene{
 	
-	private MenuButton backButton;
-	private TextButtonStyle style_menu_startbutton;
+	private BackButton backButton;
+	private ButtonStyle style_menu_startbutton;
 	private Table table, container;
 	private ScrollPane scroll;
 	private Label labelDescription, labelInfo;
@@ -84,13 +85,12 @@ public class CreateMoreInfoSub extends CreateScene{
 		
 		scene.add(container);
 	}
-
-
+	
 	private void setupBackButton() {
-		style_menu_startbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_startbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(2);
 	    scene.add(backButton);
 		

@@ -52,7 +52,6 @@ public class CreateScene {
 		styles = new TextButtonStyle();
 		styles.up = skin.getDrawable("top");
 		styles.font = AssetLoader.getInstance().slab;
-		
 		topImage = new TopImage(title, styles);
 		topImage.setPosition(0, Gdx.graphics.getHeight()-topImage.getHeight());
 		topImage.setUserObject(0);

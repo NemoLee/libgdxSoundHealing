@@ -93,14 +93,8 @@ public class CreateCard extends CreateScene{
 		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/7);
 		container.setBackground(new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("lightpurp"))));
 		
-		
-		font2 = new FreeTypeFontParameter();
-		font2.size = Gdx.graphics.getWidth()/16;
-		font3 = new FreeTypeFontParameter();
-		font3.size = Gdx.graphics.getWidth()/24;
-		
-		descriptionFont = AssetLoader.getInstance().generator.generateFont(font2);
-		descriptionInfo = AssetLoader.getInstance().generator2.generateFont(font3);
+		descriptionFont = AssetLoader.getInstance().smallSlab;
+		descriptionInfo = AssetLoader.getInstance().sans;
 		style = new LabelStyle(descriptionFont, Color.WHITE);
 		style2 = new LabelStyle(descriptionInfo, Color.WHITE);
 		

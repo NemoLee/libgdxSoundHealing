@@ -31,7 +31,7 @@ public class AssetLoader {
 
 	public FreeTypeFontGenerator generator,generator2;
 	public FreeTypeFontParameter font;
-	public BitmapFont slab;
+	public BitmapFont slab,smallSlab, sans;
 	public TextureParameter param;
 
 	
@@ -60,6 +60,10 @@ public class AssetLoader {
 		font = new FreeTypeFontParameter();
 		font.size = Gdx.graphics.getWidth()/12;
 		slab = generator.generateFont(font);
+		font.size = Gdx.graphics.getWidth()/17;
+		smallSlab = generator.generateFont(font);
+		font.size = Gdx.graphics.getWidth()/25;
+		sans = generator2.generateFont(font);
 		//loadMenu
 	//	manager.load("Menu/menu.atlas", TextureAtlas.class);
 		manager.load("Menu/menubutton.atlas", TextureAtlas.class);
