@@ -208,7 +208,6 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 			transitionStage.clear();
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
 			stage = scene.getSpec().createStage();
-			stage.getActors().get(5).setZIndex(stage.getActors().get(5).getZIndex()-1);
 			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(transitionStage.getWidth(), 0, 0.4f)));
 	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
