@@ -2,7 +2,7 @@ package com.sound.healing.cards;
 
 public enum CardEnum {
 	
-	NAME, TYPE, IMAGE, DESCRIPTION, SOUND1, SOUND2, ID;
+	NAME, TYPE, IMAGE, DESCRIPTION, SOUND1, SOUND2, ID, AFFIRMATION;
 	
 	public int getEnumID(){
 		switch(this){
@@ -20,6 +20,8 @@ public enum CardEnum {
 			return 5;
 		case ID:
 			return 6;
+		case AFFIRMATION:
+			return 7;
 		default:
 			return -1;
 		}

@@ -3,10 +3,13 @@ package com.sound.healing.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.sound.healing.AssetLoader;
+import com.sound.healing.MainScene;
 import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.CreateSplash;
@@ -20,27 +23,26 @@ public abstract class BaseScreen implements Screen{
 	protected Stage stage, transitionStage;
 	protected CreateScene scene;
 	protected CreateSplash scene2;
-	//protected ScreenSpec screenSpec;
 	public BaseScreen(CreateScene scene) {
-		batch = new SpriteBatch();
-		WIDTH = Gdx.graphics.getWidth()/5;
-		HEIGHT = Gdx.graphics.getHeight()/5;
-		camera = new OrthographicCamera(WIDTH,HEIGHT);
-		camera.setToOrtho(false, WIDTH/5, HEIGHT/5);
+		batch = SceneHandler.getInstance().getBatch();
+		//WIDTH = Gdx.graphics.getWidth()/5;
+		//HEIGHT = Gdx.graphics.getHeight()/5;
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		this.scene = scene;
-		stage = new Stage(WIDTH, HEIGHT);
-		transitionStage = new Stage(WIDTH,HEIGHT);
+		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, batch);
+		transitionStage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), false, batch);
 	}
 	
 	public BaseScreen(CreateSplash scene){
 		batch = new SpriteBatch();
-		WIDTH = Gdx.graphics.getWidth()/5;
-		HEIGHT = Gdx.graphics.getHeight()/5;
-		camera = new OrthographicCamera(WIDTH,HEIGHT);
-		camera.setToOrtho(false, WIDTH/5, HEIGHT/5);
+		//WIDTH = Gdx.graphics.getWidth()/5;
+		//HEIGHT = Gdx.graphics.getHeight()/5;
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		scene2 = scene;
-		stage = new Stage(WIDTH, HEIGHT);
-		transitionStage = new Stage(WIDTH,HEIGHT);
+		stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, batch);
+		transitionStage = new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), false , batch);
 	}
 	
 	@Override
@@ -82,13 +84,12 @@ public abstract class BaseScreen implements Screen{
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
+		//Gdx.app.exit();
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		
 	}
 

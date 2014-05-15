@@ -41,7 +41,10 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 	         public void clicked(InputEvent event, float x, float y) {
 		 			SceneHandler.getInstance().setBack(true);
 		 			SceneHandler.getInstance().setPreviousStage(stage);
+		 			//dispose();
+		 			//ScreenManager.getInstance().dispose(com.sound.healing.Screen.BROWSE);
 		 			ScreenManager.getInstance().show(com.sound.healing.Screen.MAIN_MENU);
+		 			
 	         }
 		};
 		cards = new ClickListener(){
@@ -89,7 +92,8 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	switch((Integer)(((Actor) event.getTarget()).getUserObject())){
 				 	case 4:		 		
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+1)+".png", Texture.class));
+				 	
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+1)));
 				 			images[i].setUserObject(i+1);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -97,7 +101,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 5:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+7)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+7)));
 				 			images[i].setUserObject(i+7);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -105,7 +109,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 6:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+25)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+25)));
 				 			images[i].setUserObject(i+25);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -113,7 +117,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 7:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+19)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+19)));
 				 			images[i].setUserObject(i+19);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -121,7 +125,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 8:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+31)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+31)));
 				 			images[i].setUserObject(i+31);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -129,7 +133,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 9:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+37)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+37)));
 				 			images[i].setUserObject(i+37);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -137,7 +141,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 10:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+13)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+13)));
 				 			images[i].setUserObject(i+13);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -145,7 +149,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 11:
 				 		for(int i = 0; i < 6; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+43)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+43)));
 				 			images[i].setUserObject(i+43);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -153,7 +157,7 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 	break;
 				 	case 12:
 				 		for(int i = 0; i < 4; i++){
-				 			images[i] = new Image(AssetLoader.manager.get("Card/"+(i+49)+".png", Texture.class));
+				 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+49)));
 				 			images[i].setUserObject(i+49);
 				 			images[i].addListener(cards);
 				 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
@@ -170,20 +174,16 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
-		
-	    batch.begin();
-			stage.draw();
-			transitionStage.draw();
-    	batch.end();
+		stage.draw();
+		transitionStage.draw();
 	}
 
 	@Override
 	public void show() {
 		super.show();
+		stage.getActors().get(3).setZIndex(stage.getActors().get(3).getZIndex()-1);
 		stage.getActors().get(1).addListener(back);
 		stage.getActors().get(2).addListener(select);
 		 for(int i = 4; i < 13; i++){
@@ -195,6 +195,36 @@ public class BrowseScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 				 temp.getChildren().get(i).addListener(cards);
 			 }
 		 }
+		 else{
+		 	temp.reset();
+			 	images = null;
+			 	images = new Image[52];
+		 		for(int i = 0; i < 52; i++){
+		 			images[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+(i+1)));
+		 			images[i].setUserObject(i+1);
+		 			images[i].addListener(cards);
+		 			temp.add(images[i]).size(Gdx.graphics.getWidth()/3, (float) (Gdx.graphics.getWidth()/3*1.4533)).padLeft(Gdx.graphics.getWidth()/15);
+		 		}
+		 }
+		 
+	}
+	
+	@Override
+	public void dispose() {
+		back = null;
+		select = null;
+		change = null;
+		cards = null;
+		textureRegionUp = null;
+		textureRegionDown = null;
+		textureRegionDrawableUp = null;
+		textureRegionDrawableDown = null;
+		//temp.reset();
+		//temp.remove();
+		//temp = null;
+		images = null;
+		SceneHandler.getInstance().unloadCreateBrowse();
+		super.dispose();
 	}
 	
 }

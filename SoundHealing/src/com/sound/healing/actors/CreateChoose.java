@@ -3,18 +3,20 @@ package com.sound.healing.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.sound.healing.AssetLoader;
+import com.sound.healing.custom.BackButton;
 import com.sound.healing.custom.MenuButton;
 import com.sound.healing.screens.ScreenSpec;
 
 public class CreateChoose extends CreateScene{
 	
-	private MenuButton backButton;
-	private TextButtonStyle style_menu_startbutton;
+	private BackButton backButton;
+	private ButtonStyle style_menu_startbutton;
 	private Image darkPurple, lightPurple, smallPurple;
 	private Image[] bigCards,miniCards, miniCardsBG;
 	private HorizontalGroup cardGroup;
@@ -31,12 +33,12 @@ public class CreateChoose extends CreateScene{
 	
 	
 	private void setupBackButton() {
-		style_menu_startbutton = createTextButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark", Gdx.graphics.getWidth()/14);
+		style_menu_startbutton = createImageButtonStyle("Back/backbutton.atlas","backbutton","backbutton_dark");
 		
 	    //Start button
-		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
+		backButton = new BackButton(style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
-	    scene.put((Integer) backButton.getUserObject(), backButton);
+	    scene.add(backButton);
 		
 		
 	}
@@ -47,7 +49,7 @@ public class CreateChoose extends CreateScene{
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		darkPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2);
 		darkPurple.setUserObject(2);
-		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
+		scene.add(darkPurple);
 		
 		bigCards = new Image[3];
 		for(int i = 0; i < 3; i++){
@@ -59,9 +61,9 @@ public class CreateChoose extends CreateScene{
 		bigCards[0].setPosition(-bigCards[0].getWidth()/2, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/16);
 		bigCards[1].setPosition(Gdx.graphics.getWidth()/3, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/16);
 		bigCards[2].setPosition(Gdx.graphics.getWidth()-bigCards[2].getWidth()/2, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/16);
-		scene.put((Integer) bigCards[0].getUserObject(), bigCards[0]);
-		scene.put((Integer) bigCards[1].getUserObject(), bigCards[1]);
-		scene.put((Integer) bigCards[2].getUserObject(), bigCards[2]);
+		scene.add(bigCards[0]);
+		scene.add(bigCards[1]);
+		scene.add(bigCards[2]);
 	}
 
 
@@ -70,7 +72,7 @@ public class CreateChoose extends CreateScene{
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		lightPurple.setUserObject(6);
-		scene.put((Integer) lightPurple.getUserObject(), lightPurple);
+		scene.add(lightPurple);
 		
 		miniCards = new Image[SceneHandler.getInstance().getSpread().getNumberOfCards()];
 		miniCardsBG = new Image[SceneHandler.getInstance().getSpread().getNumberOfCards()];
@@ -91,7 +93,7 @@ public class CreateChoose extends CreateScene{
 			cardGroup.addActor(miniCardsBG[i]);
 			cardGroup.addActor(miniCards[i]);
 		}
-		scene.put((Integer) cardGroup.getUserObject(), cardGroup);
+		scene.add(cardGroup);
 	}
 	
 	private void setupSmallPurple() {
@@ -99,7 +101,7 @@ public class CreateChoose extends CreateScene{
 		smallPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/20);
 		smallPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/2);
 		smallPurple.setUserObject(8);
-		scene.put((Integer) smallPurple.getUserObject(), smallPurple);
+		scene.add(smallPurple);
 		
 	}
 
@@ -137,7 +139,7 @@ public class CreateChoose extends CreateScene{
 			cardGroup.addActor(miniCardsBG[i]);
 			cardGroup.addActor(miniCards[i]);
 		}
-		scene.put((Integer) cardGroup.getUserObject(), cardGroup);
+		scene.set(7, cardGroup);
 		
 	}
 

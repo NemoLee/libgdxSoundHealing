@@ -2,6 +2,7 @@ package com.sound.healing.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Array;
@@ -30,6 +31,12 @@ public class CreateLoadReveal extends CreateScene{
 		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
 			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
 		}
+		else if(SceneHandler.getInstance().getSpread().equals(Spread.SINGLE)){
+			cardWidth = (Gdx.graphics.getWidth()-(3*10))/3;
+		}
+		else if(SceneHandler.getInstance().getSpread().equals(Spread.SOUND_ADVICE)){
+			cardWidth = (Gdx.graphics.getWidth()-(4*10))/4;
+		}
 		else{
 			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
 		}
@@ -45,14 +52,14 @@ public class CreateLoadReveal extends CreateScene{
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2+Gdx.graphics.getHeight()/5-Gdx.graphics.getHeight()/120);
 		darkPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		darkPurple.setUserObject(3);
-		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
+		scene.add(darkPurple);
 		int locationCounter = 0;
 		int x = 4;
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
-			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
+			frontCards[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);
 			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
@@ -62,8 +69,8 @@ public class CreateLoadReveal extends CreateScene{
 			backCards[i].setUserObject(x+1);
 			frontCards[i].setUserObject(x);
 			frontCards[i].setVisible(false);
-			scene.put(x, frontCards[i]);
-			scene.put(x+1, backCards[i]);
+			scene.add(frontCards[i]);
+			scene.add(backCards[i]);
 			x+=2;
 			locationCounter+=2;
 		}
@@ -78,13 +85,13 @@ public class CreateLoadReveal extends CreateScene{
 		
 		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
-	    scene.put((Integer) backButton.getUserObject(), backButton);
+	    scene.add(backButton);
 	    
 	    style_info_startButton = createTextButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark", Gdx.graphics.getWidth()/14);
 		
 	    saveButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    saveButton.setUserObject(2);
-	    scene.put((Integer) saveButton.getUserObject(), saveButton);
+	    scene.add(saveButton);
 		
 	}
 
@@ -98,6 +105,12 @@ public class CreateLoadReveal extends CreateScene{
 		if(SceneHandler.getInstance().getSpread().equals(Spread.MULTI)){
 			cardWidth = (Gdx.graphics.getWidth()-(11*10))/11;
 		}
+		else if(SceneHandler.getInstance().getSpread().equals(Spread.SINGLE)){
+			cardWidth = (Gdx.graphics.getWidth()-(3*10))/3;
+		}
+		else if(SceneHandler.getInstance().getSpread().equals(Spread.SOUND_ADVICE)){
+			cardWidth = (Gdx.graphics.getWidth()-(4*10))/4;
+		}
 		else{
 			cardWidth = (Gdx.graphics.getWidth()-(cards.size*10))/cards.size;
 		}
@@ -105,11 +118,16 @@ public class CreateLoadReveal extends CreateScene{
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
 		x = 4;
+		int size = scene.size();
+		for(int i = x; i < size; i++){
+				scene.remove(x);
+				//spec.getActors().remove(x);
+		}
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
-			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
+			frontCards[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);
 			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
@@ -119,20 +137,12 @@ public class CreateLoadReveal extends CreateScene{
 			backCards[i].setUserObject(x+1);
 			frontCards[i].setUserObject(x);
 			frontCards[i].setVisible(false);
-			scene.put(x, frontCards[i]);
-			scene.put(x+1, backCards[i]);
+			scene.add(frontCards[i]);
+			scene.add(backCards[i]);
 			x+=2;
 			locationCounter+=2;
 		}
-		for(int i = x; i < scene.size(); i++){
-			if(scene.get(i)!= null){
-				scene.get(i).setVisible(false);
-			}
-			else{
-				scene.put(i, scene.get(9));
-			}
-			System.out.println(scene.get(i));
-		}
+		
 		//group.setVisible(false);
 		//group.setUserObject(x);
 		//scene.put((Integer) group.getUserObject(), group);

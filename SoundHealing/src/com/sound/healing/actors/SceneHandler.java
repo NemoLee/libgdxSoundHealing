@@ -1,8 +1,11 @@
 package com.sound.healing.actors;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.sound.healing.AssetLoader;
 import com.sound.healing.Screen;
+import com.sound.healing.custom.MoreInfo;
 import com.sound.healing.custom.Spread;
 
 public class SceneHandler {
@@ -14,6 +17,7 @@ public class SceneHandler {
 	private CreateReveal createReveal;
 	private CreateCard createCard;
 	private Spread spread;
+	private MoreInfo moreInfo;
 	private Stage currentSpreadStage;
 	private CreateLoad createLoad;
 	private CreateLoadReveal createLoadReveal;
@@ -21,9 +25,17 @@ public class SceneHandler {
 	private CreateIndividual createIndividual;
 	private CreateRevealIndividual createRevealIndividual;
 	private CreateSplash createSplash;
+	private CreateMoreInfo createMoreInfo;
+	private CreateMoreInfoSub createMoreInfoSub;
 	private int isLoad = 0;
 	private boolean isBack = false;
 	private Stage previousStage;
+	private boolean isHelp = false;
+	private SpriteBatch batch;
+	
+	public SceneHandler() {
+		batch = new SpriteBatch();
+	}
 	
 	private static final SceneHandler INSTANCE = new SceneHandler();
 
@@ -98,6 +110,13 @@ public class SceneHandler {
 		return createBrowse;
 	}
 	
+	public void unloadCreateBrowse() {
+		if(createBrowse != null){
+			createBrowse.dispose();
+			createBrowse = null;
+		}
+	}
+	
 	public CreateScene getCreateIndividual() {
 		if(createIndividual == null){
 			createIndividual = new CreateIndividual();
@@ -118,6 +137,20 @@ public class SceneHandler {
 		}
 		return createSplash;
 	}
+	
+	public CreateScene getCreateMoreInfo() {
+		if(createMoreInfo == null){
+			createMoreInfo = new CreateMoreInfo();
+		}
+		return createMoreInfo;
+	}
+	
+	public CreateScene getCreateMoreInfoSub() {
+		if(createMoreInfoSub == null){
+			createMoreInfoSub = new CreateMoreInfoSub();
+		}
+		return createMoreInfoSub;
+	}
 
 	public void setSpread(Spread spread) {
 		this.spread = spread;
@@ -125,6 +158,14 @@ public class SceneHandler {
 	
 	public Spread getSpread() {
 		return spread;
+	}
+	
+	public MoreInfo getMoreInfo() {
+		return moreInfo;
+	}
+	
+	public void setMoreInfo(MoreInfo moreInfo) {
+		this.moreInfo = moreInfo;
 	}
 	
 	public Stage getCurrentSpreadStage() {
@@ -156,6 +197,16 @@ public class SceneHandler {
 	}
 	public void setBack(boolean isBack) {
 		this.isBack = isBack;
+	}
+	public boolean isHelp() {
+		return isHelp;
+	}
+	public void setHelp(boolean isHelp) {
+		this.isHelp = isHelp;
+	}
+
+	public SpriteBatch getBatch() {
+		return batch;
 	}
 
 

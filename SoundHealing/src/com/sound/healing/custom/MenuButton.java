@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -31,8 +32,11 @@ public class MenuButton extends TextButton{
 		setSize(width, height);
 		
 	}
-	
+
 	public void setSpreadType(String spreadName){
+		if(Spread.SINGLE.toString().equals(spreadName)){
+			spread = Spread.SINGLE;
+		}
 		if(Spread.SOUND_ADVICE.toString().equals(spreadName)){
 			spread = Spread.SOUND_ADVICE;
 		}

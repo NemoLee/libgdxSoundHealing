@@ -9,6 +9,7 @@ import com.sound.healing.screens.InfoScreen;
 import com.sound.healing.screens.LoadScreen;
 import com.sound.healing.screens.MainMenuScreen;
 import com.sound.healing.screens.MoreInfoScreen;
+import com.sound.healing.screens.MoreInfoSubScreen;
 import com.sound.healing.screens.RevealIndividualScreen;
 import com.sound.healing.screens.RevealScreen;
 import com.sound.healing.screens.SplashScreen;
@@ -17,8 +18,7 @@ import com.sound.healing.screens.loadRevealScreen;
 
 public enum Screen {
 	 
-	SPLASH,MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL, INDIVIDUAL, REVEALINDI;
- 
+	SPLASH,MAIN_MENU,BROWSE,LOAD,MORE_INFO,SPREAD_SELECT,INFO,CHOOSE,REVEAL,Card,LOAD_REVEAL, INDIVIDUAL, REVEALINDI, MORE_INFO_SUB;
 	
 	
 	public com.badlogic.gdx.Screen getScreenInstance(){
@@ -32,7 +32,7 @@ public enum Screen {
 		case LOAD:
 			return new LoadScreen(SceneHandler.getInstance().getCreateLoad());
 		case MORE_INFO:
-			return new MoreInfoScreen();
+			return new MoreInfoScreen(SceneHandler.getInstance().getCreateMoreInfo());
 		case SPREAD_SELECT:
 			return new SpreadSelectScreen(SceneHandler.getInstance().getCreateSpreadSelect());
 		case INFO:
@@ -49,6 +49,8 @@ public enum Screen {
 			return new IndividualScreen(SceneHandler.getInstance().getCreateIndividual());
 		case REVEALINDI:
 			return new RevealIndividualScreen(SceneHandler.getInstance().getCreateRevealIndividual());
+		case MORE_INFO_SUB:
+			return new MoreInfoSubScreen(SceneHandler.getInstance().getCreateMoreInfoSub());
 		default:
 			return null;
 		}

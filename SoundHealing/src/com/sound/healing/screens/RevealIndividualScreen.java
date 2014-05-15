@@ -59,11 +59,10 @@ public class RevealIndividualScreen extends BaseScreen {
 					 	cardSound.dispose();
 					 	cardSound = null;
 					 }
+				  stage.getActors().get(stage.getActors().size-1).setVisible(false);
 					SceneHandler.getInstance().setBack(true);
 					SceneHandler.getInstance().setPreviousStage(stage);
 					ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
-					for(int i = 4; i < scene.getSpec().actors.size(); i++)
-						scene.getSpec().actors.remove(i);	
 			 
 					 		
 	         }
@@ -95,7 +94,7 @@ public class RevealIndividualScreen extends BaseScreen {
 								SceneHandler.getInstance().setCurrentSpreadStage(stage);
 								isCardFlip = true;
 								event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.6f)));
-								stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.sequence(Actions.parallel(Actions.fadeIn(0.6f),Actions.visible(true)), new Action(){
+								stage.getActors().get((Integer) event.getListenerActor().getUserObject()-2).addAction(Actions.sequence(Actions.parallel(Actions.fadeIn(0.6f),Actions.visible(true)), new Action(){
 
 									@Override
 									public boolean act(float delta) {
@@ -132,7 +131,7 @@ public class RevealIndividualScreen extends BaseScreen {
 								SceneHandler.getInstance().setCurrentSpreadStage(stage);
 								isCardFlip = true;
 								event.getListenerActor().addAction(Actions.parallel(Actions.fadeOut(0.6f)));
-								stage.getActors().get((Integer) event.getListenerActor().getUserObject()-1).addAction(Actions.sequence(Actions.parallel(Actions.fadeIn(0.6f),Actions.visible(true)), new Action(){
+								stage.getActors().get((Integer) event.getListenerActor().getUserObject()-2).addAction(Actions.sequence(Actions.parallel(Actions.fadeIn(0.6f),Actions.visible(true)), new Action(){
 
 									@Override
 									public boolean act(float delta) {
@@ -171,15 +170,11 @@ public class RevealIndividualScreen extends BaseScreen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
-		
-	    batch.begin();
-			stage.draw();
-			transitionStage.draw();
-    	batch.end();
+		stage.draw();
+		transitionStage.draw();
+
 
 
 	}
@@ -193,6 +188,7 @@ public class RevealIndividualScreen extends BaseScreen {
 			transitionStage.clear();
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
 			stage = scene.getSpec().createStage();
+			stage.getActors().get(3).setZIndex(stage.getActors().size-1);
 			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(transitionStage.getWidth(), 0, 0.4f)));
 	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
@@ -213,15 +209,21 @@ public class RevealIndividualScreen extends BaseScreen {
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
 			scene.reset();
 			stage = scene.getSpec().createStage();
+			for (int i = 0; i < stage.getActors().size; i ++){
+				Gdx.app.log(i+"",stage.getActors().get(i).toString());	
+			}
 			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(-transitionStage.getWidth(), 0, 0.4f)));
 	 		stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 	 		Gdx.input.setInputProcessor(stage);
 			stage.getActors().get(1).addListener(back);
-			
+			stage.getActors().get(3).setZIndex(stage.getActors().size-1);
 			for(int i = 5; i < 4+(AllCards.getInstance().getIndividual().size*2); i++){
 				stage.getActors().get(i).addListener(flip);
 			}
 			
+			for (int i = 0; i < stage.getActors().size; i ++){
+				Gdx.app.log(i+"",stage.getActors().get(i).toString());	
+			}
 			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(2).addListener(yes);
 			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(no);
 			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));

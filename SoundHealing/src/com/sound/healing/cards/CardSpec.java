@@ -29,5 +29,11 @@ public class CardSpec {
 		return cardProperties;
 	}
 	
+	public void setCardProperty(int propertyId, String affirmation){
+		cardProperties.put(propertyId, affirmation);
+		
+		
+	}
+	
 	
 }

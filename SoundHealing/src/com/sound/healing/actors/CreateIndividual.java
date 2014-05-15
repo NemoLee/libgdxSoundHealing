@@ -33,7 +33,7 @@ public class CreateIndividual extends CreateScene{
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2);
 		darkPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2);
 		darkPurple.setUserObject(1);
-		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
+		scene.add(darkPurple);
 		
 		
 		bigCards = new Image[8];
@@ -61,14 +61,14 @@ public class CreateIndividual extends CreateScene{
 		bigCards[6].setPosition((bigCards[6].getWidth()*4+bigCards[6].getWidth()+bigCards[6].getWidth()/2), (Gdx.graphics.getHeight()/4)*2+Gdx.graphics.getHeight()/16);
 		bigCards[7].setPosition((bigCards[7].getWidth()*4+bigCards[7].getWidth()+bigCards[7].getWidth()/2), (Gdx.graphics.getHeight()/4)+Gdx.graphics.getHeight()/16);
 		
-		scene.put((Integer) bigCards[0].getUserObject(), bigCards[0]);
-		scene.put((Integer) bigCards[1].getUserObject(), bigCards[1]);
-		scene.put((Integer) bigCards[2].getUserObject(), bigCards[2]);
-		scene.put((Integer) bigCards[3].getUserObject(), bigCards[3]);
-		scene.put((Integer) bigCards[4].getUserObject(), bigCards[4]);
-		scene.put((Integer) bigCards[5].getUserObject(), bigCards[5]);
-		scene.put((Integer) bigCards[6].getUserObject(), bigCards[6]);
-		scene.put((Integer) bigCards[7].getUserObject(), bigCards[7]);
+		scene.add(bigCards[0]);
+		scene.add(bigCards[1]);
+		scene.add(bigCards[2]);
+		scene.add(bigCards[3]);
+		scene.add(bigCards[4]);
+		scene.add(bigCards[5]);
+		scene.add(bigCards[6]);
+		scene.add(bigCards[7]);
 		
 	}
 	
@@ -77,7 +77,7 @@ public class CreateIndividual extends CreateScene{
 		lightPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		lightPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		lightPurple.setUserObject(10);
-		scene.put((Integer) lightPurple.getUserObject(), lightPurple);
+		scene.add(lightPurple);
 		
 		miniCards = new Image[1];
 		miniCardsBG = new Image[1];
@@ -98,7 +98,7 @@ public class CreateIndividual extends CreateScene{
 			cardGroup.addActor(miniCardsBG[i]);
 			cardGroup.addActor(miniCards[i]);
 		}
-		scene.put((Integer) cardGroup.getUserObject(), cardGroup);
+		scene.add(cardGroup);
 	}
 	
 	
@@ -107,7 +107,7 @@ public class CreateIndividual extends CreateScene{
 		smallPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/20);
 		smallPurple.setPosition(0, (Gdx.graphics.getHeight()/7)*2+Gdx.graphics.getHeight()/2);
 		smallPurple.setUserObject(12);
-		scene.put((Integer) smallPurple.getUserObject(), smallPurple);
+		scene.add(smallPurple);
 		
 	}
 
@@ -117,7 +117,7 @@ public class CreateIndividual extends CreateScene{
 	    //Start button
 		backButton = new MenuButton("",style_menu_startbutton,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(13);
-	    scene.put((Integer) backButton.getUserObject(), backButton);
+	    scene.add(backButton);
 		
 	}
 	

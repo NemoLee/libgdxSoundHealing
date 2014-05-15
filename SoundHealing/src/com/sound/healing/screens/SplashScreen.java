@@ -12,6 +12,7 @@ import com.sound.healing.ScreenManager;
 import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.CreateSplash;
 import com.sound.healing.actors.SceneHandler;
+import com.sound.healing.custom.MoreInfo;
 import com.sound.healing.custom.Spread;
 
 public class SplashScreen extends BaseScreen{
@@ -34,13 +35,12 @@ public class SplashScreen extends BaseScreen{
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
 		if(AssetLoader.manager.update(50)){
 			load();
 		}
+		/*
 		if(!isSelect && AssetLoader.manager.isLoaded("Card/10.png",Texture.class)){
 			isSelect = true;
 			Screen.SPREAD_SELECT.getScreenInstance();
@@ -53,22 +53,26 @@ public class SplashScreen extends BaseScreen{
 			isChoose = true;
 			Screen.CHOOSE.getScreenInstance();
 		}
-		if(!isLoad && AssetLoader.manager.isLoaded("Card/40.png",Texture.class)){
-			isLoad = true;
-			Screen.LOAD.getScreenInstance();
-		}
 		if(!isCard && AssetLoader.manager.isLoaded("Card/50.png",Texture.class)){
 			isCard = true;
 			Screen.Card.getScreenInstance();
 		}
+		*/
 		if(!isReveal && AssetLoader.manager.isLoaded("UI/wait.png",Texture.class)){
+			//Screen.SPREAD_SELECT.getScreenInstance();
+		//	Screen.INFO.getScreenInstance();
+		//	Screen.CHOOSE.getScreenInstance();
+		//	Screen.Card.getScreenInstance();
 			isReveal = true;
-			Screen.REVEAL.getScreenInstance();
+			SceneHandler.getInstance().setMoreInfo(MoreInfo.INTRO);
+		//	Screen.REVEAL.getScreenInstance();
+		//	Screen.LOAD.getScreenInstance();
+		//	Screen.MORE_INFO.getScreenInstance();
+			//Screen.MORE_INFO_SUB.getScreenInstance();
 		}
-	    batch.begin();
+
 			stage.draw();
 			transitionStage.draw();
-    	batch.end();
 	}
 	
 	

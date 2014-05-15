@@ -60,8 +60,13 @@ public class ChooseScreen extends BaseScreen implements Screen {
 					}
 					SceneHandler.getInstance().setBack(true);
 					SceneHandler.getInstance().setPreviousStage(stage);
+					if(SceneHandler.getInstance().getSpread().equals(Spread.SINGLE)){
+						ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
+					}
+					else{
 					ScreenManager.getInstance().show(com.sound.healing.Screen.INFO);
-	         }
+					}
+			 }
 		};
 	}
 
@@ -105,7 +110,6 @@ public class ChooseScreen extends BaseScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
 		if(!isStopped){
@@ -119,12 +123,8 @@ public class ChooseScreen extends BaseScreen implements Screen {
 				play = 0;
 			}
 		}
-		batch.setProjectionMatrix(camera.combined);
-		
-	    batch.begin();
 			stage.draw();
 			transitionStage.draw();
-    	batch.end();
     	
 	}
 

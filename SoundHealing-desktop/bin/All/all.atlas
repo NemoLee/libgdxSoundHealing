@@ -3,130 +3,228 @@ all.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-select_individual
+menu_title_background
   rotate: false
-  xy: 1, 873
-  size: 564, 150
-  orig: 564, 150
+  xy: 1, 742
+  size: 400, 279
+  orig: 400, 279
   offset: 0, 0
   index: -1
 lightpurp
   rotate: false
-  xy: 1, 594
+  xy: 403, 744
   size: 400, 277
   orig: 400, 277
   offset: 0, 0
   index: -1
-menu_title_background
+meanings
   rotate: false
-  xy: 1, 318
-  size: 400, 274
-  orig: 400, 274
+  xy: 805, 987
+  size: 210, 34
+  orig: 210, 34
+  offset: 0, 0
+  index: -1
+medpurp
+  rotate: false
+  xy: 1017, 1017
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1
+select_singingearth
+  rotate: false
+  xy: 805, 883
+  size: 202, 102
+  orig: 202, 102
+  offset: 0, 0
+  index: -1
+scrollpanel
+  rotate: false
+  xy: 1009, 685
+  size: 14, 300
+  orig: 14, 300
+  offset: 0, 0
+  index: -1
+rootbtn
+  rotate: false
+  xy: 805, 815
+  size: 199, 66
+  orig: 199, 66
+  offset: 0, 0
+  index: -1
+thirdeyebtn
+  rotate: false
+  xy: 805, 747
+  size: 199, 66
+  orig: 199, 66
+  offset: 0, 0
+  index: -1
+throatbtn
+  rotate: false
+  xy: 805, 679
+  size: 199, 66
+  orig: 199, 66
   offset: 0, 0
   index: -1
 darkpurp
   rotate: false
-  xy: 1, 83
+  xy: 403, 509
   size: 400, 233
   orig: 400, 233
   offset: 0, 0
   index: -1
+top_header
+  rotate: false
+  xy: 1, 643
+  size: 400, 97
+  orig: 400, 97
+  offset: 0, 0
+  index: -1
+select_type_down
+  rotate: false
+  xy: 1, 558
+  size: 400, 83
+  orig: 400, 83
+  offset: 0, 0
+  index: -1
+select_type_up
+  rotate: false
+  xy: 1, 473
+  size: 400, 83
+  orig: 400, 83
+  offset: 0, 0
+  index: -1
+scrollbar
+  rotate: false
+  xy: 1006, 659
+  size: 10, 24
+  orig: 10, 24
+  offset: 0, 0
+  index: -1
+crownbtn
+  rotate: false
+  xy: 805, 611
+  size: 198, 66
+  orig: 198, 66
+  offset: 0, 0
+  index: -1
+heartbtn
+  rotate: false
+  xy: 805, 543
+  size: 198, 66
+  orig: 198, 66
+  offset: 0, 0
+  index: -1
+sacralbtn
+  rotate: false
+  xy: 805, 475
+  size: 198, 66
+  orig: 198, 66
+  offset: 0, 0
+  index: -1
+angelcardsbtn
+  rotate: false
+  xy: 403, 431
+  size: 400, 76
+  orig: 400, 76
+  offset: 0, 0
+  index: -1
+solarplexusbtn
+  rotate: false
+  xy: 1, 395
+  size: 400, 76
+  orig: 400, 76
+  offset: 0, 0
+  index: -1
 bigcard
   rotate: false
-  xy: 403, 479
+  xy: 1, 1
   size: 279, 392
   orig: 279, 392
   offset: 0, 0
   index: -1
 spread81
   rotate: false
-  xy: 403, 86
+  xy: 282, 2
   size: 279, 391
   orig: 279, 391
   offset: 0, 0
-  index: 1
-select_type_down
+  index: -1
+suits_colours
   rotate: false
-  xy: 403, 1
-  size: 400, 83
-  orig: 400, 83
+  xy: 403, 395
+  size: 383, 34
+  orig: 383, 34
   offset: 0, 0
   index: -1
-angelcardsbtn
+using_cards
   rotate: false
-  xy: 1, 5
-  size: 400, 76
-  orig: 400, 76
+  xy: 788, 395
+  size: 233, 34
+  orig: 233, 34
   offset: 0, 0
   index: -1
 spread82
   rotate: false
-  xy: 684, 632
+  xy: 563, 2
   size: 279, 391
   orig: 279, 391
-  offset: 0, 0
-  index: 2
-spread83
-  rotate: false
-  xy: 684, 239
-  size: 279, 391
-  orig: 279, 391
-  offset: 0, 0
-  index: 3
-select_singingearth
-  rotate: false
-  xy: 684, 93
-  size: 290, 144
-  orig: 290, 144
-  offset: 0, 0
-  index: -1
-crownbtn
-  rotate: false
-  xy: 805, 25
-  size: 198, 66
-  orig: 198, 66
-  offset: 0, 0
-  index: -1
-select_duet
-  rotate: false
-  xy: 567, 891
-  size: 92, 132
-  orig: 92, 132
   offset: 0, 0
   index: -1
 more_info
   rotate: false
-  xy: 805, 2
-  size: 87, 21
-  orig: 87, 21
+  xy: 844, 361
+  size: 176, 32
+  orig: 176, 32
   offset: 0, 0
   index: -1
-minicard_bg
+menu_author
   rotate: false
-  xy: 965, 968
-  size: 37, 55
-  orig: 37, 55
+  xy: 805, 435
+  size: 164, 38
+  orig: 164, 38
   offset: 0, 0
   index: -1
-browse
+select_retuning
   rotate: false
-  xy: 894, 2
-  size: 67, 21
-  orig: 67, 21
+  xy: 844, 258
+  size: 162, 101
+  orig: 162, 101
+  offset: 0, 0
+  index: -1
+select_heartsong
+  rotate: false
+  xy: 844, 155
+  size: 151, 101
+  orig: 151, 101
+  offset: 0, 0
+  index: -1
+instruct_ah
+  rotate: false
+  xy: 844, 49
+  size: 103, 104
+  orig: 103, 104
   offset: 0, 0
   index: -1
 start
   rotate: false
-  xy: 963, 2
-  size: 48, 21
-  orig: 48, 21
+  xy: 949, 120
+  size: 71, 33
+  orig: 71, 33
   offset: 0, 0
   index: -1
-load
+select_duet
   rotate: false
-  xy: 965, 945
-  size: 38, 21
-  orig: 38, 21
+  xy: 949, 24
+  size: 65, 94
+  orig: 65, 94
+  offset: 0, 0
+  index: -1
+browse
+  rotate: false
+  xy: 844, 15
+  size: 99, 32
+  orig: 99, 32
   offset: 0, 0
   index: -1
 
@@ -134,144 +232,207 @@ all2.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-select_multi
+spread83
   rotate: false
-  xy: 1, 884
-  size: 458, 132
-  orig: 458, 132
+  xy: 1, 624
+  size: 279, 391
+  orig: 279, 391
   offset: 0, 0
   index: -1
 spread84
   rotate: false
-  xy: 461, 625
+  xy: 1, 231
   size: 279, 391
   orig: 279, 391
-  offset: 0, 0
-  index: 4
-infocard1
-  rotate: false
-  xy: 1, 690
-  size: 314, 192
-  orig: 314, 192
-  offset: 0, 0
-  index: -1
-top_header
-  rotate: false
-  xy: 1, 591
-  size: 400, 97
-  orig: 400, 97
-  offset: 0, 0
-  index: -1
-instruct_ah
-  rotate: false
-  xy: 317, 778
-  size: 103, 104
-  orig: 103, 104
-  offset: 0, 0
-  index: -1
-select_type_up
-  rotate: false
-  xy: 403, 540
-  size: 400, 83
-  orig: 400, 83
   offset: 0, 0
   index: -1
 spread85
   rotate: false
-  xy: 742, 625
+  xy: 282, 624
   size: 279, 391
   orig: 279, 391
-  offset: 0, 0
-  index: 5
-solarplexusbtn
-  rotate: false
-  xy: 1, 513
-  size: 400, 76
-  orig: 400, 76
   offset: 0, 0
   index: -1
 spread86
   rotate: false
-  xy: 403, 147
+  xy: 282, 231
   size: 279, 391
   orig: 279, 391
-  offset: 0, 0
-  index: 6
-wholebodybtn
-  rotate: false
-  xy: 1, 435
-  size: 400, 76
-  orig: 400, 76
-  offset: 0, 0
-  index: -1
-select_symphony
-  rotate: false
-  xy: 1, 301
-  size: 368, 132
-  orig: 368, 132
-  offset: 0, 0
-  index: -1
-select_angel
-  rotate: false
-  xy: 1, 167
-  size: 350, 132
-  orig: 350, 132
-  offset: 0, 0
-  index: -1
-select_retuning
-  rotate: false
-  xy: 1, 19
-  size: 232, 146
-  orig: 232, 146
-  offset: 0, 0
-  index: -1
-menu_author
-  rotate: false
-  xy: 235, 127
-  size: 164, 38
-  orig: 164, 38
-  offset: 0, 0
-  index: -1
-select_soundadvice
-  rotate: false
-  xy: 401, 13
-  size: 280, 132
-  orig: 280, 132
-  offset: 0, 0
-  index: -1
-select_heartsong
-  rotate: false
-  xy: 683, 1
-  size: 218, 144
-  orig: 218, 144
   offset: 0, 0
   index: -1
 spread87
   rotate: false
-  xy: 684, 147
+  xy: 563, 624
   size: 279, 391
   orig: 279, 391
   offset: 0, 0
-  index: 7
-rootbtn
+  index: -1
+spread88
   rotate: false
-  xy: 805, 557
-  size: 199, 66
-  orig: 199, 66
+  xy: 563, 231
+  size: 279, 391
+  orig: 279, 391
+  offset: 0, 0
+  index: -1
+infocard1
+  rotate: false
+  xy: 1, 37
+  size: 314, 192
+  orig: 314, 192
+  offset: 0, 0
+  index: -1
+infocard2
+  rotate: false
+  xy: 317, 37
+  size: 314, 192
+  orig: 314, 192
+  offset: 0, 0
+  index: -1
+infocard3
+  rotate: false
+  xy: 633, 37
+  size: 314, 192
+  orig: 314, 192
+  offset: 0, 0
+  index: -1
+making_sounds
+  rotate: false
+  xy: 1, 1
+  size: 273, 34
+  orig: 273, 34
+  offset: 0, 0
+  index: -1
+intro
+  rotate: false
+  xy: 276, 1
+  size: 189, 34
+  orig: 189, 34
   offset: 0, 0
   index: -1
 instruct_angel
   rotate: false
-  xy: 903, 41
+  xy: 844, 911
   size: 103, 104
   orig: 103, 104
   offset: 0, 0
   index: -1
 instruct_ay
   rotate: false
-  xy: 235, 21
+  xy: 844, 805
   size: 103, 104
   orig: 103, 104
+  offset: 0, 0
+  index: -1
+instruct_ee
+  rotate: false
+  xy: 844, 699
+  size: 103, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+instruct_i
+  rotate: false
+  xy: 844, 593
+  size: 103, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+instruct_iam
+  rotate: false
+  xy: 844, 487
+  size: 103, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+instruct_oh
+  rotate: false
+  xy: 844, 381
+  size: 103, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+instruct_ohm
+  rotate: false
+  xy: 844, 275
+  size: 103, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+card1
+  rotate: false
+  xy: 949, 946
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card2
+  rotate: false
+  xy: 949, 875
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card3
+  rotate: false
+  xy: 949, 804
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card4
+  rotate: false
+  xy: 949, 733
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card5
+  rotate: false
+  xy: 949, 662
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card6
+  rotate: false
+  xy: 949, 591
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card7
+  rotate: false
+  xy: 949, 520
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card8
+  rotate: false
+  xy: 949, 449
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+card9
+  rotate: false
+  xy: 949, 378
+  size: 49, 69
+  orig: 49, 69
+  offset: 0, 0
+  index: -1
+minicard_bg
+  rotate: false
+  xy: 949, 321
+  size: 37, 55
+  orig: 37, 55
+  offset: 0, 0
+  index: -1
+load
+  rotate: false
+  xy: 467, 2
+  size: 58, 33
+  orig: 58, 33
   offset: 0, 0
   index: -1
 
@@ -279,150 +440,122 @@ all3.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-spread88
-  rotate: false
-  xy: 1, 583
-  size: 279, 391
-  orig: 279, 391
-  offset: 0, 0
-  index: 8
-infocard2
-  rotate: false
-  xy: 282, 782
-  size: 314, 192
-  orig: 314, 192
-  offset: 0, 0
-  index: -1
-infocard3
-  rotate: false
-  xy: 282, 588
-  size: 314, 192
-  orig: 314, 192
-  offset: 0, 0
-  index: -1
 infocard4
   rotate: false
-  xy: 598, 782
+  xy: 1, 781
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
 infocard5
   rotate: false
-  xy: 598, 588
+  xy: 1, 587
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
 infocard6
   rotate: false
-  xy: 1, 389
+  xy: 317, 781
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
+select_individual
+  rotate: false
+  xy: 633, 893
+  size: 390, 80
+  orig: 390, 80
+  offset: 0, 0
+  index: -1
 infocard7
   rotate: false
-  xy: 1, 195
+  xy: 1, 393
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
 infocard8
   rotate: false
-  xy: 1, 1
+  xy: 317, 587
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
 infocard9
   rotate: false
-  xy: 317, 394
+  xy: 633, 699
   size: 314, 192
   orig: 314, 192
   offset: 0, 0
   index: -1
-menu_title
+select_multi
   rotate: false
-  xy: 317, 263
-  size: 209, 129
-  orig: 209, 129
+  xy: 1, 281
+  size: 318, 110
+  orig: 318, 110
   offset: 0, 0
   index: -1
-thirdeyebtn
+wholebodybtn
   rotate: false
-  xy: 633, 520
-  size: 199, 66
-  orig: 199, 66
+  xy: 1, 203
+  size: 400, 76
+  orig: 400, 76
   offset: 0, 0
   index: -1
-throatbtn
+select_single
   rotate: false
-  xy: 317, 195
-  size: 199, 66
-  orig: 199, 66
+  xy: 633, 606
+  size: 297, 91
+  orig: 297, 91
   offset: 0, 0
   index: -1
-heartbtn
+select_soundadvice
   rotate: false
-  xy: 633, 452
-  size: 198, 66
-  orig: 198, 66
+  xy: 317, 494
+  size: 297, 91
+  orig: 297, 91
   offset: 0, 0
   index: -1
-sacralbtn
+select_symphony
   rotate: false
-  xy: 317, 127
-  size: 198, 66
-  orig: 198, 66
+  xy: 1, 107
+  size: 255, 94
+  orig: 255, 94
   offset: 0, 0
   index: -1
-instruct_ee
+select_angel
   rotate: false
-  xy: 914, 870
-  size: 103, 104
-  orig: 103, 104
-  offset: 0, 0
-  index: -1
-instruct_i
-  rotate: false
-  xy: 528, 288
-  size: 103, 104
-  orig: 103, 104
-  offset: 0, 0
-  index: -1
-instruct_iam
-  rotate: false
-  xy: 633, 346
-  size: 103, 104
-  orig: 103, 104
-  offset: 0, 0
-  index: -1
-instruct_oh
-  rotate: false
-  xy: 317, 21
-  size: 103, 104
-  orig: 103, 104
-  offset: 0, 0
-  index: -1
-instruct_ohm
-  rotate: false
-  xy: 914, 764
-  size: 103, 104
-  orig: 103, 104
+  xy: 317, 402
+  size: 241, 90
+  orig: 241, 90
   offset: 0, 0
   index: -1
 instruct_ooh
   rotate: false
-  xy: 914, 658
+  xy: 1, 1
   size: 103, 104
   orig: 103, 104
   offset: 0, 0
   index: -1
 instruct_or
   rotate: false
-  xy: 738, 346
+  xy: 106, 1
   size: 103, 104
   orig: 103, 104
+  offset: 0, 0
+  index: -1
+delete
+  rotate: false
+  xy: 258, 116
+  size: 85, 85
+  orig: 85, 85
+  offset: 0, 0
+  index: -1
+more_info_button
+  rotate: false
+  xy: 321, 326
+  size: 75, 74
+  orig: 75, 74
   offset: 0, 0
   index: -1

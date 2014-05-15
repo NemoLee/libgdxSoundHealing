@@ -1,6 +1,7 @@
 package com.sound.healing.actors;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,11 +13,11 @@ import com.sound.healing.screens.ScreenSpec;
 public class CreateSplash{
 	
 	protected ScreenSpec spec;
-	protected HashMap<Integer, Actor> scene;
+	protected LinkedList<Actor> scene;
 	private Image background, rotate;
 	
 	public CreateSplash() {
-		scene = new HashMap<Integer, Actor>();
+		scene = new LinkedList<Actor>();
 		setupBackground();
 		setupForground();
 		spec = new ScreenSpec(scene);
@@ -31,7 +32,7 @@ public class CreateSplash{
 		background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		background.setPosition(0, 0);
 		background.setUserObject(0);
-		scene.put((Integer) background.getUserObject(), background);
+		scene.add(background);
 	}
 	
 	private void setupForground() {
@@ -40,7 +41,7 @@ public class CreateSplash{
 		rotate.setPosition(Gdx.graphics.getWidth()/2-rotate.getWidth()/2, Gdx.graphics.getHeight()/5);
 		rotate.setUserObject(1);
 		rotate.setOrigin(rotate.getWidth()/2, rotate.getHeight()/2);
-		scene.put((Integer) rotate.getUserObject(), rotate);
+		scene.add(rotate);
 		
 	}
 	

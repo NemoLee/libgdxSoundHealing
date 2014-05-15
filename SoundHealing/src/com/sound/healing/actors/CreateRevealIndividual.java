@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -52,8 +53,8 @@ public class CreateRevealIndividual extends CreateScene{
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		//locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		setupBottom();
-		setupReveal();
 		setupDialog();
+		setupReveal();
 		spec = new ScreenSpec(scene);
 	}
 
@@ -71,9 +72,9 @@ public class CreateRevealIndividual extends CreateScene{
 		//black.setVisible(false);
 		group.addActor(black);
 	   // scene.put((Integer) black.getUserObject(), black);
-	    popupBackground = new Image(AssetLoader.manager.get("UI/wait.png", Texture.class));
-	    popupBackground.setSize(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/3);
-	    popupBackground.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/3);
+	    popupBackground = new Image(AssetLoader.manager.get("UI/wait.png",Texture.class));
+	    popupBackground.setSize(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/2);
+	    popupBackground.setPosition(Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/3);
 	    popupBackground.setUserObject(x+1);
 	   // popupBackground.setVisible(false);
 	    group.addActor(popupBackground);
@@ -85,18 +86,19 @@ public class CreateRevealIndividual extends CreateScene{
 		style_no =  createTextButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark", Gdx.graphics.getWidth()/18);
 		yes = new TextButton("", style_yes);
 		no = new TextButton("", style_no);
-		yes.setSize(Gdx.graphics.getWidth()/4-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/12);
-		no.setSize(Gdx.graphics.getWidth()/4-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/12);
-		yes.setPosition(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/3);
-		no.setPosition(Gdx.graphics.getWidth()/4+(Gdx.graphics.getWidth()/4+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
+		yes.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		no.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		yes.setPosition(Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/3);
+		no.setPosition(Gdx.graphics.getWidth()/6+((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
 		yes.setUserObject(x+2);
 		no.setUserObject(x+3);
 		//yes.setVisible(false);
 		//no.setVisible(false);
 		group.addActor(yes);
 		group.addActor(no);
-		scene.put((Integer) group.getUserObject(), group);
+		scene.add(group); 
 		
+	
 		
 	}
 
@@ -105,14 +107,14 @@ public class CreateRevealIndividual extends CreateScene{
 		darkPurple.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()/2+Gdx.graphics.getHeight()/5-Gdx.graphics.getHeight()/120);
 		darkPurple.setPosition(0, Gdx.graphics.getHeight()/7);
 		darkPurple.setUserObject(3);
-		scene.put((Integer) darkPurple.getUserObject(), darkPurple);
+		scene.add(darkPurple);
 		int locationCounter = 0;
-		x = 4;
+		x = 5;
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
-			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
+			frontCards[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);
 			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
@@ -122,8 +124,8 @@ public class CreateRevealIndividual extends CreateScene{
 			backCards[i].setUserObject(x+1);
 			frontCards[i].setUserObject(x);
 			frontCards[i].setVisible(false);
-			scene.put(x, frontCards[i]);
-			scene.put(x+1, backCards[i]);
+			scene.add(frontCards[i]);
+			scene.add(backCards[i]);
 			x+=2;
 			locationCounter+=2;
 		}
@@ -138,13 +140,13 @@ public class CreateRevealIndividual extends CreateScene{
 		
 		backButton = new MenuButton("",style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
-	    scene.put((Integer) backButton.getUserObject(), backButton);
+	    scene.add(backButton);
 	    
 	    style_info_startButton = createTextButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark", Gdx.graphics.getWidth()/14);
 		
 	    saveButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    saveButton.setUserObject(2);
-	    scene.put((Integer) saveButton.getUserObject(), saveButton);
+	    scene.add(saveButton);
 		
 	}
 
@@ -164,12 +166,17 @@ public class CreateRevealIndividual extends CreateScene{
 		cardHeight = (int)(cardWidth*1.4533);
 		locations = SceneHandler.getInstance().getSpread().getSpreadLayout();
 		int locationCounter = 0;
-		x = 4;
+		x = 5;
+		int size = scene.size();
+		for(int i = x; i < size; i++){
+				scene.remove(x);
+				//spec.getActors().remove(x);
+		}
 		backCards = new Image[(cards.size)];
 		frontCards = new Image[(cards.size)];
 		for(int i = 0; i < backCards.length; i++){
 			backCards[i] = new Image(allAtlas.findRegion("bigcard"));
-			frontCards[i] = new Image(AssetLoader.manager.get("Card/"+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())+".png", Texture.class));
+			frontCards[i] = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+cards.get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID())));
 			backCards[i].setSize(cardWidth, cardHeight);
 			frontCards[i].setSize(cardWidth, cardHeight);
 			backCards[i].setPosition(locations.get(locationCounter), locations.get(locationCounter+1));
@@ -179,19 +186,11 @@ public class CreateRevealIndividual extends CreateScene{
 			backCards[i].setUserObject(x+1);
 			frontCards[i].setUserObject(x);
 			frontCards[i].setVisible(false);
-			scene.put(x, frontCards[i]);
-			scene.put(x+1, backCards[i]);
+			scene.add(frontCards[i]);
+			scene.add(backCards[i]);
 			x+=2;
 			locationCounter+=2;
 		}
-		for(int i = x; i < scene.size(); i++){
-			if(scene.get(i)!= null){
-				scene.get(i).setVisible(false);
-			}
-		}
-		group.setVisible(false);
-		group.setUserObject(x);
-		scene.put((Integer) group.getUserObject(), group);
 	    
 		
 	}

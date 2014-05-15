@@ -40,33 +40,40 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 				 		//check to see if switch if null to handle android vs desktop and make sure to check ios
 							switch((Integer)(((Actor) event.getTarget()).getUserObject())){
 							case 3:
+								SceneHandler.getInstance().setSpread(Spread.SINGLE);
+								SceneHandler.getInstance().setBack(false);
+								SceneHandler.getInstance().setPreviousStage(stage);
+								ScreenManager.getInstance().show(Screen.CHOOSE);
+								return;
+							case 4:
 								SceneHandler.getInstance().setSpread(Spread.SOUND_ADVICE);
 								break;
-							case 4:
+							case 5:
 								SceneHandler.getInstance().setSpread(Spread.SYMPHONY_OF_LIFE);							
 								break;
-							case 5:
+							case 6:
 								SceneHandler.getInstance().setSpread(Spread.DUET);
 								break;
-							case 6:
+							case 7:
 								SceneHandler.getInstance().setSpread(Spread.HEARTSONG);
 								break;
-							case 7:
+							case 8:
 								SceneHandler.getInstance().setSpread(Spread.RETUNING);
 								break;
-							case 8:
+							case 9:
 								SceneHandler.getInstance().setSpread(Spread.SINGING_EARTH);
 								break;
-							case 9:
+							case 10:
 								SceneHandler.getInstance().setSpread(Spread.ANGELS_OF_SOUND);
 								break;
-							case 10:
+							case 11:
 								SceneHandler.getInstance().setSpread(Spread.INDIVIDUAL);
 								break;
-							case 11:
+							case 12:
 								SceneHandler.getInstance().setSpread(Spread.MULTI);
 								break;
 							}
+							Gdx.app.log("CurrentSpread", SceneHandler.getInstance().getSpread().toString());
 							SceneHandler.getInstance().setBack(false);
 							SceneHandler.getInstance().setPreviousStage(stage);
 							ScreenManager.getInstance().show(Screen.INFO);		
@@ -78,15 +85,10 @@ public class SpreadSelectScreen extends BaseScreen implements com.badlogic.gdx.S
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
-		
-	    batch.begin();
-			stage.draw();
-			transitionStage.draw();
-    	batch.end();
+		stage.draw();
+		transitionStage.draw();
 	}
 
 

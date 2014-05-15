@@ -15,7 +15,7 @@ import com.sound.healing.actors.SceneHandler;
 
 public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 
-	private ClickListener click, click2, click3;
+	private ClickListener click, click2, click3, click4;
 
 	public MainMenuScreen(CreateScene scene) {	
 		super(scene);
@@ -49,20 +49,26 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 				
 	         }
 		};
+		click4 = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 		SceneHandler.getInstance().setBack(false);
+				 		SceneHandler.getInstance().setPreviousStage(stage);
+						ScreenManager.getInstance().show(Screen.MORE_INFO);
+		 	
+				
+	         }
+		};
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		stage.act();
 		transitionStage.act();
-		batch.setProjectionMatrix(camera.combined);	
-		batch.begin();
-			transitionStage.draw();
-			stage.draw();
-		batch.end();
+		transitionStage.draw();
+		stage.draw();
 	}
 
 
@@ -84,9 +90,11 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 	 	stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f), Actions.run(new Runnable(){
 	 		@Override
 	 		public void run() {
-	 			AssetLoader.manager.unload("Splash/splash.png");
-	 			AssetLoader.manager.unload("Splash/loading.png");
-	 			ScreenManager.getInstance().dispose(Screen.SPLASH);
+	 			if(AssetLoader.manager.isLoaded("Splash/loading.png")){
+		 			AssetLoader.manager.unload("Splash/splash.png");
+		 			AssetLoader.manager.unload("Splash/loading.png");
+		 			ScreenManager.getInstance().dispose(Screen.SPLASH);
+	 			}
 	 		}
 	 	})));
 		}
@@ -99,9 +107,10 @@ public class MainMenuScreen extends BaseScreen implements com.badlogic.gdx.Scree
 		Gdx.input.setInputProcessor(stage);
 	}
 	*/
-	stage.getActors().get(3).addListener(click);
-	stage.getActors().get(4).addListener(click3);
+	stage.getActors().get(3).addListener(click4);
+	stage.getActors().get(4).addListener(click);
 	stage.getActors().get(5).addListener(click2);
+	stage.getActors().get(6).addListener(click3);
 	//stage.getActors().get(6).addListener(click);
     
    

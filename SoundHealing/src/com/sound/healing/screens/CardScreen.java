@@ -42,6 +42,7 @@ public class CardScreen extends BaseScreen implements Screen {
 	         public void clicked(InputEvent event, float x, float y) {
 				 cardSound.stop();
 				 	play = 1;
+				 bigFlip.clicked(event, x, y);
 				 
 			 }
 		};
@@ -83,11 +84,13 @@ public class CardScreen extends BaseScreen implements Screen {
 	         public void clicked(InputEvent event, float x, float y) {
 				 
 				 if(!isFlipped){
+					 ((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(2)).addAction(Actions.sequence(Actions.alpha(0.1f),Actions.visible(true),Actions.fadeIn(0.6f)));
 					 stage.getActors().get(0).addAction(Actions.sequence(Actions.fadeOut(0.3f), Actions.visible(false)));
 					 stage.getActors().get(3).addAction(Actions.parallel(Actions.visible(true),Actions.fadeIn(0.3f)));
 					 isFlipped = true;
 				 }
 				 else{
+					 ((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(2)).addAction(Actions.sequence(Actions.fadeOut(0.1f),Actions.visible(false)));
 					 stage.getActors().get(3).addAction(Actions.sequence(Actions.fadeOut(0.3f), Actions.visible(false)));
 					 stage.getActors().get(0).addAction(Actions.parallel(Actions.visible(true),Actions.fadeIn(0.3f)));
 					 isFlipped = false;
@@ -100,10 +103,8 @@ public class CardScreen extends BaseScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
 		if(!cardSound.isPlaying()&&play == 3){
 			cardSound.stop();
 		 	cardSound.dispose();
@@ -142,10 +143,8 @@ public class CardScreen extends BaseScreen implements Screen {
 			cardSound.play();
 			play = 0;
 		}
-	    batch.begin();
 			stage.draw();
 			transitionStage.draw();
-    	batch.end();
 
 	}
 
@@ -157,8 +156,8 @@ public class CardScreen extends BaseScreen implements Screen {
 		isFlipped = false;
 		stage.getActors().get(1).addListener(back);
 		stage.getActors().get(2).addListener(bigFlip);
-		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(1)).getChildren().get(0).addListener(playAll);
-		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(1)).getChildren().get(1).addListener(playLast);
+		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(2)).getChildren().get(0).addListener(playAll);
+		((HorizontalGroup) ((Table) ((ScrollPane) ((Table) stage.getActors().get(3)).getChildren().get(0)).getWidget()).getChildren().get(2)).getChildren().get(1).addListener(playLast);
 		//((HorizontalGroup) ((Table) stage.getActors().get(3)).getChildren().get(0)).getChildren().get(0).addListener(playAll);
 		//((HorizontalGroup) ((Table) stage.getActors().get(3)).getChildren().get(0)).getChildren().get(1).addListener(playLast);
 		cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.SOUND1.getEnumID())));

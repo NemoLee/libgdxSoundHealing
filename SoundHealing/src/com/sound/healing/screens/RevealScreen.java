@@ -37,9 +37,9 @@ import com.sound.healing.cards.Card;
 import com.sound.healing.cards.CardEnum;
 
 public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen {
-	private ClickListener back, flip, save, yes, no;
+	private ClickListener back, flip, save, yes, no, help;
 	private boolean isCardFlip = false;
-	int flasher = 5;
+	int flasher = 6;
 	private Music cardSound;
 	private Array<String> sounds;
 	private boolean isFlash = true;
@@ -52,12 +52,25 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 	
 	public RevealScreen(final CreateScene scene) {
 		super(scene);
+		
+		help = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+				 	cardSound.stop();
+				 	cardSound.dispose();
+				 	cardSound = null;
+					SceneHandler.getInstance().setBack(false);
+					SceneHandler.getInstance().setPreviousStage(stage);
+					SceneHandler.getInstance().setHelp(true);
+					ScreenManager.getInstance().show(com.sound.healing.Screen.INFO);		
+	         }
+		};
 		no = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				stage.getActors().get(stage.getActors().size-1).setVisible(false);
-	
-					 		
+				stage.getActors().get(stage.getActors().size-1).setZIndex(5);
+				stage.getActors().get(5).setVisible(false);
+				
 	         }
 		};
 		yes = new ClickListener(){
@@ -72,8 +85,8 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 					SceneHandler.getInstance().setBack(true);
 					SceneHandler.getInstance().setPreviousStage(stage);
 					ScreenManager.getInstance().show(com.sound.healing.Screen.SPREAD_SELECT);
-					for(int i = 4; i < scene.getSpec().actors.size(); i++)
-						scene.getSpec().actors.remove(i);	
+					//for(int i = 6; i < scene.getSpec().actors.size(); i++)
+					//	scene.getSpec().actors.remove(i);	
 			 
 					 		
 	         }
@@ -82,7 +95,12 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				stage.getActors().get(stage.getActors().size-1).setVisible(true);
+				// for(int i = 6; i < stage.getActors().size; i++){
+				//	 stage.getActors().get(i).setVisible(false);
+				// }
+				stage.getActors().get(5).setVisible(true);
+				stage.getActors().get(5).toFront();
+				//System.out.println(((Group) stage.getActors().get(4)).getChildren().get(2).getUserObject());
 					 		
 	         }
 		};
@@ -107,8 +125,8 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 					 		SceneHandler.getInstance().setBack(true);
 							SceneHandler.getInstance().setPreviousStage(stage);
 							ScreenManager.getInstance().show(com.sound.healing.Screen.MAIN_MENU);
-							for(int i = 4; i < scene.getSpec().actors.size(); i++)
-								scene.getSpec().actors.remove(i);	
+							//for(int i = 6; i < scene.getSpec().actors.size(); i++)
+							//	scene.getSpec().actors.remove(i);	
 						
 					 		
 	         }
@@ -131,11 +149,10 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 
 							@Override
 							public boolean act(float delta) {
-								SceneHandler.getInstance().setLoad(1);
 								SceneHandler.getInstance().setBack(false);
 								SceneHandler.getInstance().setPreviousStage(stage);
-								if(flasher < 4+(AllCards.getInstance().getRevealCards().size*2)){
-									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+								if(flasher < 6+(AllCards.getInstance().getRevealCards().size*2)){
+									stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(1f),Actions.fadeIn(1f))));
 								}
 								else{
 									isFlash = false;
@@ -172,15 +189,11 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.35f, 0, 0.7f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
 		transitionStage.act();
 		stage.act();
-		batch.setProjectionMatrix(camera.combined);
+		stage.draw();
+		transitionStage.draw();
 
-	    batch.begin();
-			stage.draw();
-			transitionStage.draw();
-    	batch.end();
 
 
 	}
@@ -188,21 +201,25 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 
 	@Override
 	public void show() {
-
-		if(isCardFlip){
+		SceneHandler.getInstance().setLoad(1);
+		
+		if(isCardFlip||SceneHandler.getInstance().isHelp()){
 			stage.clear();
 			transitionStage.clear();
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
 			stage = scene.getSpec().createStage();
+			stage.getActors().get(5).setZIndex(stage.getActors().get(5).getZIndex()-1);
 			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(transitionStage.getWidth(), 0, 0.4f)));
 	 		stage.addAction(Actions.sequence(Actions.moveTo(-stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 			Gdx.input.setInputProcessor(stage);
+			SceneHandler.getInstance().setHelp(false);
 			isCardFlip = false;
 			if(isFlash){
-			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get((flasher-5)/2)));
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get((flasher-7)/2)));
 			cardSound.play();
 			}
 			else if(isDone == 0){
+				stage.getActors().get(1).removeListener(help);
 				isDone = 1;
 				cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/004.mp3"));
 				cardSound.setOnCompletionListener(new OnCompletionListener(){
@@ -221,29 +238,36 @@ public class RevealScreen extends BaseScreen implements com.badlogic.gdx.Screen 
 			}
 		}
 		else{
+			SceneHandler.getInstance().setHelp(false);
 			isFlash = true;
-			flasher = 5;
+			flasher = 7;
 			isDone = 0;
 			stage.clear();
 			transitionStage.clear();
 			transitionStage = SceneHandler.getInstance().getPreviousStage();
 			scene.reset();
 			stage = scene.getSpec().createStage();
+			for (int i = 0; i < stage.getActors().size; i ++){
+				Gdx.app.log(i+"",stage.getActors().get(i).toString());	
+			}
 			transitionStage.addAction(Actions.sequence(Actions.moveTo(0, 0), Actions.moveTo(-transitionStage.getWidth(), 0, 0.4f)));
 	 		stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 	 		Gdx.input.setInputProcessor(stage);
-			stage.getActors().get(1).addListener(back);
-			stage.getActors().get(2).addListener(save);
-			for(int i = 5; i < 4+(AllCards.getInstance().getRevealCards().size*2); i++){
+	 		stage.getActors().get(1).addListener(help);
+			stage.getActors().get(2).addListener(back);
+			stage.getActors().get(3).addListener(save);
+			for(int i = 7; i < 6+(AllCards.getInstance().getRevealCards().size*2); i++){
 				stage.getActors().get(i).addListener(flip);
+				
 			}
-			
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(2).addListener(yes);
-			((Group) stage.getActors().get(stage.getActors().size-1)).getChildren().get(3).addListener(no);
-			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.8f),Actions.fadeIn(0.8f))));
+			stage.getActors().get(5).setZIndex(stage.getActors().get(5).getZIndex()-1);
+			stage.getActors().get(5).setVisible(false);
+			((Group) stage.getActors().get(5)).getChildren().get(2).addListener(yes);
+			((Group) stage.getActors().get(5)).getChildren().get(3).addListener(no);
+			stage.getActors().get(flasher).addAction(Actions.forever(Actions.sequence(Actions.fadeOut(1f),Actions.fadeIn(1f))));
 			sounds = null;
 			sounds = SceneHandler.getInstance().getSpread().getCardsSound();
-			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(flasher-5)));
+			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+sounds.get(flasher-7)));
 			cardSound.play();
 		}
 		
