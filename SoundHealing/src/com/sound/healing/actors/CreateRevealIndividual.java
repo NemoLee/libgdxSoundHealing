@@ -27,21 +27,20 @@ import com.sound.healing.screens.ScreenSpec;
 
 public class CreateRevealIndividual extends CreateScene{
 	
-	BackButton backButton;
+	private BackButton backButton;
 	private MenuButton saveButton;
-	private TextButton yes, no;
-	ButtonStyle style_info_backbutton;
-	private TextButtonStyle style_info_startButton, style_yes,style_no;
+	private BackButton yes;
+	private BackButton no;
+	private ButtonStyle style_info_backbutton;
+	private TextButtonStyle style_info_startButton;
+	private ButtonStyle style_no;
+	private ButtonStyle style_yes;
 	private Image darkPurple, black, popupBackground;
 	private Image[] backCards, frontCards;
 	private Array<Card> cards;
 	private int cardWidth, cardHeight;
 	private Array<Integer> locations;
 	private int x = 4;
-	private FreeTypeFontParameter font;
-	private BitmapFont descriptionFont;
-	private LabelStyle style;
-	private Label labelDescription;
 	private Group group;
 
 	public CreateRevealIndividual() {
@@ -86,12 +85,10 @@ public class CreateRevealIndividual extends CreateScene{
 	   
 		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
 		
-		style_yes =  createTextButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark", Gdx.graphics.getWidth()/18);
-		style_no =  createTextButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark", Gdx.graphics.getWidth()/18);
-		yes = new TextButton("", style_yes);
-		no = new TextButton("", style_no);
-		yes.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
-		no.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		style_yes =  createImageButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark");
+		style_no =  createImageButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark");
+		yes = new BackButton(style_yes, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		no = new BackButton(style_no, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
 		yes.setPosition(Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/3);
 		no.setPosition(Gdx.graphics.getWidth()/6+((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
 		yes.setUserObject(x+2);

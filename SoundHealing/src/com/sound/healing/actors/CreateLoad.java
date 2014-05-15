@@ -31,9 +31,12 @@ public class CreateLoad extends CreateScene{
 	private BackButton backButton;
 	private MenuButton[] loadButtons;
 	private Image[] deleteButtons;
-	private TextButton yes, no;
+	BackButton yes;
+	private BackButton no;
 	ButtonStyle style_menu_backbutton;
-	private TextButtonStyle style_menu_loadbutton, style_info_startButton, style_yes,style_no;
+	private TextButtonStyle style_menu_loadbutton, style_info_startButton;
+	ButtonStyle style_no;
+	ButtonStyle style_yes;
 	private Image darkPurple, black, popupBackground;
 	private Preferences prefs;
 	private String loadData;
@@ -124,16 +127,12 @@ public class CreateLoad extends CreateScene{
 	    popupBackground.setUserObject(37);
 	   // popupBackground.setVisible(false);
 	    group.addActor(popupBackground);
-	   // scene.put((Integer) popupBackground.getUserObject(), popupBackground);
-	   
-		//scene.put((Integer) labelDescription.getUserObject(), labelDescription);
-		
-		style_yes =  createTextButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark", Gdx.graphics.getWidth()/18);
-		style_no =  createTextButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark", Gdx.graphics.getWidth()/18);
-		yes = new TextButton("", style_yes);
-		no = new TextButton("", style_no);
-		yes.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
-		no.setSize((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+	    
+	    
+		style_yes =  createImageButtonStyle("UI/yesbutton.atlas","yesbutton","yesbutton_dark");
+		style_no =  createImageButtonStyle("UI/nobutton.atlas","nobutton","nobutton_dark");
+		yes = new BackButton(style_yes, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
+		no = new BackButton(style_no, 0,0,(Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2-Gdx.graphics.getWidth()/400, Gdx.graphics.getWidth()/8);
 		yes.setPosition(Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/3);
 		no.setPosition(Gdx.graphics.getWidth()/6+((Gdx.graphics.getWidth()-Gdx.graphics.getWidth()/3)/2+Gdx.graphics.getWidth()/400), Gdx.graphics.getHeight()/3);
 		yes.setUserObject(38);

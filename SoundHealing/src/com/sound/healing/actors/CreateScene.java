@@ -66,7 +66,7 @@ public class CreateScene {
 		style.up = skin.getDrawable(up);
 		style.down = skin.getDrawable(down);
 		AssetLoader.getInstance().font.size = fontSize;
-		BitmapFont appFont = AssetLoader.getInstance().generator.generateFont(AssetLoader.getInstance().font);
+		BitmapFont appFont = AssetLoader.getInstance().smallSlab;
 		style.font = appFont;
 		return style;
 	}

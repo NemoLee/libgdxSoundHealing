@@ -27,7 +27,7 @@ public class CreateMoreInfoSub extends CreateScene{
 	private Table table, container;
 	private ScrollPane scroll;
 	private Label labelDescription, labelInfo;
-	private FreeTypeFontParameter font2, font3;
+
 	private LabelStyle style, style2;
 	private BitmapFont descriptionFont, descriptionInfo;
 	
@@ -51,13 +51,10 @@ public class CreateMoreInfoSub extends CreateScene{
 		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-(topImage.getHeight()+Gdx.graphics.getHeight()/7));
 		container.setBackground(new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("lightpurp"))));
 		
-		font2 = new FreeTypeFontParameter();
-		font2.size = Gdx.graphics.getWidth()/16;
-		font3 = new FreeTypeFontParameter();
-		font3.size = Gdx.graphics.getWidth()/24;
+
 		
-		descriptionFont = AssetLoader.getInstance().generator.generateFont(font2);
-		descriptionInfo = AssetLoader.getInstance().generator2.generateFont(font3);
+		descriptionFont = AssetLoader.getInstance().smallSlab;
+		descriptionInfo = AssetLoader.getInstance().sans;
 		style = new LabelStyle(descriptionFont, Color.WHITE);
 		style2 = new LabelStyle(descriptionInfo, Color.WHITE);
 		
