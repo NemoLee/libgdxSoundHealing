@@ -95,6 +95,7 @@ public class CreateLoadReveal extends CreateScene{
 		
 	    saveButton = new BackButton(style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 	    saveButton.setUserObject(2);
+	    
 	    scene.add(saveButton);
 		
 	}

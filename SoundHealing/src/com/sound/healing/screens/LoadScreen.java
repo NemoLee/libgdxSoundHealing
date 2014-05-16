@@ -19,6 +19,7 @@ import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.custom.MenuButton;
+import com.sound.healing.custom.Spread;
 
 public class LoadScreen extends BaseScreen implements Screen {
 	
@@ -50,8 +51,13 @@ public class LoadScreen extends BaseScreen implements Screen {
 				 			SceneHandler.getInstance().setSpread(((MenuButton) event.getTarget().getParent()).getSpread());
 				 			SceneHandler.getInstance().setBack(true);
 							SceneHandler.getInstance().setPreviousStage(stage);
-							ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD_REVEAL);
-					 		
+							if(SceneHandler.getInstance().getSpread().equals(Spread.INDIVIDUAL)){
+								AllCards.getInstance().setIndividual(((MenuButton)event.getTarget().getParent()).getSpreadIDS()[0]);
+								ScreenManager.getInstance().show(com.sound.healing.Screen.REVEALINDI);
+							}
+							else{
+								ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD_REVEAL);
+							}
 	         }
 		};
 		
@@ -111,6 +117,7 @@ public class LoadScreen extends BaseScreen implements Screen {
 
 	@Override
 	public void show() {
+		SceneHandler.getInstance().setLoad(0);
 		if(isDeleting){
 			isDeleting = false;
 			stage.clear();

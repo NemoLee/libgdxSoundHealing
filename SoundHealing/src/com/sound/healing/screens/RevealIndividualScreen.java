@@ -21,6 +21,7 @@ import com.sound.healing.actors.CreateScene;
 import com.sound.healing.actors.SceneHandler;
 import com.sound.healing.cards.AllCards;
 import com.sound.healing.cards.CardEnum;
+import com.sound.healing.custom.BackButton;
 
 public class RevealIndividualScreen extends BaseScreen {
 
@@ -71,11 +72,47 @@ public class RevealIndividualScreen extends BaseScreen {
 		back = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
-				stage.getActors().get(stage.getActors().size-1).setVisible(true);
+				 if(SceneHandler.getInstance().getLoad() == 0){
+					 System.out.println("LOAD = "+ SceneHandler.getInstance().getLoad());
+				     stage.getActors().get(stage.getActors().size-1).setVisible(false);
+					 SceneHandler.getInstance().setBack(true);
+					 SceneHandler.getInstance().setPreviousStage(stage);
+					 ScreenManager.getInstance().show(com.sound.healing.Screen.LOAD);
+				 }
+				 else{
+					 stage.getActors().get(stage.getActors().size-1).setVisible(true);
+				 }		
+	         }
+		};
+		save = new ClickListener(){
+			 @Override
+	         public void clicked(InputEvent event, float x, float y) {
+						 if(isFlash){
+							 	//isDone = false;
+							 	cardSound.stop();
+							 	cardSound.dispose();
+							 	cardSound = null;
+							 }			
+					 		String cardIDs = "";
+					 		cardIDs+= (AllCards.getInstance().getIndividualCard()+1)+",";
+					 		for(int i = 0; i < 9; i++){
+					 			cardIDs += String.valueOf(AllCards.getInstance().getIndividual().get(i).getCardSpec().getCardProperty(CardEnum.ID.getEnumID()))+",";
+							}
+					 		
+							SimpleDateFormat s = new SimpleDateFormat("hh:mm MM/dd/yyyy");
+							String format = s.format(new Date());
+					 		prefs.putString("spread", prefs.getString("spread", "")+SceneHandler.getInstance().getSpread().toString()+"|,"+cardIDs+"_"+format+"^");
+					 		System.out.println(prefs.getString("spread"));
+					 		prefs.flush();
+					 		SceneHandler.getInstance().setBack(true);
+							SceneHandler.getInstance().setPreviousStage(stage);
+							ScreenManager.getInstance().show(com.sound.healing.Screen.MAIN_MENU);
+							//for(int i = 6; i < scene.getSpec().actors.size(); i++)
+							//	scene.getSpec().actors.remove(i);	
+						
 					 		
 	         }
 		};
-
 		flip = new ClickListener(){
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -216,6 +253,12 @@ public class RevealIndividualScreen extends BaseScreen {
 	 		stage.addAction(Actions.sequence(Actions.moveTo(stage.getWidth(),0),Actions.moveTo(0, 0, 0.4f)));
 	 		Gdx.input.setInputProcessor(stage);
 			stage.getActors().get(1).addListener(back);
+			if(SceneHandler.getInstance().getLoad() == 0){
+
+			}
+			else{
+				stage.getActors().get(2).addListener(save);
+			}
 			stage.getActors().get(3).setZIndex(stage.getActors().size-1);
 			for(int i = 5; i < 4+(AllCards.getInstance().getIndividual().size*2); i++){
 				stage.getActors().get(i).addListener(flip);

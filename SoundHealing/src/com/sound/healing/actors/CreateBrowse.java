@@ -33,15 +33,10 @@ public class CreateBrowse extends CreateScene{
 	public CreateBrowse() {
 		
 		setupTop("BROWSE");
-		Gdx.app.log("TOP", "COMPLETED"+TimeUtils.millis());
 		setupBottom();
-		Gdx.app.log("BOTTOM", "COMPLETED"+TimeUtils.millis());
 		setupCardScroll();
-		Gdx.app.log("SETUPCARDSCROLL", "COMPLETED"+TimeUtils.millis());
 		setupOverlay();
-		Gdx.app.log("SETUPOVERLAY", "COMPLETED"+TimeUtils.millis());
 		spec = new ScreenSpec(scene);
-		Gdx.app.log("HASHMAP", "COMPLETED"+TimeUtils.millis());
 	}
 
 	private void setupOverlay() {
@@ -124,21 +119,16 @@ public class CreateBrowse extends CreateScene{
 	}
 
 	private void setupCardScroll() {
-		Gdx.app.log("phase0", "COMPLETED"+TimeUtils.millis());
 		table = new Table();
 		container = new Table();
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), (Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
 		scroll = new ScrollPane(table);
-		Gdx.app.log("phase1", "COMPLETED1"+TimeUtils.millis());
 		scroll.setFlingTime(1.4f);
 		container.add(scroll).width(Gdx.graphics.getWidth()).height((Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
 		container.row();
 		container.setUserObject(2);
 		container.setBounds(0, Gdx.graphics.getHeight()/7, Gdx.graphics.getWidth(), (Gdx.graphics.getHeight()-(Gdx.graphics.getHeight()/8+topImage.getHeight()+backButton.getHeight())));
 		container.setBackground(new TextureRegionDrawable(new TextureRegion(allAtlas.findRegion("darkpurp"))));
-		Gdx.app.log("phase2", "COMPLETED"+TimeUtils.millis());
-		//scrollCards = AllCards.getInstance().getCards();
-		Gdx.app.log("phase3", "COMPLETED"+TimeUtils.millis());
 		for(int i = 1; i < 53; i++){
 			Image image = new Image(AssetLoader.manager.get("Card/cardsheet.atlas", TextureAtlas.class).findRegion((String) ""+i));
 			
@@ -146,7 +136,6 @@ public class CreateBrowse extends CreateScene{
 		        
 			table.add();
 		}
-		Gdx.app.log("phase4", "COMPLETED"+TimeUtils.millis());
 		scene.add(container);
 	}
 	

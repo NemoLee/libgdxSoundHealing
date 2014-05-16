@@ -28,11 +28,11 @@ import com.sound.healing.screens.ScreenSpec;
 public class CreateRevealIndividual extends CreateScene{
 	
 	private BackButton backButton;
-	private MenuButton saveButton;
+	private BackButton saveButton;
 	private BackButton yes;
 	private BackButton no;
 	private ButtonStyle style_info_backbutton;
-	private TextButtonStyle style_info_startButton;
+	private ButtonStyle style_info_startButton1, style_info_startButton2;
 	private ButtonStyle style_no;
 	private ButtonStyle style_yes;
 	private Image darkPurple, black, popupBackground;
@@ -142,10 +142,14 @@ public class CreateRevealIndividual extends CreateScene{
 		backButton = new BackButton(style_info_backbutton,0,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
 		backButton.setUserObject(1);
 	    scene.add(backButton);
-	    
-	    style_info_startButton = createTextButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark", Gdx.graphics.getWidth()/14);
-		
-	    saveButton = new MenuButton("",style_info_startButton,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+	    style_info_startButton1 = createImageButtonStyle("Reveal/savebutton.atlas","savebutton_dark","savebutton_dark");
+	    style_info_startButton2 = createImageButtonStyle("Reveal/savebutton.atlas","savebutton","savebutton_dark");
+		if(SceneHandler.getInstance().getLoad() == 0){
+			saveButton = new BackButton(style_info_startButton1,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		}
+		else{
+			saveButton = new BackButton(style_info_startButton2,Gdx.graphics.getWidth()/2,0,Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/7);
+		}
 	    saveButton.setUserObject(2);
 	    scene.add(saveButton);
 		
@@ -192,7 +196,12 @@ public class CreateRevealIndividual extends CreateScene{
 			x+=2;
 			locationCounter+=2;
 		}
-	    
+		if(SceneHandler.getInstance().getLoad() == 0){
+			saveButton.setStyle(style_info_startButton1);
+		}
+		else{
+			saveButton.setStyle(style_info_startButton2);
+		}
 		
 	}
 }

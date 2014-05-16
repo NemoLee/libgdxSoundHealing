@@ -26,10 +26,4 @@ public class MainActivity extends AndroidApplication {
     }
 }   
 
-/**
- * things to fix:
- * angel and indi fixes
- * grammar fixes.
- * 
- * /
- */  
+   

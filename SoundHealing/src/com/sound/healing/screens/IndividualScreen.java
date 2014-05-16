@@ -27,6 +27,7 @@ public class IndividualScreen extends BaseScreen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 					AllCards.getInstance().setIndividual((Integer) event.getTarget().getUserObject()-2);
+					System.out.println("\n\n\n"+event.getTarget().getUserObject()+"\n\n");
 					stage.getActors().get((Integer)(((Actor) event.getTarget()).getUserObject())).setVisible(false);
 					((Image) (((HorizontalGroup) stage.getActors().get(11)).getChildren()).get(1)).setDrawable(((Image) event.getTarget()).getDrawable());
 					(((HorizontalGroup) stage.getActors().get(11)).getChildren()).get(1).setVisible(true);

@@ -26,6 +26,7 @@ public class CardScreen extends BaseScreen implements Screen {
 	private boolean isFlipped = false;
 	private Music cardSound;
 	private int play = 1;
+	private boolean buttonclicked = false;
 	
 	public CardScreen(CreateScene scene) {
 		super(scene);
@@ -33,7 +34,9 @@ public class CardScreen extends BaseScreen implements Screen {
 			 @Override
 	         public void clicked(InputEvent event, float x, float y) {
 				 cardSound.stop();
+				 buttonclicked = true;
 				 	play = 3;
+				 bigFlip.clicked(event, x, y);
 				 
 			 }
 		};
@@ -114,11 +117,13 @@ public class CardScreen extends BaseScreen implements Screen {
 			play = 2;
 		}
 		else if(!cardSound.isPlaying()&&play == 2){
+			if(buttonclicked){
 			cardSound.stop();
 		 	cardSound.dispose();
 		 	cardSound = null;
 			cardSound = Gdx.audio.newMusic(Gdx.files.internal("Sound/"+AllCards.getInstance().getCurrentCard().getCardSpec().getCardProperty(CardEnum.SOUND2.getEnumID())));
 			cardSound.play();
+			}
 			play = 1;
 		}
 		else if(!cardSound.isPlaying()&&play == 1){
@@ -151,6 +156,7 @@ public class CardScreen extends BaseScreen implements Screen {
 	@Override
 	public void show() {
 		super.show();
+		buttonclicked = false;
 		stage.getActors().get(3).addAction(Actions.sequence(Actions.fadeOut(0.3f), Actions.visible(false)));
 		stage.getActors().get(0).addAction(Actions.parallel(Actions.visible(true),Actions.fadeIn(0.3f)));
 		isFlipped = false;

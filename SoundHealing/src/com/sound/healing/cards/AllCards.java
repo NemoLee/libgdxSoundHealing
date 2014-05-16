@@ -186,13 +186,21 @@ public class AllCards {
 	public void setIndividual(int individual) {
 		this.individual = individual;
 	}
+	public int getIndividualCard(){
+		return individual;
+	}
 	
 	public Array<Card> getIndividual(){
 		inCards = null;
 		inCards = new Array<Card>();
-		for(int i = individual*6; i < individual*6+6; i++){
-			inCards.add(getCard(i));	
-		}
+		int i = individual*6;
+		inCards.add(getCard(i+2));
+		inCards.add(getCard(i+3));
+		inCards.add(getCard(i));
+		inCards.add(getCard(i+1));
+		inCards.add(getCard(i+4));
+		inCards.add(getCard(i+5));
+		
 		inCards.add(getCard(48));
 		inCards.add(getCard(49));
 		inCards.add(getCard(50));

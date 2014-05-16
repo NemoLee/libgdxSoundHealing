@@ -71,6 +71,8 @@ public class InfoScreen extends BaseScreen implements com.badlogic.gdx.Screen {
 				 			SceneHandler.getInstance().setBack(false);
 				 			SceneHandler.getInstance().setPreviousStage(stage);
 				 			if(SceneHandler.getInstance().getSpread().equals(Spread.INDIVIDUAL)){
+				 				SceneHandler.getInstance().setLoad(1);
+				 				System.out.println("LOAD = "+ SceneHandler.getInstance().getLoad());
 				 				ScreenManager.getInstance().show(com.sound.healing.Screen.INDIVIDUAL);
 				 			}
 				 			else{

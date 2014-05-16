@@ -25,6 +25,7 @@ public class loadRevealScreen extends BaseScreen implements Screen {
 	private boolean isFlash = true;
 	private int isDone = 0;
 	
+	
 	public loadRevealScreen(CreateScene sccene) {
 		super(sccene);
 		back = new ClickListener(){
